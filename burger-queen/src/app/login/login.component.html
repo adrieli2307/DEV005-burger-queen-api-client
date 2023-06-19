@@ -1,0 +1,15 @@
+<section class = container>
+    <section>
+        <header>
+            <img class ="imgbackground" src="../../assets/img01.jpg" alt="img-background">
+        </header>
+    </section>
+    <div class="botones">
+        <input type="email" placeholder="ejemplo@gmail.com" class="email" #email>
+
+        <input type="password" placeholder="*********" class="password" #password>
+
+
+        <button class="btn btn-star" (click)="iniciar_sesion(email.value && password.value)">Iniciar Sesión</button>
+    </div>
+</section>

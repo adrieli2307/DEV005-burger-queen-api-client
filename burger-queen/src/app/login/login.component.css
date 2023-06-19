@@ -1,0 +1,21 @@
+body{
+    background-color: black;
+}
+
+header{
+    width: 20%;
+}
+.imgbackground{
+
+    max-width: 100%;
+
+}
+
+.botones{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 20%;
+    align-items: center;
+}
+
