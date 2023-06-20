@@ -15,5 +15,6 @@ export class LoginComponent implements OnInit  {
   iniciar_sesion(email:string){
     console.log(email)
   }
-  
+
+  imagenes:string = 'https://i.ibb.co/vZtH272/imgLogo.png'
 }

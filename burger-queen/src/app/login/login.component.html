@@ -1,15 +1,24 @@
-<section class = container>
-    <section>
-        <header>
-            <img class ="imgbackground" src="../../assets/img01.jpg" alt="img-background">
-        </header>
+<body>
+    <section class = 'container'>
+        <img  class = 'imgLogo' [src]='imagenes' alt="imgLogo">
+       
+             <img class ="imgbackground" src="../../assets/img01.jpg" alt="img-background">
+    <section class = 'sectionContainer'>
+        <div class = 'divContainer'>
+            <input type="email" placeholder="ejemplo@gmail.com" class="email" #email>
+            <span class="error">error</span>
+        </div>
+
+        <div class = 'divContainer'>
+            <input type="password" placeholder="*********" class="password" #password>
+            <span class="error">error</span>
+        </div> 
+
+        <button class="btn btn-star" (click)="iniciar_sesion(email.value)">Iniciar Sesión</button>
+
+    </section>    
+
+        
     </section>
-    <div class="botones">
-        <input type="email" placeholder="ejemplo@gmail.com" class="email" #email>
-
-        <input type="password" placeholder="*********" class="password" #password>
-
-
-        <button class="btn btn-star" (click)="iniciar_sesion(email.value && password.value)">Iniciar Sesión</button>
-    </div>
-</section>
+    
+</body>

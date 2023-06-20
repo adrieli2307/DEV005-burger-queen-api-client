@@ -7,7 +7,6 @@ import { AdministradorComponent } from './administrador/administrador.component'
 import { WaiterComponent } from './waiter/waiter.component';
 import { ChefComponent } from './chef/chef.component';
 import { LoginComponent } from './login/login.component';
-
 @NgModule({
   declarations: [
     AppComponent,

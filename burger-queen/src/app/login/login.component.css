@@ -1,21 +1,72 @@
+
 body{
     background-color: black;
-}
-
-header{
-    width: 20%;
-}
-.imgbackground{
-
     max-width: 100%;
-
+    min-height: 1000px;
+    height: 2000px;
+    
+    
+    
+}
+.imgLogo{
+    width: 230px;
+    position: absolute;
+    top: 50px;
+    left: 0px;
+    right: 0px;
+    margin: auto;
+    z-index: 10;
 }
 
-.botones{
+.imgbackground{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    z-index: 0;  
+}
+
+.sectionContainer{
     display: flex;
-    flex-direction: column;
-    gap: 20px;
-    width: 20%;
-    align-items: center;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 250px;
+    flex-flow: column;
+    justify-content: space-between;
+    margin: auto;
+    width: 500px;
+    height: 300px;
+    
+
+.divContainer {
+    display: flex;
+    flex-flow: column;
+    justify-content: space-between;
+    width: 400px;
+    height: 80px;   
+    margin: auto;
+}
+    
+
+
+
+}
+div input{
+    margin: auto;
+    width: 250px;
+    height: 20px;
+    background-color: rgb(13, 10, 10);
+    color: white;
+    font-weight: bold;
+    size: 20px;
+}
+.btn-star{
+    margin: auto;
+    width: 250px;
+    height: 25px;
+    background-color: #594207;
+    color: white;
+    font-weight: bold;
+    size: 20px;
 }
 
