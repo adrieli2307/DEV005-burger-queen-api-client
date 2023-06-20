@@ -1,0 +1,78 @@
+/*.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 200;
+    background-color: #404040b9;
+    display: flex;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .6 .9s;
+    transition: opacity .6s;
+    --transform: translateY(0);
+    --transition: transform .8s .8s;
+    outline: 2px solid blue;
+
+}*/
+
+.modalBody {
+    margin: auto;
+    width: 50%;
+    max-width: 600px;
+    max-height: 100%;
+    border-radius: 20px;
+    background-color: rgb(250, 250, 250);
+    padding: 4em 2.5em ;
+    display: grid;
+    gap: 2em;
+    place-items: center;
+    grid-auto-columns: 100%;
+    transform: var(--transform);
+    transition: var(--transition);
+    text-align: center;
+    outline: 2px solid blue;
+
+}
+
+.divContainer {
+    display: grid;
+    grid-auto-columns: 100%;
+    gap: 1em;
+    outline: 2px solid rgb(15, 232, 40);
+}
+
+.button {
+ display: grid;
+ grid-template-columns: repeat(2, 1fr);
+ 
+    outline: 2px solid red;
+}
+.divContainer button{
+    width: 100%;
+    height: 30px;
+    margin: 15px;
+}
+
+.divContainer input {
+    border: 0px transparent;
+    border-bottom: 3px solid orange;
+    padding: 8px 8px 8px 0px;
+    background-color: rgb(250, 250, 250);
+
+    &:focus {
+        outline: none;
+    }
+
+    &:hover {
+        border-bottom: 1px solid rgb(241, 159, 18);
+        transition: .5s;
+
+    }
+
+}
+
+/*.divContainer input :focus{
+    border: transparent;
+}*/
