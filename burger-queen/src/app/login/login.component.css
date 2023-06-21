@@ -37,7 +37,7 @@ span{
     margin: auto;
     width: 500px;
     height: 300px;
-    outline: 2px solid red;
+ 
 }
 
 .divContainer {
@@ -47,7 +47,7 @@ span{
     width: 400px;
     height: 80px;   
     margin: auto;
-    outline: 2px solid blue;
+   
 }
 .divContainer span{
     width: 100px;
@@ -56,13 +56,13 @@ span{
 }
 .divContainer input{
     border: 0px transparent;
-    border-bottom: 3px solid orange;
+    border-bottom: 2px solid  rgb(255, 162, 1);
     &:focus {
         outline: none;
     }
 
     &:hover {
-        border-bottom: 1px solid rgb(241, 159, 18);
+        border-bottom: 1px solid  rgb(255, 162, 1);
         transition: .5s;
 
     }
