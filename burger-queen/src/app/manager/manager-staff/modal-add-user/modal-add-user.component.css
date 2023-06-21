@@ -19,47 +19,74 @@
 
 .modalBody {
     margin: auto;
-    width: 50%;
+    width: 70%;
     max-width: 600px;
     max-height: 100%;
     border-radius: 20px;
-    background-color: rgb(250, 250, 250);
-    padding: 4em 2.5em ;
+    background-color: rgb(242, 242, 242);
+    padding: 4em 2.5em;
     display: grid;
-    gap: 2em;
+    gap: 1.5em;
     place-items: center;
     grid-auto-columns: 100%;
     transform: var(--transform);
     transition: var(--transition);
     text-align: center;
-    outline: 2px solid blue;
-
+    font-family: 'Roboto Flex', sans-serif;
+}
+.selectCargo{
+    width: 100%;
+    text-align: center;
+    padding: 4%;
+    border: 2px solid rgb(251, 191, 78);
+    border-radius: 10px;
+    font-size: 1em;
+    color: rgb(80, 80, 80);
+    font-weight: 600;
 }
 
 .divContainer {
     display: grid;
     grid-auto-columns: 100%;
     gap: 1em;
-    outline: 2px solid rgb(15, 232, 40);
+ }
+
+.divContainer span {
+    color: rgb(171, 5, 5);
+    font-weight: 600;
+    font-size: .8em;
 }
 
-.button {
- display: grid;
- grid-template-columns: repeat(2, 1fr);
- 
-    outline: 2px solid red;
+.divContainer button {
+    width: 46%;
+    height: 40px;
+    font-size: .9em;
+    border-radius: 8px;
+    border: 2px solid rgb(251, 191, 78);
+    font-weight: 500;
+    color: rgb(51, 51, 51);
 }
-.divContainer button{
+
+.divButton {
     width: 100%;
-    height: 30px;
-    margin: 15px;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
 }
+
+.buttonSave {
+    background-color: rgb(251, 191, 78);
+ 
+}
+
 
 .divContainer input {
     border: 0px transparent;
-    border-bottom: 3px solid orange;
+    border-bottom: 2px solid rgb(251, 191, 78);
     padding: 8px 8px 8px 0px;
-    background-color: rgb(250, 250, 250);
+    background-color: rgb(242, 242, 242);
+    font-size: 1em;
+    color: rgb(68, 68, 68);
 
     &:focus {
         outline: none;
@@ -67,11 +94,12 @@
 
     &:hover {
         border-bottom: 1px solid rgb(241, 159, 18);
-        transition: .5s;
-
+        transition: .5s border-bottom;
+      
     }
 
 }
+
 
 /*.divContainer input :focus{
     border: transparent;
