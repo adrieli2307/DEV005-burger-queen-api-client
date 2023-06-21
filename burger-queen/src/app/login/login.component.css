@@ -37,6 +37,7 @@ span{
     margin: auto;
     width: 500px;
     height: 300px;
+    outline: 2px solid red;
 }
 
 .divContainer {
@@ -46,11 +47,25 @@ span{
     width: 400px;
     height: 80px;   
     margin: auto;
+    outline: 2px solid blue;
 }
 .divContainer span{
     width: 100px;
     height: 100px;
     outline: 2px solid green;
+}
+.divContainer input{
+    border: 0px transparent;
+    border-bottom: 3px solid orange;
+    &:focus {
+        outline: none;
+    }
+
+    &:hover {
+        border-bottom: 1px solid rgb(241, 159, 18);
+        transition: .5s;
+
+    }
 }
 
 
@@ -58,20 +73,20 @@ span{
 
 div input{
     margin: auto;
-    width: 250px;
-    height: 20px;
+    width: 300px;
+    height: 35px;
     background-color: rgb(13, 10, 10);
     color: white;
     font-weight: bold;
-    size: 20px;
+    size: 25px;
 }
 .btn-star{
     margin: auto;
-    width: 250px;
-    height: 25px;
+    width: 300px;
+    height: 35px;
     background-color: #594207;
     color: white;
     font-weight: bold;
-    size: 20px;
+    size: 25px;
 }
 
