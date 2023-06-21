@@ -3,22 +3,28 @@
         <img  class = 'imgLogo' [src]='imagenes' alt="imgLogo">
        
              <img class ="imgbackground" src="../../assets/img01.jpg" alt="img-background">
-    <section class = 'sectionContainer'>
+
+    <form  class = 'formContainer'[formGroup]="loginForm">
+
         <div class = 'divContainer'>
-            <input type="email" placeholder="ejemplo@gmail.com" class="email" #email>
-            <span class="error">error</span>
+            <input type="email" formControlName="correo" placeholder="ejemplo@gmail.com" class="email" >
+            <span [hidden]="loginForm.get('correo')?.valid || loginForm.get('correo')?.pristine" *ngIf="loginForm.get('correo')?.errors?.['require']"  class="error">El correo no es válido</span>
         </div>
-
+        
         <div class = 'divContainer'>
-            <input type="password" placeholder="*********" class="password" #password>
-            <span class="error">error</span>
+            <input type="password" formControlName="clave" placeholder="*********" class="password" >
+            <span class="error"></span>
         </div> 
+     
 
-        <button class="btn btn-star" (click)="iniciar_sesion(email.value)">Iniciar Sesión</button>
+        <button class="btn btn-star" >Iniciar Sesión</button>
 
-    </section>    
+    </form>    
 
         
     </section>
+  
     
 </body>
+
+

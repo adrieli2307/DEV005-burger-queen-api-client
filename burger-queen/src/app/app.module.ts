@@ -1,23 +1,33 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
-import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { AdministradorComponent } from './administrador/administrador.component';
-import { WaiterComponent } from './waiter/waiter.component';
-import { ChefComponent } from './chef/chef.component';
+import { AppRoutingModule } from './app-routing.module';
 import { LoginComponent } from './login/login.component';
+import { CheffComponent } from './cheff/cheff.component';
+import { ManagerComponent } from './manager/manager.component';
+import { WaiterComponent } from './waiter/waiter.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
+
+
 @NgModule({
   declarations: [
     AppComponent,
-    AdministradorComponent,
+    LoginComponent,
+    CheffComponent,
+    ManagerComponent,
     WaiterComponent,
-    ChefComponent,
-    LoginComponent
+    CheffComponent,
+    PageNotFoundComponent
+
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
