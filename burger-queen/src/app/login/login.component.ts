@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -8,13 +9,21 @@ import { Component, OnInit } from '@angular/core';
 export class LoginComponent implements OnInit  {
   constructor() {   }
 
+  loginForm = new FormGroup ({
+    'correo': new FormControl('', [Validators.required, Validators.email]),
+     'clave': new FormControl('', Validators.required),
+  })  
+ 
+  
+
+  
+
   ngOnInit(): void {
 
   }
+  
+  
 
-  iniciar_sesion(email:string){
-    console.log(email)
-  }
 
   imagenes:string = 'https://i.ibb.co/vZtH272/imgLogo.png'
 }

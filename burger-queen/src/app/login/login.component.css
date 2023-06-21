@@ -3,10 +3,11 @@ body{
     background-color: black;
     max-width: 100%;
     min-height: 1000px;
-    height: 2000px;
+    height: 2000px; 
     
-    
-    
+}
+span{
+    color: aliceblue;
 }
 .imgLogo{
     width: 230px;
@@ -25,7 +26,7 @@ body{
     z-index: 0;  
 }
 
-.sectionContainer{
+.formContainer{
     display: flex;
     position: absolute;
     left: 0;
@@ -36,7 +37,7 @@ body{
     margin: auto;
     width: 500px;
     height: 300px;
-    
+}
 
 .divContainer {
     display: flex;
@@ -46,11 +47,15 @@ body{
     height: 80px;   
     margin: auto;
 }
-    
-
-
-
+.divContainer span{
+    width: 100px;
+    height: 100px;
+    outline: 2px solid green;
 }
+
+
+
+
 div input{
     margin: auto;
     width: 250px;
