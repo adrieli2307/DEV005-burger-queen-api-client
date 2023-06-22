@@ -1,0 +1,19 @@
+body{
+    background-color: aqua;
+
+}
+.container{
+    display: grid;
+   
+    grid-template-columns:repeat(3, 150px  ) 1fr;
+    grid-template-rows: 150px  150px  150px ;
+    grid-gap: 10px;
+}
+.item{
+    border: 2px solid blue;
+}
+/* .item1{
+    width: 100%;
+    height: ;
+    background-color: green;
+} */
