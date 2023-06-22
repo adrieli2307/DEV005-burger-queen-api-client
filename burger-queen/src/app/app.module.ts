@@ -8,6 +8,8 @@ import { CheffComponent } from './cheff/cheff.component';
 import { ManagerComponent } from './manager/manager.component';
 import { WaiterComponent } from './waiter/waiter.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 
 
 @NgModule({
@@ -23,7 +25,9 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,1 +1,31 @@
-<p>login works!</p>
+<body>
+    <section class = 'container'>
+        <img  class = 'imgLogo' [src]='imagenes' alt="imgLogo">
+       
+             <img class ="imgbackground" src="../../assets/img01.jpg" alt="img-background">
+
+    <form  class = 'formContainer'[formGroup]="loginForm" (ngSubmit)="sendForm()">
+
+        <div class = 'divContainer'>
+            <input type="email" formControlName="correo" placeholder="ejemplo@gmail.com" class="email" >
+            <span [hidden]="correo.valid || correo.pristine" *ngIf="correo.errors?.['required']"  class="error">Ingresa un correo</span>
+            <span [hidden]="correo.valid || correo.pristine" *ngIf="correo.errors?.['email']"  class="error">El correo no es válido</span>
+        </div>
+        
+        <div class = 'divContainer'>
+            <input type="password" formControlName="clave" placeholder="*********" class="password" >
+            <span [hidden]="clave.valid || clave.pristine" *ngIf="clave.errors?.['required']"  class="error">Ingresar Contraseña</span>
+        </div> 
+     
+
+        <button class="btn btn-star" [disabled]="loginForm.invalid">Iniciar Sesión</button>
+
+    </form>    
+
+        
+    </section>
+  
+    
+</body>
+
+

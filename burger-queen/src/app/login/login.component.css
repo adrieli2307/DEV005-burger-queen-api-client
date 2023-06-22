@@ -1,0 +1,92 @@
+
+body{
+    background-color: black;
+    max-width: 100%;
+    min-height: 1000px;
+    height: 2000px; 
+    
+}
+span{
+    color: aliceblue;
+}
+.imgLogo{
+    width: 230px;
+    position: absolute;
+    top: 50px;
+    left: 0px;
+    right: 0px;
+    margin: auto;
+    z-index: 10;
+}
+
+.imgbackground{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    z-index: 0;  
+}
+
+.formContainer{
+    display: flex;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 250px;
+    flex-flow: column;
+    justify-content: space-between;
+    margin: auto;
+    width: 500px;
+    height: 300px;
+ 
+}
+
+.divContainer {
+    display: flex;
+    flex-flow: column;
+    justify-content: space-between;
+    width: 400px;
+    height: 80px;   
+    margin: auto;
+   
+}
+.divContainer span{
+    width: 100px;
+    height: 100px;
+    outline: 2px solid green;
+}
+.divContainer input{
+    border: 0px transparent;
+    border-bottom: 2px solid  rgb(255, 162, 1);
+    &:focus {
+        outline: none;
+    }
+
+    &:hover {
+        border-bottom: 1px solid  rgb(255, 162, 1);
+        transition: .5s;
+
+    }
+}
+
+
+
+
+div input{
+    margin: auto;
+    width: 300px;
+    height: 35px;
+    background-color: rgb(13, 10, 10);
+    color: white;
+    font-weight: bold;
+    size: 25px;
+}
+.btn-star{
+    margin: auto;
+    width: 300px;
+    height: 35px;
+    background-color: #594207;
+    color: white;
+    font-weight: bold;
+    size: 25px;
+}
+

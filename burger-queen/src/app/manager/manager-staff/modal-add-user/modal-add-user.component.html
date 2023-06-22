@@ -1,24 +1,37 @@
 <p>modal-add-user works!</p>
 <div class="modal">
-    <div class="modalBody">
+    <form class="modalBody" [formGroup]="formAddUser" (ngSubmit)="process()">
         <h1>Agregar Usuario</h1>
-        <div class="divContainer">
-            <input placeholder="Nombre">
-            <span> error</span>
-        </div>
-        <div class="divContainer">
-            <input type="email" placeholder="Email">
-            <span>error</span>
-        </div>
-        <div class="divContainer">
-            <input type="string" placeholder="Contraseña">
-            <span>error</span>
-        </div>
-        <div class="divContainer button">
-            <button>Guardar</button>
-            <button>Cerrar</button>
-        </div>
       
-    </div>
+            <select name="select" class="selectCargo" formControlName="cargo">
+                <option value="">Cargo</option>
+                <option value="Gerente">Gerente</option>
+                <option value="Cheff">Cheff</option>
+                <option value="Mesero">Mesero</option>
+            </select>
+            <span *ngIf="formAddUser.controls.cargo.invalid && formAddUser.controls.cargo.touched"> Debe agregar un cargo</span>
+  
+
+
+        <div class="divContainer">
+            <input type="text" formControlName="name" placeholder="Nombre">
+            <span [hidden]="name.valid ||name.pristine"> El nombre es obligatorio</span>
+        </div>
+        <div class="divContainer">
+            <input type="email" formControlName="email" placeholder="Email">
+            <span [hidden]="email.valid ||email.pristine" *ngIf="email.errors?.['required']">El email es
+                obligatorio</span>
+            <span [hidden]="email.valid || email.pristine" *ngIf="email.errors?.['email']">El email debe ser válido,
+                ejemplo: user@xmail.com</span>
+        </div>
+        <div class="divContainer">
+            <input type="string" formControlName='password' placeholder="Contraseña">
+            <span [hidden]="password.valid || password.pristine">El nombre es obligatorio</span>
+        </div>
+        <div class="divContainer divButton">
+            <button [disabled]="formAddUser.invalid" class="buttonSave">Guardar</button>
+            <button class="buttonClose">Cerrar</button>
+        </div>
+
+    </form>
 </div>
- 
