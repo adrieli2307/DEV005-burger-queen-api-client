@@ -5,76 +5,69 @@
     <title> waiter </title>
  </head>
 <body>
-     <nav>
-        <img src="../image/img01.jpg" alt="circular image">
-      </nav>
-      
-      <h2 id="waiter">Mesero</h2>
-      <label for="name" id="waiter_name">Nombre del mesero</label>
-      
-      <div></div>
-      
+        
       <h2 id="client">Cliente</h2>
-      <input type="text">
+      <input class="inclient" type="text">
       
-      <h2 id="table">N° de mesa</h2>
-      <input type="text">
+      <h2 id="nmesa">N° de mesa</h2>
+      <input class="intable" type="text">
 
-      <!--Tabla de menú de desayuno-->
-      <th>
-      <label for="menu"> Desayunos</label>
+ <!--Tabla de menú de desayuno-->
+   <th>
+   <button class="menu" for="menu"> Desayunos</button>
     </th>
       <table>
         <tr>
-          <th>ITEM</th>
-          <th>PRECIO</th>
-          <th>CANTIDAD</th>
+  <th>ITEM</th>
+  <th>PRECIO</th>
+   <th>CANTIDAD</th>
         </tr>
         <tr>
           <td>Café americano</td>
           <td>5</td>
           <td>
-            <button>-</button>
-            <input type="text" value="1" readonly>
-            <button>+</button>
+            <button class="buttonquantity">-</button>
+            <input  class= "quantity" type="text" value="1" readonly>
+            <button class="buttonquantity">+</button>
           </td>
         </tr>
         <tr>
           <td>Café con leche</td>
           <td>7</td>
           <td>
-            <button>-</button>
-            <input type="text" value="1" readonly>
-            <button>+</button>
+            <button class="buttonquantity">-</button>
+            <input class= "quantity" type="text" value="1" readonly>
+            <button class="buttonquantity">+</button>
           </td>
         </tr>
         <tr>
           <td>Sandwich de jamón y queso</td>
           <td>10</td>
           <td>
-            <button>-</button>
-            <input type="text" value="1" readonly>
-            <button>+</button>
+            <button class="buttonquantity">-</button>
+            <input class= "quantity" type="text" value="1" readonly>
+            <button class="buttonquantity">+</button>
           </td>
         </tr>
         <tr>
           <td>Jugo de frutas natural</td>
           <td>7</td>
           <td>
-            <button>-</button>
-            <input type="text" value="1" readonly>
-            <button>+</button>
+            <button class="buttonquantity">-</button>
+            <input class= "quantity" type="text" value="1" readonly>
+            <button class="buttonquantity">+</button>
           </td>
         </tr>
       </table>
 
 <!--Tabla de menú del día-->
+<th>
+  <button class="menu" for="menu"> Del día</button>
+  </th>
 <table>
-    <th>
-    <label for="menu"> Del día</label>
-    </th>
-    <tr>
+      <tr>
       <th>ITEM</th>
+      <th>DESCRIPCIÓN</th>
       <th>PRECIO</th>
       <th>CANTIDAD</th>
     </tr>
@@ -83,18 +76,18 @@
       <td>Hamburguesa simple</td>
       <td>10</td>
       <td>
-        <button>-</button>
-        <input type="text" value="0" readonly>
-        <button>+</button>
+        <button class="buttonquantity">-</button>
+        <input class= "quantity" type="text" value="0" readonly>
+        <button class="buttonquantity">+</button>
       </td>
     </tr>
     <tr>
       <td>Hamburguesa doble</td>
       <td>15</td>
       <td>
-        <button>-</button>
-        <input type="text" value="0" readonly>
-        <button>+</button>
+        <button class="buttonquantity">-</button>
+        <input  class= "quantity" type="text" value="0" readonly>
+        <button class="buttonquantity">+</button>
       </td>
     </tr>
     <tr>
@@ -102,18 +95,18 @@
       <td>Papas fritas</td>
       <td>5</td>
       <td>
-        <button>-</button>
-        <input type="text" value="0" readonly>
-        <button>+</button>
+        <button class="buttonquantity">-</button>
+        <input class= "quantity" type="text" value="0" readonly>
+        <button class="buttonquantity">+</button>
       </td>
     </tr>
     <tr>
       <td>Aros de cebolla</td>
       <td>5</td>
       <td>
-        <button>-</button>
-        <input type="text" value="0" readonly>
-        <button>+</button>
+        <button class="buttonquantity">-</button>
+        <input class= "quantity" type="text" value="0" readonly>
+        <button class="buttonquantity">+</button>
       </td>
     </tr>
     <tr>
@@ -121,43 +114,44 @@
       <td>Agua 500ml</td>
       <td>5</td>
       <td>
-        <button>-</button>
-        <input type="text" value="0" readonly>
-        <button>+</button>
+        <button class="buttonquantity">-</button>
+        <input class= "quantity" type="text" value="0" readonly>
+        <button class="buttonquantity">+</button>
       </td>
     </tr>
     <tr>
       <td>Agua 750ml</td>
       <td>7</td>
       <td>
-        <button>-</button>
-        <input type="text" value="0" readonly>
-        <button>+</button>
+        <button class="buttonquantity">-</button>
+        <input class= "quantity" type="text" value="0" readonly>
+        <button class="buttonquantity">+</button>
       </td>
     </tr>
     <tr>
       <td>Bebida/gaseosa 500ml</td>
       <td>7</td>
       <td>
-        <button>-</button>
-        <input type="text" value="0" readonly>
-        <button>+</button>
+        <button class="buttonquantity">-</button>
+        <input class= "quantity" type="text" value="0" readonly>
+        <button class="buttonquantity">+</button>
       </td>
     </tr>
     <tr>
       <td>Bebida/gaseosa 750ml</td>
       <td>10</td>
       <td>
-        <button>-</button>
-        <input type="text" value="0" readonly>
-        <button>+</button>
+        <button class="buttonquantity">-</button>
+        <input class= "quantity" type="text" value="0" readonly>
+        <button class="buttonquantity">+</button>
       </td>
     </tr>
   </table>
   
   <button id="detallePedido">DETALLE DE PEDIDO</button>
+
   <!-- Modal de confirmación del pedido -->
-<div id="confirmacionModal" class="modal">
+<div id="modalinpt" class="modal">
     <div class="modal-content">
       <h2>Confirmación de Pedido</h2>
       <label for="nombreCliente">Nombre cliente:</label>
