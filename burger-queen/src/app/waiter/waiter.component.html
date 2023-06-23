@@ -1,10 +1,15 @@
-<nav>
-    <img src="rutaLogo" alt="">
-    <ul>
-        <li> <a class="option" routerLink="/waiter/menu" routerLinkActive="active">Menú</a></li>
-        <li><a class="option" routerLink="/waiter/Pedidos-pendientes">Pedidos Pendientes</a></li>
-    </ul>
-    
-</nav>
-<router-outlet></router-outlet>
+<body>
+    <nav>
+        <img [src]="rutaImgLogo"class="rutaImgLogo">
+        <ul class="optionList">
+            <li> <a class="option" routerLink="/waiter/orders" routerLinkActive="active">MENU</a></li>
+            <li> <a class="option" routerLink="/waiter/pending-orders" routerLinkActive="active">ORDENES PENDIENTES</a></li>
+        </ul>
+        <img [src]="rutaImgFondo" class="rutaImgFondo">
+    </nav>
+    <main>
+        <router-outlet></router-outlet>
 
+    </main>
+  
+</body>
