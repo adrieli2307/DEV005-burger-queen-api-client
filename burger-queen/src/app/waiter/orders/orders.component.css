@@ -1,0 +1,127 @@
+#client,
+#nmesa{
+    font-size: 15px;
+    border: none;
+    margin-left: 30px;
+   
+}
+.inclient,
+.intable,
+#nombreCliente,
+#numeroMesa{
+    border: none;
+    border-bottom: 1px solid black;
+    margin-left: 30px;
+}
+
+table {
+    width: 80%;
+    border-collapse: collapse;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: var(--fondo);
+    margin-top: 14px;
+    
+  }
+  .menu,
+  #detallePedido  {
+    background-color:var(--botones);
+    padding: 10px 20px; /* Ajusta los valores de padding según el tamaño deseado */
+    font-size: 18px; /* Ajusta el tamaño de la fuente según el tamaño deseado */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50px; /* Ajusta el valor del border-radius según el grado de redondez deseado */
+    margin: 0 auto; /* Agrega esta línea para centrar horizontalmente */
+    margin-top: 20px; /* Agrega un margen superior si es necesario */
+    margin-left: 15px;
+  }
+  /* Número de cantidad */
+  .quantity{
+    width: 30px; /* Establece el ancho deseado */
+    height: 20px; /* Establece la altura deseada */
+    /* Otros estilos opcionales */
+    padding: 1px;
+    font-size: 14px;
+    text-align: center;
+    border:none;
+  }
+
+  /* Botón de cantidad */
+  .buttonquantity{
+    width: 20px;
+    height: 20px;
+    border-radius: 10%; /* Hace que el botón sea circular */
+    /* Otros estilos opcionales */
+    background-color: var(--cantidad);
+    color: rgb(0, 0, 0);
+    font-size: 16px;
+  }
+  table th, table td {
+    border: none;
+    padding: 8px;
+    text-align: center;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.936);
+    background-color: var(--fondo);
+    
+  }
+  
+  #detallePedido {
+    margin-left: 40%;
+ }
+  /*----------------MODAL-------------------*/
+
+ #enviarBtn,
+ #cancelarBtn{
+   padding: 10px 20px; /* Ajusta los valores de padding según el tamaño deseado */
+   font-size: 18px; /* Ajusta el tamaño de la fuente según el tamaño deseado */
+   border-radius: 50px; /* Ajusta el valor del border-radius según el grado de redondez deseado */
+   margin: 0 auto; /* Agrega esta línea para centrar horizontalmente */
+   margin-top: 20px; /* Agrega un margen superior si es necesario */
+   margin-left: 55px;
+   
+ }
+
+ #enviarBtn{
+   background-color:var(--botones); 
+ }
+
+ #cancelarBtn{
+   border: 1px solid red;
+   background-color: white;
+   }
+
+ #modalinpt{
+   background-color: var(--fondo);
+   margin: solid;
+   width: 50%;
+   height: 50%;
+   margin-left: 30%;
+ }
+ .modal-content{
+    margin-top: 25px;
+ }
+ .acceptorder{
+    font-size: 30px;
+    text-align: center;
+    padding: 10px;
+    background-color: var(--botones);
+    border-radius: 20px;
+ }
+
+ #nombreCliente,
+ #numeroMesa{
+    background-color: var(--fondo);
+
+ }
+
+ .nameclient,
+ .numtable{
+   font-size: 15px;
+   display: inline-block;
+   vertical-align: middle;
+   padding: 5px;
+   margin-left: 30px;
+ 
+ }
+

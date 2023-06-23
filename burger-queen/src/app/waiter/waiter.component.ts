@@ -6,5 +6,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./waiter.component.css']
 })
 export class WaiterComponent {
-
-}
+  rutaImgLogo: string = 'https://i.ibb.co/vZtH272/imgLogo.png'
+  rutaImgFondo: string = 'https://i.ibb.co/VpkgVyf/img01.jpg'
+ }

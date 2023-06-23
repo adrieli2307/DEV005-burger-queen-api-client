@@ -4,6 +4,7 @@ import { ManagerMenuComponent } from './manager-menu/manager-menu.component';
 import { ManagerStaffComponent } from './manager-staff/manager-staff.component';
 import { RouterModule, Routes } from '@angular/router';
 import { ModalAddUserComponent } from './manager-staff/modal-add-user/modal-add-user.component';
+import { ReactiveFormsModule} from '@angular/forms'
 const routes: Routes = [
   {
     path: '',
@@ -30,7 +31,8 @@ const routes: Routes = [
   ],
   imports: [
     CommonModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
+    ReactiveFormsModule
   ],
   exports: [RouterModule]
 })
