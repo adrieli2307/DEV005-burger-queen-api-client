@@ -1,46 +1,57 @@
 import { Component, OnInit } from '@angular/core';
-import {FormControl, FormGroup, Validators} from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
+import { InfoLoginI } from '../interfaces/InfoLogin';
+import { InfoResponseI } from '../interfaces/InfoResponse';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent implements OnInit  {
-  constructor(private router: Router,private user: AuthService ) {   }
-  
+export class LoginComponent implements OnInit {
 
-  get correo(){
-    return this.loginForm.get('correo') as FormControl;
+  constructor(private router: Router, private user: AuthService) { }
+
+
+  loginForm = new FormGroup({
+    'email': new FormControl('', [Validators.required, Validators.email]),
+    'password': new FormControl('', Validators.required),
+  })
+
+  // Extracción de cada valor del formGroup
+  get email() {
+    return this.loginForm.get('email') as FormControl;
   }
-  get clave(){
-    return this.loginForm.get('clave') as FormControl;
+  get password() {
+    return this.loginForm.get('password') as FormControl;
   }
+  // Función para enviar información 
 
-  sendForm(){
-    console.log(this.loginForm.value);
-    const ruta = '../manager';
-    this.router.navigate([ruta]);
+  sendForm() {
+    this.user.loginByEmail(this.loginForm.value as InfoLoginI).subscribe((data : InfoResponseI) => {
+        
+      console.log(data);
+      if(data){
+        localStorage.setItem('token',data.accessToken)
+        this.router.navigate(['../waiter']);
+      }
+      
+    },
+    (error) => {
+        console.log('newError', error)
+      });
+   
   }
-
-  loginForm = new FormGroup ({
-    'correo': new FormControl('', [Validators.required, Validators.email]),
-     'clave': new FormControl('', Validators.required),
-  })  
- 
-  
-
-  
 
   ngOnInit(): void {
-    this.user.getUser().subscribe(()=>{console.log})
+    // this.user.getUser().subscribe(()=>{console.log})
 
   }
-  
-  
 
 
-  imagenes:string = 'https://i.ibb.co/vZtH272/imgLogo.png'
+
+
+  imagenes: string = 'https://i.ibb.co/vZtH272/imgLogo.png'
 }
