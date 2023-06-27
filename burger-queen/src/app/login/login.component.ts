@@ -3,7 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
 import { InfoLoginI } from '../interfaces/InfoLogin';
-import { InfoResponseI } from '../interfaces/InfoResponse';
+import { LoginResponseI } from '../interfaces/InfoLoginResponse';
 
 @Component({
   selector: 'app-login',
@@ -30,12 +30,16 @@ export class LoginComponent implements OnInit {
   // Función para enviar información 
 
   sendForm() {
-    this.user.loginByEmail(this.loginForm.value as InfoLoginI).subscribe((data : InfoResponseI) => {
+    this.user.loginByEmail(this.loginForm.value as InfoLoginI).subscribe((data : LoginResponseI) => {
         
-      console.log(data);
-      if(data){
+      console.log( 'hola', data.user.role);
+      if(data.user.role==='waiter'){
         localStorage.setItem('token',data.accessToken)
         this.router.navigate(['../waiter']);
+      }
+      else if(data.user.role==='admin'){
+        localStorage.setItem('token',data.accessToken)
+        this.router.navigate(['../manager']);
       }
       
     },
