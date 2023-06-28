@@ -2,14 +2,14 @@
     <section class = 'container'>
         <img  class = 'imgLogo' [src]='imagenes' alt="imgLogo">
        
-             <img class ="imgbackground" src="../../assets/img01.jpg" alt="img-background">
+             <img class ="imgbackground" src="../../assets/image/img01.jpg" alt="img-background">
 
     <form  class = 'formContainer'[formGroup]="loginForm" (ngSubmit)="sendForm()">
 
         <div class = 'divContainer'>
-            <input type="email" formControlName="correo" placeholder="ejemplo@gmail.com" class="email" >
-            <span [hidden]="correo.valid || correo.pristine" *ngIf="correo.errors?.['required']"  class="error">Ingresa un correo</span>
-            <span [hidden]="correo.valid || correo.pristine" *ngIf="correo.errors?.['email']"  class="error">El correo no es válido</span>
+            <input type="email" formControlName="email" placeholder="ejemplo@gmail.com" class="email" >
+            <span [hidden]="email.valid || email.pristine" *ngIf="email.errors?.['required']"  class="error">Ingresa un correo</span>
+            <span [hidden]="email.valid || email.pristine" *ngIf="email.errors?.['email']"  class="error">El correo no es válido</span>
         </div>
         
         <div class = 'divContainer'>
