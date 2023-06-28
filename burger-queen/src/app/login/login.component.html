@@ -1,8 +1,8 @@
 <body>
     <section class = 'container'>
-        <img  class = 'imgLogo' [src]='imagenes' alt="imgLogo">
+        <img  class = 'imgLogo' [src]='rutaImgLogo' alt="imgLogo">
        
-             <img class ="imgbackground" src="../../assets/img01.jpg" alt="img-background">
+        <img class ="imgbackground" [src]="rutaImgFondo" alt="img-background">
 
     <form  class = 'formContainer' [formGroup]="loginForm" (ngSubmit)="sendForm()">
 
@@ -13,9 +13,12 @@
         </div>
         
         <div class = 'divContainer'>
-            <input type="password" formControlName="password" placeholder="*********" class="password" >
+            <input type="password" formControlName="password" placeholder="Ingresar Contraseña" class="password" >
             <span [hidden]="password.valid || password.pristine" *ngIf="password.errors?.['required']"  class="error">Ingresar Contraseña</span>
         </div> 
+        <div class="errorApi divContainer" *ngIf="errorApi">
+            <span>{{errorApi}}</span>
+        </div>
      
 
         <button type="submit" class="btn btn-star" [disabled]="loginForm.invalid">Iniciar Sesión</button>
