@@ -1,24 +1,27 @@
 <body>
     <section class = 'container'>
-        <img  class = 'imgLogo' [src]='imagenes' alt="imgLogo">
+        <img  class = 'imgLogo' [src]='rutaImgLogo' alt="imgLogo">
        
-             <img class ="imgbackground" src="../../assets/img01.jpg" alt="img-background">
+        <img class ="imgbackground" [src]="rutaImgFondo" alt="img-background">
 
-    <form  class = 'formContainer'[formGroup]="loginForm" (ngSubmit)="sendForm()">
+    <form  class = 'formContainer' [formGroup]="loginForm" (ngSubmit)="sendForm()">
 
         <div class = 'divContainer'>
-            <input type="email" formControlName="correo" placeholder="ejemplo@gmail.com" class="email" >
-            <span [hidden]="correo.valid || correo.pristine" *ngIf="correo.errors?.['required']"  class="error">Ingresa un correo</span>
-            <span [hidden]="correo.valid || correo.pristine" *ngIf="correo.errors?.['email']"  class="error">El correo no es válido</span>
+            <input type="email" formControlName="email" placeholder="ejemplo@gmail.com" class="email" >
+            <span [hidden]="email.valid || email.pristine" *ngIf="email.errors?.['required']"  class="error">Ingresa un correo</span>
+            <span [hidden]="email.valid || email.pristine" *ngIf="email.errors?.['email']"  class="error">El correo no es válido</span>
         </div>
         
         <div class = 'divContainer'>
-            <input type="password" formControlName="clave" placeholder="*********" class="password" >
-            <span [hidden]="clave.valid || clave.pristine" *ngIf="clave.errors?.['required']"  class="error">Ingresar Contraseña</span>
+            <input type="password" formControlName="password" placeholder="Ingresar Contraseña" class="password" >
+            <span [hidden]="password.valid || password.pristine" *ngIf="password.errors?.['required']"  class="error">Ingresar Contraseña</span>
         </div> 
+        <div class="errorApi divContainer" *ngIf="errorApi">
+            <span>{{errorApi}}</span>
+        </div>
      
 
-        <button class="btn btn-star" [disabled]="loginForm.invalid">Iniciar Sesión</button>
+        <button type="submit" class="btn btn-star" [disabled]="loginForm.invalid">Iniciar Sesión</button>
 
     </form>    
 

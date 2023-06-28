@@ -9,13 +9,14 @@ span{
     color: aliceblue;
 }
 .imgLogo{
-    width: 230px;
+    width: 30%;
     position: absolute;
     top: 50px;
     left: 0px;
     right: 0px;
     margin: auto;
     z-index: 10;
+
 }
 
 .imgbackground{
@@ -23,37 +24,62 @@ span{
     bottom: 0;
     width: 100%;
     z-index: 0;  
+
 }
 
 .formContainer{
-    display: flex;
+    /* display: flex; */
     position: absolute;
     left: 0;
     right: 0;
-    bottom: 250px;
-    flex-flow: column;
-    justify-content: space-between;
-    margin: auto;
+    bottom: 230px;
+    /* flex-flow: column;
+    justify-content: space-between;*/
+    margin: auto; 
     width: 500px;
-    height: 300px;
+    height: 30%;
+
+    display: grid;
+    grid-auto-columns: 100%;
+    gap: 1em;
  
 }
 
 .divContainer {
     display: flex;
     flex-flow: column;
-    justify-content: space-between;
+    justify-content: space-around;
     width: 400px;
-    height: 80px;   
+    height:100%;   
     margin: auto;
+
+    display: grid;
+    grid-template-columns: 100%;
+    justify-items: center;
+    
    
 }
 .divContainer span{
-    width: 100px;
-    height: 100px;
-    outline: 2px solid green;
+    font-family: 'Roboto Flex', sans-serif;
+    font-size: 1.3em;
+    font-weight:600;
+    /* text-shadow: 0 0 0 #fff, 0 0 0px #fff, 0 0 5px #fff, 0 0 10px #ff0019, 0 0 20px #ff0019, 0 0 30px #ff0019, 0 0 40px #ff0019; */
+    width: 80%;
+    height: 40px;
+    background-color: rgba(255, 34, 34, 0.197);
+    padding: 5px;
+    border-radius:20px ;
+ 
+    text-align: center;
+   
+
 }
 .divContainer input{
+    font-family: 'Roboto Flex', sans-serif;
+    color: white;
+    font-size: 1.4;
+    
+ 
     border: 0px transparent;
     border-bottom: 2px solid  rgb(255, 162, 1);
     &:focus {
@@ -72,20 +98,25 @@ span{
 
 div input{
     margin: auto;
-    width: 300px;
+    width: 80%;
     height: 35px;
-    background-color: rgb(13, 10, 10);
-    color: white;
-    font-weight: bold;
-    size: 25px;
+    background-color: rgb(0, 0, 0);
+    font-size: 1.3em;
+  
+    
 }
 .btn-star{
+    font-family: 'Roboto Flex', sans-serif;
     margin: auto;
-    width: 300px;
-    height: 35px;
-    background-color: #594207;
-    color: white;
+    width: 65%;
+    height:70%;
+    background-color: #f1bf42;
     font-weight: bold;
     size: 25px;
+    font-size: 1.5em;
+    color: rgb(48, 48, 48);
+    border-radius: 20px;
+
 }
+
 
