@@ -2,33 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
-<<<<<<< HEAD
-import {LoginI} from '../interfaces/login.interface';
-=======
 import { InfoLoginI } from '../interfaces/InfoLogin';
 import { LoginResponseI } from '../interfaces/InfoLoginResponse';
->>>>>>> origin/caro
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-<<<<<<< HEAD
-export class LoginComponent implements OnInit  {
-  loginForm = new FormGroup ({
-    'email': new FormControl('', Validators.required),
-     'password': new FormControl('', Validators.required)
-  })  
-
-  constructor(private router: Router,private user: AuthService ) {   }
-  
-
-  get correo(){
-    return this.loginForm.get('email') as FormControl;
-  }
-  get clave(){
-=======
 export class LoginComponent implements OnInit {
 
   constructor(private router: Router, private user: AuthService) { }
@@ -44,27 +25,10 @@ export class LoginComponent implements OnInit {
     return this.loginForm.get('email') as FormControl;
   }
   get password() {
->>>>>>> origin/caro
     return this.loginForm.get('password') as FormControl;
   }
   // Función para enviar información 
 
-<<<<<<< HEAD
-  onLogin(form:LoginI){
-    this.user.loginByEmail(form).subscribe(data =>{
-      console.log(data);
-    })
-  }
-
-
- 
-  
-
-  
-
-  ngOnInit(): void {
-    //this.user.getUser().subscribe(()=>{console.log})
-=======
   sendForm() {
     this.user.loginByEmail(this.loginForm.value as InfoLoginI).subscribe((data : LoginResponseI) => {
         
@@ -87,7 +51,6 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     // this.user.getUser().subscribe(()=>{console.log})
->>>>>>> origin/caro
 
   }
 
