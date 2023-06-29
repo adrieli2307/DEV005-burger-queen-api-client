@@ -6,7 +6,7 @@ import { CheffComponent } from './cheff/cheff.component';
 import { ManagerComponent } from './manager/manager.component';
 import { WaiterComponent } from './waiter/waiter.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-
+import { AuthGuard } from './guards/auth.guard';
 const routes: Routes = [
   {
     path: '',
@@ -21,16 +21,19 @@ const routes: Routes = [
   {
     path: 'kitchen',
     component: CheffComponent,
+    canActivate:[AuthGuard],
     loadChildren: () => import('../app/cheff/cheff.module').then(m => m.CheffModule)
   },
   {
     path: 'waiter',
     component: WaiterComponent,
+    canActivate:[AuthGuard],
     loadChildren: () => import('../app/waiter/waiter.module').then(m => m.WaiterModule)
   },
   {
     path: 'manager',
     component: ManagerComponent,
+    canActivate:[AuthGuard],
     loadChildren: () =>  import('../app/manager/manager.module').then(m => m.ManagerModule)
    
   },
