@@ -38,7 +38,7 @@ export class LoginComponent implements OnInit {
       console.log('hola', data.user.role);
       if (data.user.role === 'waiter') {
         localStorage.setItem('token', data.accessToken)
-        this.router.navigate(['../waiter']);
+        this.router.navigate(['../waiter/orders']);
       }
       else if (data.user.role === 'admin') {
         localStorage.setItem('token', data.accessToken)
