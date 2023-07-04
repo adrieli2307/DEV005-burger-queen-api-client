@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ProductsI } from 'src/app/interfaces/products.interface';
 import { ProductsService } from 'src/app/services/products.service';
 
 @Component({
@@ -9,7 +10,9 @@ import { ProductsService } from 'src/app/services/products.service';
 export class OrdersComponent {
 
   // Invocación de datos API en pantalla 
-  products: any[] = []
+  products: ProductsI[] = []
+  filterType: string = ""
+
 
   constructor(private apiService:ProductsService){}
 
@@ -22,16 +25,13 @@ export class OrdersComponent {
       console.log(data)
       this.products = data;
     });
+      
+    }
 
-  }
-  mostrarTabla: boolean = true;
-  onClick() {
-    // Aquí puedes agregar la lógica que deseas ejecutar al hacer clic en el botón
-    this.mostrarTabla = !this.mostrarTabla;
-    console.log('Botón clickeado');
-    // Realiza acciones adicionales según sea necesario
-  }
-  
+  filterByType(type:string){
+  this.filterType=type
+ }
+ 
 
   
 }
