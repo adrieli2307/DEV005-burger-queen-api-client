@@ -16,50 +16,17 @@
    <th>
    <button class="menu" for="menu"> Desayunos</button>
     </th>
-    <!--  <table>
+    <table>
         <tr>
   <th>ITEM</th>
   <th>PRECIO</th>
    <th>CANTIDAD</th>
         </tr>
-        <tr>
-          <td>Café americano</td>
-          <td>5</td>
-          <td>
-            <button class="buttonquantity">-</button>
-            <input  class= "quantity" type="text" value="1" readonly>
-            <button class="buttonquantity">+</button>
-          </td>
+        <tr *ngFor="let product of products">
+          <td>{{ product.name }}</td>
+          <td>{{ product.price }}</td>
         </tr>
-        <tr>
-          <td>Café con leche</td>
-          <td>7</td>
-          <td>
-            <button class="buttonquantity">-</button>
-            <input class= "quantity" type="text" value="1" readonly>
-            <button class="buttonquantity">+</button>
-          </td>
-        </tr>
-        <tr>
-          <td>Sandwich de jamón y queso</td>
-          <td>10</td>
-          <td>
-            <button class="buttonquantity">-</button>
-            <input class= "quantity" type="text" value="1" readonly>
-            <button class="buttonquantity">+</button>
-          </td>
-        </tr>
-        <tr>
-          <td>Jugo de frutas natural</td>
-          <td>7</td>
-          <td>
-            <button class="buttonquantity">-</button>
-            <input class= "quantity" type="text" value="1" readonly>
-            <button class="buttonquantity">+</button>
-          </td>
-        </tr>
-      </table>-->
-
+      </table>
 <!--Tabla de menú del día-->
 <th>
   <button class="menu" for="menu"> Del día</button>
@@ -70,103 +37,8 @@
       <th>DESCRIPCIÓN</th>
       <th>PRECIO</th>
       <th>CANTIDAD</th>
-    </tr>
-    <tr>
-      <td rowspan="2">Hamburguesas</td>
-      <td>Hamburguesa simple</td>
-      <td>10</td>
-      <td>
-        <button class="buttonquantity">-</button>
-        <input class= "quantity" type="text" value="0" readonly>
-        <button class="buttonquantity">+</button>
-      </td>
-    </tr>
-    <tr>
-      <td>Hamburguesa doble</td>
-      <td>15</td>
-      <td>
-        <button class="buttonquantity">-</button>
-        <input  class= "quantity" type="text" value="0" readonly>
-        <button class="buttonquantity">+</button>
-      </td>
-    </tr>
-    <tr>
-      <td rowspan="2">Acompañamientos</td>
-      <td>Papas fritas</td>
-      <td>5</td>
-      <td>
-        <button class="buttonquantity">-</button>
-        <input class= "quantity" type="text" value="0" readonly>
-        <button class="buttonquantity">+</button>
-      </td>
-    </tr>
-    <tr>
-      <td>Aros de cebolla</td>
-      <td>5</td>
-      <td>
-        <button class="buttonquantity">-</button>
-        <input class= "quantity" type="text" value="0" readonly>
-        <button class="buttonquantity">+</button>
-      </td>
-    </tr>
-    <tr>
-      <td rowspan="4">Para tomar</td>
-      <td>Agua 500ml</td>
-      <td>5</td>
-      <td>
-        <button class="buttonquantity">-</button>
-        <input class= "quantity" type="text" value="0" readonly>
-        <button class="buttonquantity">+</button>
-      </td>
-    </tr>
-    <tr>
-      <td>Agua 750ml</td>
-      <td>7</td>
-      <td>
-        <button class="buttonquantity">-</button>
-        <input class= "quantity" type="text" value="0" readonly>
-        <button class="buttonquantity">+</button>
-      </td>
-    </tr>
-    <tr>
-      <td>Bebida/gaseosa 500ml</td>
-      <td>7</td>
-      <td>
-        <button class="buttonquantity">-</button>
-        <input class= "quantity" type="text" value="0" readonly>
-        <button class="buttonquantity">+</button>
-      </td>
-    </tr>
-    <tr>
-      <td>Bebida/gaseosa 750ml</td>
-      <td>10</td>
-      <td>
-        <button class="buttonquantity">-</button>
-        <input class= "quantity" type="text" value="0" readonly>
-        <button class="buttonquantity">+</button>
-      </td>
-    </tr>
-  </table>-->
-  
-  <!--<button id="detallePedido">DETALLE DE PEDIDO</button>-->
+    </tr>-->
+    
 
-  <!-- Modal de confirmación del pedido -->
-<!--<div id="modalinpt" class="modal">
-    <div class="modal-content">
-      <h2 class="acceptorder">Confirmación de Pedido</h2>
-      <label class="nameclient">Nombre cliente:</label>
-      <input type="text" id="nombreCliente" required>
-      <br>
-      <label class="numtable" >N° Mesa:</label>
-      <input type="text" id="numeroMesa" required>
-      <br>
-      <table>-->
-        <!-- Contenido de la tabla 
-      </table>
-      <p id="total"></p>
-      <button id="enviarBtn">ENVIAR</button>
-      <button id="cancelarBtn">CANCELAR</button>
-    </div>
-  </div>-->
 </body>
 </html>

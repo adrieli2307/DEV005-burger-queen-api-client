@@ -7,17 +7,18 @@ import { ProductsService } from 'src/app/services/products.service';
   styleUrls: ['./orders.component.css']
 })
 export class OrdersComponent {
+  products: any[] = []
 
   constructor(private apiService:ProductsService){}
 
   ngOnInit() {
     this.getApi();
-    //this.apiService.getProducts();
   }
 
   getApi() {
     return this.apiService.getDataFromAPI().subscribe((data) => {
       console.log(data)
+      this.products = data;
     });
 
   }
