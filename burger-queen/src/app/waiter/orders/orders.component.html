@@ -14,9 +14,9 @@
 
  <!--Tabla de menú de desayuno-->
    <th>
-   <button class="menu" for="menu"> Desayunos</button>
+   <button (click)="onClick()" class="menu" for="menu"> Desayunos</button>
     </th>
-    <table>
+    <table *ngIf="mostrarTabla">
         <tr>
   <th>ITEM</th>
   <th>PRECIO</th>
