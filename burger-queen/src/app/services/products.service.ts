@@ -1,9 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
 import { ProductsI } from '../interfaces/products.interface';
 import { Observable } from 'rxjs';
-import { Token } from '@angular/compiler';
+
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +14,8 @@ export class ProductsService {
 
   constructor(private http: HttpClient) {
     //this.responseData = []; 
-    this.tokenAccess =  localStorage.getItem('token');}
+    this.tokenAccess =  localStorage.getItem('token');
+  }
 
   private apiurl:string = 'http://localhost:8080/products';
   
