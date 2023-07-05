@@ -34,60 +34,40 @@ export class LoginComponent implements OnInit {
   // Función para enviar información 
   /*----------------------Codigo anterior-------------------------*/
 
-  // sendForm() {
-  //   this.user.loginByEmail(this.loginForm.value as InfoLoginI).subscribe((data: LoginResponseI) => {
-  //     this.user.setCurrentUser(data.user);
-  //     console.log('hola', data.user.role);
-  //     if (data.user.role === 'waiter') {
-  //       localStorage.setItem('token', data.accessToken)
-  //       this.router.navigate(['../waiter']);
-  //     }
-  //     else if (data.user.role === 'admin') {
-  //       localStorage.setItem('token', data.accessToken)
-  //       this.router.navigate(['../manager']);
-  //     }
+  sendForm() {
+    this.user.loginByEmail(this.loginForm.value as InfoLoginI).subscribe((data: UserResponseI) => {
+     // this.user.setCurrentUser(data.user);
+      console.log('hola', data.user.role);
+      if (data.user.role === 'waiter') {
+        localStorage.setItem('token', data.accessToken)
+        this.router.navigate(['../waiter']);
+      }
+      else if (data.user.role === 'admin') {
+        localStorage.setItem('token', data.accessToken)
+        this.router.navigate(['../manager']);
+      }
 
-  //   },
-  //     (error: LoginResponseErrorI) => {
-  //       console.log('error', error)
-  //       this.errorApi = error.error;
-  //     });
+    },
+      (error: UserResponseErrorI) => {
+        console.log('error', error)
+        this.errorApi = error.error;
+      });
 
-  // }
-
-
+  }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+/*
   
   sendForm() {
-
-    this.user.loginByEmail(this.loginForm.value as InfoLoginI).subscribe(() => {
-
-      const getUser: UserResponseI | null = this.user.getCurrentUser();
-
-      if (getUser?.user.role === 'admin') {
+    this.user.loginByEmail(this.loginForm.value as InfoLoginI).subscribe((data: LoginResponseI) => {
+      this.user.setCurrentUser(data.user);
+      console.log('hola', data.user.role);
+      if (data.user.role === 'waiter') {
+        localStorage.setItem('token', data.accessToken)
+        this.router.navigate(['../waiter/orders']);
+      }
+      else if (data.user.role === 'admin') {
+        localStorage.setItem('token', data.accessToken)
         this.router.navigate(['../manager']);
       } else if (getUser?.user.role === 'waiter') {
         this.router.navigate(['../waiter']);
@@ -100,7 +80,7 @@ export class LoginComponent implements OnInit {
     })
     );
 
-  }
+  }*/
 
 
   //  console.log('localStorage', this.user.getCurrentUser())

@@ -9,6 +9,8 @@ import { WaiterComponent } from './waiter/waiter.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { ButtonsComponent } from './buttons/buttons.component';
+
 
 
 
@@ -20,7 +22,8 @@ import { HttpClientModule } from '@angular/common/http';
     ManagerComponent,
     WaiterComponent,
     CheffComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+ 
 
   ],
   imports: [
