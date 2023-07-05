@@ -13,6 +13,50 @@ export class ProductsService {
   private accessToken: string | undefined;
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   constructor(private http: HttpClient, private authS: AuthService) {
     this.accessToken = this.authS.getCurrentUser()?.accessToken;
     // this.getProductsFromApi();
@@ -27,46 +71,6 @@ export class ProductsService {
   }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
 
 
   // getProductsFromApi(): Observable<ProductI[]> {
