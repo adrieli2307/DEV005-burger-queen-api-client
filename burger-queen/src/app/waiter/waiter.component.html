@@ -4,10 +4,15 @@
         <ul class="optionList">
             <li> <a class="option" routerLink="/waiter/orders" routerLinkActive="active">MENU</a></li>
             <li> <a class="option" routerLink="/waiter/pending-orders" routerLinkActive="active">ORDENES PENDIENTES</a></li>
+       
         </ul>
         <img [src]="rutaImgFondo" class="rutaImgFondo">
     </nav>
     <main>
+        <tr *ngFor="let dataProducts of dataProducts">
+            <td>{{ dataProducts.name }}</td>
+            <td>{{ dataProducts.price }}</td>
+          </tr>
         <router-outlet></router-outlet>
 
     </main>
