@@ -1,46 +1,84 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <meta charset="utf-8">
-    <title> waiter </title>
- </head>
-<body>
-        
-      <h2 id="client">Cliente</h2>
-      <input class="inclient" type="text">
-      
-      <h2 id="nmesa">N° de mesa</h2>
-      <input class="intable" type="text">
 
- <!--Tabla de menú de desayuno-->
-   <th >
-   <button (click)="filterByType('Desayuno')" class="menu" for="menu"> Desayunos</button>
-    </th>
-    <table *ngIf="filterType === 'Desayuno'">
-        <tr>
-  <th>ITEM</th>
-  <th>PRECIO</th>
-   <th>CANTIDAD</th>
-        </tr>
-        <tr *ngFor="let product of products">
-          <td *ngIf="product.type === filterType">{{ product.name }}</td>
-          <td *ngIf="product.type === filterType">{{ product.price }}</td>
-        </tr>
-      </table>
-<!--Tabla de menú del día-->
-<th>
-  <button (click)="filterByType('Almuerzo')" class="menu" for="menu"> Del día</button>
+<head>
+  <meta charset="utf-8">
+  <title> waiter </title>
+</head>
+
+<body>
+
+  <h2 id="client">Cliente</h2>
+  <input class="inclient" type="text">
+
+  <h2 id="nmesa">N° de mesa</h2>
+  <input class="intable" type="text">
+
+  <!--Tabla de menú de desayuno-->
+  <th>
+    <button (click)="filterByType('Desayuno')" class="menu" for="menu">Desayunos</button>
   </th>
-<table *ngIf="filterType === 'Almuerzo'">
-      <tr>
+  <table *ngIf="filterType === 'Desayuno'">
+    <tr>
       <th>ITEM</th>
       <th>PRECIO</th>
       <th>CANTIDAD</th>
     </tr>
-   <tr *ngFor="let product of products">
-    <td *ngIf="product.type === filterType">{{ product.name }}</td>
-    <td *ngIf="product.type === filterType">{{ product.price }}</td>
-  </tr>
-</table>
+    <ng-container *ngFor="let product of products">
+      <tr *ngIf="product.type === filterType">
+        <td>{{ product.name }}</td>
+        <td>{{ product.price }}</td>
+        <td>
+          <button class="buttonquantity" (click)="decrementQuantity(product)">-</button>
+          <input class="quantity" type="number" [value]="product.quantity" readonly>
+          <button class="buttonquantity" (click)="incrementQuantity(product)">+</button>
+        </td>
+      </tr>
+    </ng-container>
+  </table>
+  <!--Tabla de menú del día-->
+  <th>
+    <button (click)="filterByType('Almuerzo')" class="menu" for="menu"> Del día</button>
+  </th>
+  <table *ngIf="filterType === 'Almuerzo'">
+    <tr>
+      <th>ITEM</th>
+      <th>PRECIO</th>
+      <th>CANTIDAD</th>
+    </tr>
+    <ng-container *ngFor="let product of products">
+      <tr *ngIf="product.type === filterType">
+        <td>{{ product.name }}</td>
+        <td>{{ product.price }}</td>
+      <td>
+        <button class="buttonquantity" (click)="decrementQuantity(product)">-</button>
+        <input class="quantity" type="number" [value]="product.quantity" readonly>
+        <button class="buttonquantity" (click)="incrementQuantity(product)">+</button>
+      </td>
+    </tr>
+  </ng-container>
+  </table>
+
+  <button id="detallePedido">DETALLE DE PEDIDO</button>
+
+  <!-- Modal de confirmación del pedido -->
+  <div id="modalinpt" class="modal">
+    <div class="modal-content">
+      <h2 class="acceptorder">Confirmación de Pedido</h2>
+      <label class="nameclient">Nombre cliente:</label>
+      <input type="text" id="nombreCliente" required>
+      <br>
+      <label class="numtable">N° Mesa:</label>
+      <input type="text" id="numeroMesa" required>
+      <br>
+      <table>
+        Contenido de la tabla
+      </table>
+      <p id="total"></p>
+      <button id="enviarBtn">ENVIAR</button>
+      <button id="cancelarBtn">CANCELAR</button>
+    </div>
+  </div>
 </body>
+
 </html>
