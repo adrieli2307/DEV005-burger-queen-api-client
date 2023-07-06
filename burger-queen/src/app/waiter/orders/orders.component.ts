@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ProductsI } from 'src/app/interfaces/products.interface';
 import { ProductsService } from 'src/app/services/products.service';
+import { ButtonsComponent } from 'src/app/buttons/buttons.component';
 
 @Component({
   selector: 'app-orders',
@@ -21,7 +22,7 @@ export class OrdersComponent {
   }
 
   getApi() {
-    return this.apiService.getDataFromAPI().subscribe((data) => {
+    return this.apiService.getProductsFromAPI().subscribe((data) => {
       console.log(data);
       this.products = data;
       this.products.map((product) => {
@@ -40,6 +41,16 @@ export class OrdersComponent {
       this.filteredProducts = this.products; // Si no hay tipo de filtro, mostrar todos los productos
     }
   }
+
+  updateQuantity(data:{eventValue:number, product:ProductsI}){
+  //   const product = {...this.filteredProducts.find(p => p.id = productId)} as ProductsI
+    const {eventValue, product} = data;
+    if (product.quantity=== 0 && eventValue < 1) {
+      return;
+    }
+    product.quantity = product.quantity + eventValue;
+
+  } 
 
   incrementQuantity(product: ProductsI): void {
     product.quantity++;

@@ -4,6 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { OrdersComponent } from './orders/orders.component';
 import { PendingOrdersComponent } from './pending-orders/pending-orders.component';
 import { ProductsService } from '../services/products.service';
+import { ButtonsComponent } from '../buttons/buttons.component';
 
 const routes : Routes = [
   {
@@ -20,7 +21,11 @@ const routes : Routes = [
 @NgModule({
   declarations: [
     OrdersComponent,
-    PendingOrdersComponent
+    PendingOrdersComponent,
+    ButtonsComponent
+ 
+ 
+
   ],
   imports: [
     CommonModule,

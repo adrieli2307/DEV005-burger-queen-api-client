@@ -1,28 +1,34 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { InfoLoginI } from '../interfaces/InfoLogin';
-import { LoginResponseI, LoginUsersI } from '../interfaces/InfoLoginResponse';
-import { Observable } from 'rxjs';
+import { UserResponseI, UserResponseErrorI,  } from '../interfaces/UserResponse';
+import { Observable, tap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  private currentUser: LoginUsersI | null;
 
-  constructor(private http: HttpClient) { 
-    this.currentUser = null;
-  }
+    constructor(private http: HttpClient) { }
 
-  loginByEmail(body: InfoLoginI): Observable<LoginResponseI> {
-    return this.http.post<LoginResponseI>('http://localhost:8080/login', body)
-  }
+     responseUserFromApi(body: InfoLoginI) : Observable<UserResponseI> {
+     return this.http.post<UserResponseI>('http://localhost:8080/login', body).pipe(
+      tap ((data: UserResponseI) => {
+        // Conversión de data a objeto string
+        const dataToLocalS: string = JSON.stringify(data)
+        console.log('datas', dataToLocalS)
+        // Almacenamiento de dataToLocalS a localStorage
+        localStorage.setItem('dataUser', dataToLocalS)
+    }))}
 
-  setCurrentUser(user: LoginUsersI):void {
-    this.currentUser = user;
+    getCurrentUser(): UserResponseI | null {
+      const dataLocalS = localStorage.getItem('dataUser');
+      console.log('dataLocalS', dataLocalS);
+      if (dataLocalS === null) {
+        return null
+      }
+      const dataUserObj = JSON.parse(dataLocalS);
+      console.log('obj', dataUserObj);
+      return dataUserObj;
+    }
   }
-  getCurrentUser():LoginUsersI | null {
-    return this.currentUser;
-  }
-
-}
