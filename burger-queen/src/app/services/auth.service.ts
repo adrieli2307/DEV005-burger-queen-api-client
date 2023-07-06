@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { InfoLoginI } from '../interfaces/InfoLogin';
-import { LoginResponseI, LoginUsersI } from '../interfaces/InfoLoginResponse';
+import { UserResponseI  } from '../interfaces/UserResponse';
 import { Observable, tap } from 'rxjs';
 import { Router } from '@angular/router';
 
@@ -10,26 +10,31 @@ import { Router } from '@angular/router';
 })
 export class AuthService {
 
-  constructor(private http: HttpClient, private router:Router) { 
-    this.currentUser = null;
-  }
+    constructor(private http: HttpClient, private router:Router) { }
 
-  logout(): void {
-    localStorage.removeItem('token')
-    localStorage.removeItem('LoginUserI')
-    this.router.navigate(['/login'])
-  }
+     responseUserFromApi(body: InfoLoginI) : Observable<UserResponseI> {
+     return this.http.post<UserResponseI>('http://localhost:8080/login', body).pipe(
+      tap ((data: UserResponseI) => {
+        // Conversión de data a objeto string
+        const dataToLocalS: string = JSON.stringify(data)
+        console.log('datas', dataToLocalS)
+        // Almacenamiento de dataToLocalS a localStorage
+        localStorage.setItem('dataUser', dataToLocalS)
+    }))}
 
-  loginByEmail(body: InfoLoginI): Observable<LoginResponseI> {
-    return this.http.post<LoginResponseI>('http://localhost:8080/login', body).pipe(tap ((data: LoginResponseI) => {
-      console.log('data', data)
-      // Conversión de data a objeto string
-      const dataToLocalS: string = JSON.stringify(data)
-      console.log('datas', dataToLocalS)
-      // Almacenamiento de dataToLocalS a localStorage
-      localStorage.setItem('dataUser', dataToLocalS)
-  }))}
-
-  setCurrentUser(user: LoginUsersI):void {
-    this.currentUser = user;
+    getCurrentUser(): UserResponseI | null {
+      const dataLocalS = localStorage.getItem('dataUser');
+      console.log('dataLocalS', dataLocalS);
+      if (dataLocalS === null) {
+        return null
+      }
+      const dataUserObj = JSON.parse(dataLocalS);
+      console.log('obj', dataUserObj);
+      return dataUserObj;
+    }
+    logout(): void {
+      localStorage.removeItem('token')
+      localStorage.removeItem('LoginUserI')
+      this.router.navigate(['/login'])
+     }
   }

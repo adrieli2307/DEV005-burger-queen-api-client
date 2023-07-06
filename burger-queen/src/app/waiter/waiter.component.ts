@@ -10,7 +10,7 @@ import { AuthService } from '../services/auth.service';
 export class WaiterComponent {
   constructor(private authService: AuthService) {  }
   logout(){
-    this.authService.logout()
+  this.logout
   }
 
   // dataProducts: ProductI[] = [];

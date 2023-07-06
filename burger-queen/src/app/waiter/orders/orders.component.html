@@ -29,7 +29,7 @@
       <th>PRECIO</th>
       <th>CANTIDAD</th>
     </tr>
-    <ng-container *ngFor="let product of filteredProducts; index as i;">
+    <ng-container *ngFor="let product of products; index as i;">
       <tr *ngIf="product.type === filterType">
         <td>{{ product.name }}</td>
         <td>{{ product.price }}</td>
