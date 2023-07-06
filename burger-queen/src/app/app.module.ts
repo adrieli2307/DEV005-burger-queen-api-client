@@ -9,6 +9,7 @@ import { WaiterComponent } from './waiter/waiter.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { AuthService } from './services/auth.service';
 
 
 
@@ -30,7 +31,7 @@ import { HttpClientModule } from '@angular/common/http';
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [],
+  //providers: [AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

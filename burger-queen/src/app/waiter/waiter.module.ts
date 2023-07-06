@@ -4,6 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { OrdersComponent } from './orders/orders.component';
 import { PendingOrdersComponent } from './pending-orders/pending-orders.component';
 import { ProductsService } from '../services/products.service';
+import { AuthService } from '../services/auth.service';
 
 const routes : Routes = [
   {
@@ -26,6 +27,7 @@ const routes : Routes = [
     CommonModule,
     RouterModule.forChild(routes)
   ],
+  
   exports: [RouterModule]
 })
 export class WaiterModule { }

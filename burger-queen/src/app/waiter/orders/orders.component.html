@@ -3,9 +3,10 @@
 <head>
     <meta charset="utf-8">
     <title> waiter </title>
+   
  </head>
 <body>
-        
+      <button  (click)="logout()" class="logout">Cerrar Sesión</button>  
       <h2 id="client">Cliente</h2>
       <input class="inclient" type="text">
       
@@ -13,160 +14,34 @@
       <input class="intable" type="text">
 
  <!--Tabla de menú de desayuno-->
-   <th>
-   <button class="menu" for="menu"> Desayunos</button>
+   <th >
+   <button (click)="filterByType('Desayuno')" class="menu" for="menu"> Desayunos</button>
     </th>
-      <table>
+    <table *ngIf="filterType === 'Desayuno'">
         <tr>
   <th>ITEM</th>
   <th>PRECIO</th>
    <th>CANTIDAD</th>
         </tr>
-        <tr>
-          <td>Café americano</td>
-          <td>5</td>
-          <td>
-            <button class="buttonquantity">-</button>
-            <input  class= "quantity" type="text" value="1" readonly>
-            <button class="buttonquantity">+</button>
-          </td>
-        </tr>
-        <tr>
-          <td>Café con leche</td>
-          <td>7</td>
-          <td>
-            <button class="buttonquantity">-</button>
-            <input class= "quantity" type="text" value="1" readonly>
-            <button class="buttonquantity">+</button>
-          </td>
-        </tr>
-        <tr>
-          <td>Sandwich de jamón y queso</td>
-          <td>10</td>
-          <td>
-            <button class="buttonquantity">-</button>
-            <input class= "quantity" type="text" value="1" readonly>
-            <button class="buttonquantity">+</button>
-          </td>
-        </tr>
-        <tr>
-          <td>Jugo de frutas natural</td>
-          <td>7</td>
-          <td>
-            <button class="buttonquantity">-</button>
-            <input class= "quantity" type="text" value="1" readonly>
-            <button class="buttonquantity">+</button>
-          </td>
+        <tr *ngFor="let product of products">
+          <td *ngIf="product.type === filterType">{{ product.name }}</td>
+          <td *ngIf="product.type === filterType">{{ product.price }}</td>
         </tr>
       </table>
-
 <!--Tabla de menú del día-->
 <th>
-  <button class="menu" for="menu"> Del día</button>
+  <button (click)="filterByType('Almuerzo')" class="menu" for="menu"> Del día</button>
   </th>
-<table>
+<table *ngIf="filterType === 'Almuerzo'">
       <tr>
       <th>ITEM</th>
-      <th>DESCRIPCIÓN</th>
       <th>PRECIO</th>
       <th>CANTIDAD</th>
     </tr>
-    <tr>
-      <td rowspan="2">Hamburguesas</td>
-      <td>Hamburguesa simple</td>
-      <td>10</td>
-      <td>
-        <button class="buttonquantity">-</button>
-        <input class= "quantity" type="text" value="0" readonly>
-        <button class="buttonquantity">+</button>
-      </td>
-    </tr>
-    <tr>
-      <td>Hamburguesa doble</td>
-      <td>15</td>
-      <td>
-        <button class="buttonquantity">-</button>
-        <input  class= "quantity" type="text" value="0" readonly>
-        <button class="buttonquantity">+</button>
-      </td>
-    </tr>
-    <tr>
-      <td rowspan="2">Acompañamientos</td>
-      <td>Papas fritas</td>
-      <td>5</td>
-      <td>
-        <button class="buttonquantity">-</button>
-        <input class= "quantity" type="text" value="0" readonly>
-        <button class="buttonquantity">+</button>
-      </td>
-    </tr>
-    <tr>
-      <td>Aros de cebolla</td>
-      <td>5</td>
-      <td>
-        <button class="buttonquantity">-</button>
-        <input class= "quantity" type="text" value="0" readonly>
-        <button class="buttonquantity">+</button>
-      </td>
-    </tr>
-    <tr>
-      <td rowspan="4">Para tomar</td>
-      <td>Agua 500ml</td>
-      <td>5</td>
-      <td>
-        <button class="buttonquantity">-</button>
-        <input class= "quantity" type="text" value="0" readonly>
-        <button class="buttonquantity">+</button>
-      </td>
-    </tr>
-    <tr>
-      <td>Agua 750ml</td>
-      <td>7</td>
-      <td>
-        <button class="buttonquantity">-</button>
-        <input class= "quantity" type="text" value="0" readonly>
-        <button class="buttonquantity">+</button>
-      </td>
-    </tr>
-    <tr>
-      <td>Bebida/gaseosa 500ml</td>
-      <td>7</td>
-      <td>
-        <button class="buttonquantity">-</button>
-        <input class= "quantity" type="text" value="0" readonly>
-        <button class="buttonquantity">+</button>
-      </td>
-    </tr>
-    <tr>
-      <td>Bebida/gaseosa 750ml</td>
-      <td>10</td>
-      <td>
-        <button class="buttonquantity">-</button>
-        <input class= "quantity" type="text" value="0" readonly>
-        <button class="buttonquantity">+</button>
-      </td>
-    </tr>
-  </table>
-  
-  <button id="detallePedido">DETALLE DE PEDIDO</button>
-
-  <!-- Modal de confirmación del pedido -->
-<div id="modalinpt" class="modal">
-    <div class="modal-content">
-      <h2 class="acceptorder">Confirmación de Pedido</h2>
-      <label class="nameclient">Nombre cliente:</label>
-      <input type="text" id="nombreCliente" required>
-      <br>
-      <label class="numtable" >N° Mesa:</label>
-      <input type="text" id="numeroMesa" required>
-      <br>
-      <table>
-        <!-- Contenido de la tabla -->
-      </table>
-      <p id="total"></p>
-      <button id="enviarBtn">ENVIAR</button>
-      <button id="cancelarBtn">CANCELAR</button>
-    </div>
-  </div>
+   <tr *ngFor="let product of products">
+    <td *ngIf="product.type === filterType">{{ product.name }}</td>
+    <td *ngIf="product.type === filterType">{{ product.price }}</td>
+  </tr>
+</table>
 </body>
 </html>

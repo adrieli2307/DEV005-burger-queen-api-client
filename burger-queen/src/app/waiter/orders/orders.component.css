@@ -125,3 +125,16 @@ table {
  
  }
 
+ .logout{
+  display: flex;
+  width: 150px;
+  height: 30px;
+  background-color: var(--botones);
+  border-radius: 20px;
+  margin-left: 70%;
+  margin-top: 10px;
+  font-size: 18px;
+  align-items: center;
+  justify-content: center;
+ }
+
