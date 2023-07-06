@@ -10,6 +10,8 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AuthService } from './services/auth.service';
+import { ButtonsComponent } from './buttons/buttons.component';
+
 
 
 
@@ -21,7 +23,8 @@ import { AuthService } from './services/auth.service';
     ManagerComponent,
     WaiterComponent,
     CheffComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+ 
 
   ],
   imports: [

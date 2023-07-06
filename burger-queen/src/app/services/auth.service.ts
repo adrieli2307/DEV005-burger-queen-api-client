@@ -5,13 +5,14 @@ import { LoginResponseI, LoginUsersI } from '../interfaces/InfoLoginResponse';
 import { Observable } from 'rxjs';
 import {Router} from '@angular/router'
 
+import { UserResponseI, UserResponseErrorI,  } from '../interfaces/UserResponse';
+import { Observable, tap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
   private currentUser: LoginUsersI | null;
-  private isLoggedIn: boolean = false;
 
   constructor(private http: HttpClient, private router: Router) { 
     this.currentUser = null;

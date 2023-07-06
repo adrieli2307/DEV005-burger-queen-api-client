@@ -3,7 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
 import { InfoLoginI } from '../interfaces/InfoLogin';
-import { LoginResponseI, LoginUsersI, LoginResponseErrorI } from '../interfaces/InfoLoginResponse';
+import { UserResponseErrorI, UserResponseI, } from '../interfaces/UserResponse';
 
 @Component({
   selector: 'app-login',
@@ -11,13 +11,14 @@ import { LoginResponseI, LoginUsersI, LoginResponseErrorI } from '../interfaces/
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+  // Variable para guardar mensaje de error de la api al momento de logearse con datos incorrectos 
+  errorApi:string | null = null;
 
-  constructor(private router: Router, private user: AuthService) { }
+  constructor(private router: Router, private userFromApi: AuthService) {
+   }
 
-  // Guardado de error enviado por la api
- // errorApi: LoginResponseErrorI | null = null;
-   errorApi : string | null = null;
- 
+
+  // Creacion de FormGroup para el formulario de login
   loginForm = new FormGroup({
     'email': new FormControl('', [Validators.required, Validators.email]),
     'password': new FormControl('', Validators.required),
@@ -30,38 +31,43 @@ export class LoginComponent implements OnInit {
   get password() {
     return this.loginForm.get('password') as FormControl;
   }
-  // Función para enviar información 
+ 
+  // Evento click para hacer petición Http
 
   sendForm() {
-    this.user.loginByEmail(this.loginForm.value as InfoLoginI).subscribe((data: LoginResponseI) => {
-      this.user.setCurrentUser(data.user);
-      console.log('hola', data.user.role);
+    this.userFromApi.responseUserFromApi(this.loginForm.value as InfoLoginI).subscribe((data: UserResponseI) => {
+      // Condicionales para navegar a rutas de acuerdo al rol
       if (data.user.role === 'waiter') {
-        localStorage.setItem('token', data.accessToken)
-        this.router.navigate(['../waiter/orders']);
-      }
-      else if (data.user.role === 'admin') {
-        localStorage.setItem('token', data.accessToken)
+        console.log('sdsdsd', data.accessToken)
+        this.router.navigate(['../waiter']);
+      } else if (data.user.role === 'admin') {
         this.router.navigate(['../manager']);
+      } else if (data.user.role === 'cheff') {
+        this.router.navigate(['../kitchen']);
       }
-
     },
-      (error: LoginResponseErrorI) => {
-        console.log('error', error)
+      (error: UserResponseErrorI) => {
         this.errorApi = error.error;
+
+        console.error(error)
+
       });
 
   }
 
+
   ngOnInit(): void {
-    // this.user.getUser().subscribe(()=>{console.log})
 
   }
 
-
-
-
+  // Links para insertar en html
   rutaImgLogo: string = 'https://i.ibb.co/vZtH272/imgLogo.png'
   rutaImgFondo: string = 'https://i.ibb.co/VpkgVyf/img01.jpg'
-
 }
+
+
+
+
+
+
+
