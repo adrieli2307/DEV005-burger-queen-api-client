@@ -11,14 +11,14 @@ import { UserResponseErrorI, UserResponseI, } from '../interfaces/UserResponse';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+  // Variable para guardar mensaje de error de la api al momento de logearse con datos incorrectos 
+  errorApi:string | null = null;
 
-  constructor(private router: Router, private user: AuthService) { }
+  constructor(private router: Router, private userFromApi: AuthService) {
+   }
 
-  // Guardado de error enviado por la api
-  // errorApi: LoginResponseErrorI | null = null;
-  errorApi: string | null = null;
-  
 
+  // Creacion de FormGroup para el formulario de login
   loginForm = new FormGroup({
     'email': new FormControl('', [Validators.required, Validators.email]),
     'password': new FormControl('', Validators.required),
@@ -31,72 +31,38 @@ export class LoginComponent implements OnInit {
   get password() {
     return this.loginForm.get('password') as FormControl;
   }
-  // Función para enviar información 
-  /*----------------------Codigo anterior-------------------------*/
+ 
+  // Evento click para hacer petición Http
 
   sendForm() {
-    this.user.loginByEmail(this.loginForm.value as InfoLoginI).subscribe((data: UserResponseI) => {
-     // this.user.setCurrentUser(data.user);
-      console.log('hola', data.user.role);
+    this.userFromApi.responseUserFromApi(this.loginForm.value as InfoLoginI).subscribe((data: UserResponseI) => {
+      // Condicionales para navegar a rutas de acuerdo al rol
       if (data.user.role === 'waiter') {
-        localStorage.setItem('token', data.accessToken)
+        console.log('sdsdsd', data.accessToken)
         this.router.navigate(['../waiter']);
-      }
-      else if (data.user.role === 'admin') {
-        localStorage.setItem('token', data.accessToken)
+      } else if (data.user.role === 'admin') {
         this.router.navigate(['../manager']);
+      } else if (data.user.role === 'cheff') {
+        this.router.navigate(['../kitchen']);
       }
-
     },
       (error: UserResponseErrorI) => {
-        console.log('error', error)
         this.errorApi = error.error;
+
+        console.error(error)
+
       });
 
   }
 
 
-/*
-  
-  sendForm() {
-    this.user.loginByEmail(this.loginForm.value as InfoLoginI).subscribe((data: LoginResponseI) => {
-      this.user.setCurrentUser(data.user);
-      console.log('hola', data.user.role);
-      if (data.user.role === 'waiter') {
-        localStorage.setItem('token', data.accessToken)
-        this.router.navigate(['../waiter/orders']);
-      }
-      else if (data.user.role === 'admin') {
-        localStorage.setItem('token', data.accessToken)
-        this.router.navigate(['../manager']);
-      } else if (getUser?.user.role === 'waiter') {
-        this.router.navigate(['../waiter']);
-      } else if (getUser?.user.role === 'cheff') {
-        this.router.navigate(['../kitchen']);
-      }
-    },
-    ((error: UserResponseErrorI)=>{
-      this.errorApi = error.error;
-    })
-    );
+  ngOnInit(): void {
 
-  }*/
+  }
 
-
-  //  console.log('localStorage', this.user.getCurrentUser())
-  //  console.log('localStorage', this.user.getErrorUser())
-
-ngOnInit(): void {
-  // this.user.getUser().subscribe(()=>{console.log})
-
-}
-
-
-
-
-rutaImgLogo: string = 'https://i.ibb.co/vZtH272/imgLogo.png'
-rutaImgFondo: string = 'https://i.ibb.co/VpkgVyf/img01.jpg'
-
+  // Links para insertar en html
+  rutaImgLogo: string = 'https://i.ibb.co/vZtH272/imgLogo.png'
+  rutaImgFondo: string = 'https://i.ibb.co/VpkgVyf/img01.jpg'
 }
 
 

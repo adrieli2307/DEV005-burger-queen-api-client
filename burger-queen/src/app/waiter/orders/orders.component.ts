@@ -22,7 +22,7 @@ export class OrdersComponent {
   }
 
   getApi() {
-    return this.apiService.getDataFromAPI().subscribe((data) => {
+    return this.apiService.getProductsFromAPI().subscribe((data) => {
       console.log(data);
       this.products = data;
       this.products.map((product) => {
@@ -42,16 +42,13 @@ export class OrdersComponent {
     }
   }
 
-  updateQuantity(valueToAdd: number, productId: string, index: number){
-    const product = {...this.products.find(p => p.id = productId)} as ProductsI
-    if (!product || (product.quantity= 0 && valueToAdd < 1)) {
+  updateQuantity(data:{eventValue:number, product:ProductsI}){
+  //   const product = {...this.filteredProducts.find(p => p.id = productId)} as ProductsI
+    const {eventValue, product} = data;
+    if (product.quantity=== 0 && eventValue < 1) {
       return;
     }
-    product.quantity = product.quantity + valueToAdd;
-    this.products[index] = product;
-    product.name = "holaaaaa"
-    this.products = [...this.products]
-    console.log(this.products)
+    product.quantity = product.quantity + eventValue;
 
   } 
 

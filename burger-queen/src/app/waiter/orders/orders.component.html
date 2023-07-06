@@ -18,43 +18,23 @@
   <th>
     <button (click)="filterByType('Desayuno')" class="menu" for="menu">Desayunos</button>
   </th>
-  <table *ngIf="filterType === 'Desayuno'">
-    <tr>
-      <th>ITEM</th>
-      <th>PRECIO</th>
-      <th>CANTIDAD</th>
-    </tr>
-    <ng-container *ngFor="let product of products">
-      <tr *ngIf="product.type === filterType">
-        <td>{{ product.name }}</td>
-        <td>{{ product.price }}</td>
-        <td>
-          <button class="buttonquantity" (click)="decrementQuantity(product)">-</button>
-          <input class="quantity" type="number" [value]="product.quantity" readonly>
-          <button class="buttonquantity" (click)="incrementQuantity(product)">+</button>
-        </td>
-      </tr>
-    </ng-container>
-  </table>
+
   <!--Tabla de menú del día-->
   <th>
     <button (click)="filterByType('Almuerzo')" class="menu" for="menu"> Del día</button>
   </th>
-  <table *ngIf="filterType === 'Almuerzo'">
+  <table>
     <tr>
       <th>ITEM</th>
       <th>PRECIO</th>
       <th>CANTIDAD</th>
     </tr>
-    <ng-container *ngFor="let product of products; index as i;">
+    <ng-container *ngFor="let product of filteredProducts; index as i;">
       <tr *ngIf="product.type === filterType">
         <td>{{ product.name }}</td>
         <td>{{ product.price }}</td>
       <td>
-        <!-- <button class="buttonquantity" (click)="decrementQuantity(product)">-</button>
-        <input class="quantity" type="number" [value]="product.quantity" readonly>
-        <button class="buttonquantity" (click)="incrementQuantity(product)">+</button>  -->
-      <app-buttons [quantityProduct]="product.quantity" (clickButtonEvent)="updateQuantity($event,product.id, i)"></app-buttons>
+      <app-buttons [quantityProduct]="product.quantity" (clickButtonEvent)="updateQuantity({eventValue: $event, product})"></app-buttons>
 
       </td>
     </tr>

@@ -11,7 +11,7 @@ export class AuthService {
 
     constructor(private http: HttpClient) { }
 
-     loginByEmail(body: InfoLoginI) : Observable<UserResponseI> {
+     responseUserFromApi(body: InfoLoginI) : Observable<UserResponseI> {
      return this.http.post<UserResponseI>('http://localhost:8080/login', body).pipe(
       tap ((data: UserResponseI) => {
         // Conversión de data a objeto string
@@ -28,6 +28,7 @@ export class AuthService {
         return null
       }
       const dataUserObj = JSON.parse(dataLocalS);
+      console.log('obj', dataUserObj);
       return dataUserObj;
     }
   }

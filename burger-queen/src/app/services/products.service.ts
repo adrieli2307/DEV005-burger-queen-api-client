@@ -13,15 +13,19 @@ export class ProductsService {
 
   tokenAccess: string | undefined;
 
-  constructor(private http: HttpClient, dataLS : AuthService) {
-    this.tokenAccess = dataLS.getCurrentUser()?.accessToken;
+  constructor(private http: HttpClient, userDataFromApi : AuthService) {
+
+    this.tokenAccess = userDataFromApi.getCurrentUser()?.accessToken;
+
   }
 
-  private apiurl: string = 'http://localhost:8080/products';
+  // Declaración de la variable para guardar endpoints de la api(products) 
+  private apiUrl: string = 'http://localhost:8080/products';
 
-  getDataFromAPI(): Observable<ProductsI[]> {
+ // Método para realizar la peticón Http ( data de productos)
+  getProductsFromAPI(): Observable<ProductsI[]> {
     const headers = new HttpHeaders().set('Authorization', `Bearer ${this.tokenAccess}`)
-    return this.http.get<ProductsI[]>(this.apiurl, { headers })
+    return this.http.get<ProductsI[]>(this.apiUrl, { headers })
   }
 
 /*
