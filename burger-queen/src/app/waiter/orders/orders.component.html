@@ -9,10 +9,10 @@
 <body>
 
   <h2 id="client">Cliente</h2>
-  <input class="inclient" type="text">
+  <input class="inclient" type="text" [(ngModel)]="cliente.nombre">
 
   <h2 id="nmesa">N° de mesa</h2>
-  <input class="intable" type="text">
+  <input class="intable" type="text" [(ngModel)]="cliente.numeroMesa">
 
   <!--Tabla de menú de desayuno-->
   <th>
@@ -33,25 +33,26 @@
       <tr *ngIf="product.type === filterType">
         <td>{{ product.name }}</td>
         <td>{{ product.price }}</td>
-      <td>
-      <app-buttons [quantityProduct]="product.quantity" (clickButtonEvent)="updateQuantity({eventValue: $event, product})"></app-buttons>
+        <td>
+          <app-buttons [quantityProduct]="product.quantity"
+            (clickButtonEvent)="updateQuantity({eventValue: $event, product})"></app-buttons>
 
-      </td>
-    </tr>
-  </ng-container>
+        </td>
+      </tr>
+    </ng-container>
   </table>
 
   <button id="detallePedido" (click)="openModal()" type="button">DETALLE DE PEDIDO</button>
 
   <!-- Modal de confirmación del pedido -->
-  <div id="modalinpt" class="modal"  *ngIf="modalVisible" >
+  <div id="modalinpt" class="modal" *ngIf="modalVisible">
     <div class="modal-content">
       <h2 class="acceptorder">Confirmación de Pedido</h2>
       <label class="nameclient">Nombre cliente:</label>
-      <input type="text" id="nombreCliente" required>
+      <input type="text" id="nombreCliente" [(ngModel)]="cliente.nombre" readonly>
       <br>
       <label class="numtable">N° Mesa:</label>
-      <input type="text" id="numeroMesa" required>
+      <input type="text" id="numeroMesa" [(ngModel)]="cliente.numeroMesa" readonly>
       <br>
       <table>
         Contenido de la tabla

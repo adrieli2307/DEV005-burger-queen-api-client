@@ -5,6 +5,7 @@ import { OrdersComponent } from './orders/orders.component';
 import { PendingOrdersComponent } from './pending-orders/pending-orders.component';
 import { ProductsService } from '../services/products.service';
 import { ButtonsComponent } from '../buttons/buttons.component';
+import { FormsModule } from '@angular/forms';
 
 const routes : Routes = [
   {
@@ -29,7 +30,8 @@ const routes : Routes = [
   ],
   imports: [
     CommonModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
+    FormsModule
   ],
   exports: [RouterModule]
 })

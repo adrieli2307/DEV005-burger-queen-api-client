@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ProductsI } from 'src/app/interfaces/products.interface';
+import { ProductsI, Cliente } from 'src/app/interfaces/products.interface';
 import { ProductsService } from 'src/app/services/products.service';
 
 
@@ -47,16 +47,26 @@ export class OrdersComponent {
     this.filterType = type;
   }
 
-//Modal
+  //Modal
 
   modalVisible: boolean = false;
 
   openModal() {
-    this.modalVisible = true; // Variable de control para mostrar el modal   
+    this.modalVisible = true; // Variable de control para mostrar el modal  
+
   }
 
-  enviar(){
-    this.modalVisible=false;
+  enviar() {
+    this.modalVisible = false;
+    this.cliente.nombre = '';
+    this.cliente.numeroMesa = 0;
   }
+
+  ////////////////////////////////////////////////////
+  cliente: Cliente = {
+    nombre: '',
+    numeroMesa: 0
+  };
+
 
 }

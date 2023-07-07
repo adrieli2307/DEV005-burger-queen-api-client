@@ -8,3 +8,7 @@ export interface ProductsI {
     quantity: number;
 }
 
+export interface Cliente {
+    nombre: string;
+    numeroMesa: number;
+  }
