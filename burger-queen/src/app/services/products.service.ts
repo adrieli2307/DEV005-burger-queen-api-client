@@ -45,7 +45,6 @@ export class ProductsService {
       this.filteredProducts = this.products; // Si no hay tipo de filtro, mostrar todos los productos
     }
   }
-
-
+  
 
 }

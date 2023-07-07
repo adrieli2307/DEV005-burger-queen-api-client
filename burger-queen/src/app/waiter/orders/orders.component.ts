@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ProductsI, Cliente } from 'src/app/interfaces/products.interface';
 import { ProductsService } from 'src/app/services/products.service';
+import { UsersService } from 'src/app/services/users.service';
 
 
 @Component({
@@ -14,7 +15,8 @@ export class OrdersComponent {
   products: ProductsI[] = [];
   filterType: string = "";
 
-  constructor(private apiService: ProductsService) { }
+
+  constructor(private apiService: ProductsService, private userService : UsersService ) { }
 
   ngOnInit() {
     this.getApi();
@@ -53,6 +55,7 @@ export class OrdersComponent {
 
   openModal() {
     this.modalVisible = true; // Variable de control para mostrar el modal  
+    this.userService.setCliente(this.cliente.nombre, this.cliente.numeroMesa);
 
   }
 
@@ -62,11 +65,13 @@ export class OrdersComponent {
     this.cliente.numeroMesa = 0;
   }
 
-  ////////////////////////////////////////////////////
+
   cliente: Cliente = {
     nombre: '',
-    numeroMesa: 0
+    numeroMesa: 0,
   };
 
+ 
+  
 
 }
