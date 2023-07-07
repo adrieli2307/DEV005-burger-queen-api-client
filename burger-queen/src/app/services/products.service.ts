@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { ProductsI } from '../interfaces/products.interface';
-import { Observable } from 'rxjs';
+import { Observable, map } from 'rxjs';
 import { AuthService } from './auth.service';
 
 
@@ -28,13 +28,43 @@ export class ProductsService {
     return this.http.get<ProductsI[]>(this.apiUrl, { headers })
   }
 
-/*
-  getProductByType(types:Array<string>){
-    conts x = this.getDataFromAPI()
+  //Obtener productos por tipo cuando esta vacio trae todos y si se ingresa un tipo trae los unicos
+  
+   
+  
+   
+    //console.log('holaaaa', dataTypes);
+     // const filteredProducts = dataTypes.filter((p)=> types.includes(p.type));
+      //console.log('jjjjj', filteredProducts);
+    //return filteredProduct
 
-    const filñteredProducts = x.filter(x incluya types)
-    reutrn filñteredProducts
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    getProductByType(types:string):Observable<ProductsI[]>{
+      return this.getProductsFromAPI().pipe(map( (dataProducts:ProductsI[]) => {
+       if(types !== ''){
+         return dataProducts.filter(product => types === product.type)
+       } else {
+         return dataProducts;
+       }
+      } ))
+       
+      }
+  
   }
-*/
 
-}
+
+

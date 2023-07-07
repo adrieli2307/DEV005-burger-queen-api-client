@@ -15,11 +15,19 @@ export class OrdersComponent {
   products: ProductsI[] = [];
   filteredProducts: ProductsI[] = []; // Arreglo para almacenar los productos filtrados
   filterType: string = "";
+  productsByType:ProductsI[]=[];
 
   constructor(private apiService: ProductsService) {}
 
   ngOnInit() {
     this.getApi();
+  
+    this.apiService.getProductByType('').subscribe((data) =>{
+      
+    this.productsByType = data;
+    console.log('holiiiii', this.productsByType);
+    });
+   
   }
 
   getApi() {
