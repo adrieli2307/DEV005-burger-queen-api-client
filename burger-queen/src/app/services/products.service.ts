@@ -46,13 +46,6 @@ export class ProductsService {
     }
   }
 
-  /*
-    getProductByType(types:Array<string>){
-      conts x = this.getDataFromAPI()
-  
-      const filñteredProducts = x.filter(x incluya types)
-      reutrn filñteredProducts
-    }
-  */
+
 
 }

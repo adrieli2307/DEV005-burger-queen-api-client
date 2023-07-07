@@ -41,10 +41,10 @@
   </ng-container>
   </table>
 
-  <button id="detallePedido">DETALLE DE PEDIDO</button>
+  <button id="detallePedido" (click)="openModal()" type="button">DETALLE DE PEDIDO</button>
 
   <!-- Modal de confirmación del pedido -->
-  <div id="modalinpt" class="modal">
+  <div id="modalinpt" class="modal"  *ngIf="modalVisible" >
     <div class="modal-content">
       <h2 class="acceptorder">Confirmación de Pedido</h2>
       <label class="nameclient">Nombre cliente:</label>
@@ -57,7 +57,7 @@
         Contenido de la tabla
       </table>
       <p id="total"></p>
-      <button id="enviarBtn">ENVIAR</button>
+      <button id="enviarBtn" (click)="enviar()">ENVIAR</button>
       <button id="cancelarBtn">CANCELAR</button>
     </div>
   </div>

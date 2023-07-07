@@ -18,7 +18,7 @@ export class OrdersComponent {
 
   ngOnInit() {
     this.getApi();
-    
+
   }
 
   getApi() {
@@ -29,11 +29,9 @@ export class OrdersComponent {
         product.quantity = 0; // Inicializar la cantidad en 0
         this.apiService.filterByType(); // Filtrar los productos al obtener los datos de la API
       });
-      
+
     });
   }
-
-
 
   updateQuantity(data: { eventValue: number, product: ProductsI }) {
     //   const product = {...this.filteredProducts.find(p => p.id = productId)} as ProductsI
@@ -47,6 +45,18 @@ export class OrdersComponent {
 
   filterByType(type: string) {
     this.filterType = type;
+  }
+
+//Modal
+
+  modalVisible: boolean = false;
+
+  openModal() {
+    this.modalVisible = true; // Variable de control para mostrar el modal   
+  }
+
+  enviar(){
+    this.modalVisible=false;
   }
 
 }
