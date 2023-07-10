@@ -14,6 +14,10 @@ export class OrdersComponent {
   // Invocación de datos API en pantalla 
   products: ProductsI[] = [];
   filterType: string = "";
+  cliente: Cliente = {
+    nombre: '',
+    numeroMesa: 0
+  };
 
 
   constructor(private apiService: ProductsService, private userService : UsersService ) { }
@@ -52,11 +56,13 @@ export class OrdersComponent {
   //Modal
 
   modalVisible: boolean = false;
-
   openModal() {
     this.modalVisible = true; // Variable de control para mostrar el modal  
-    this.userService.setCliente(this.cliente.nombre, this.cliente.numeroMesa);
-
+    this.userService.setCliente(this.cliente.nombre, this.cliente.numeroMesa)
+      .subscribe(() => {
+        console.log('Cliente establecido correctamente');
+      });
+    
   }
 
   enviar() {
@@ -64,12 +70,11 @@ export class OrdersComponent {
     this.cliente.nombre = '';
     this.cliente.numeroMesa = 0;
   }
+  cancelar(){
+    this.modalVisible=false;
+  } 
 
 
-  cliente: Cliente = {
-    nombre: '',
-    numeroMesa: 0,
-  };
 
  
   

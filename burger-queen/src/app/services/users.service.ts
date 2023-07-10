@@ -1,17 +1,18 @@
 import { Injectable } from '@angular/core';
+import { Cliente } from '../interfaces/products.interface';
+import { Observable,of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UsersService {
-  private cliente: { nombre: string, numeroMesa: number} = { nombre: '', numeroMesa: 0 }
+  cliente: Cliente[] = [];
+
   constructor() { }
 
-  setCliente(nombre: string, numeroMesa: number) {
-    this.cliente = { nombre, numeroMesa };
+  setCliente(nombre: string, numeroMesa: number): Observable<Cliente[]> {
+    this.cliente = [{ nombre, numeroMesa }];
+    return of(this.cliente);
   }
 
-  getCliente() {
-    return this.cliente;
-  }
 }
