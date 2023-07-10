@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { ProductsService } from '../services/products.service';
+import { Component } from '@angular/core';
+import { AuthService } from '../services/auth.service';
 import { ProductsI } from '../interfaces/products.interface';
 
 @Component({
@@ -8,7 +8,11 @@ import { ProductsI } from '../interfaces/products.interface';
   styleUrls: ['./waiter.component.css']
 })
 
-export class WaiterComponent implements OnInit {
+export class WaiterComponent {
+  constructor(private authService: AuthService) {  }
+  logout(){
+  this.authService.logout();
+  }
 
   // dataProducts: ProductI[] = [];
   // filterBreakFast: ProductI[] = [];
@@ -63,4 +67,6 @@ export class WaiterComponent implements OnInit {
 
   rutaImgLogo: string = 'https://i.ibb.co/vZtH272/imgLogo.png'
   rutaImgFondo: string = 'https://i.ibb.co/VpkgVyf/img01.jpg'
+
+
 }

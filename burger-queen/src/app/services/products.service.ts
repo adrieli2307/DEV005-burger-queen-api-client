@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { ProductsI } from '../interfaces/products.interface';
-import { Observable, map } from 'rxjs';
+import { Observable, tap } from 'rxjs';
 import { AuthService } from './auth.service';
 
 
@@ -12,8 +12,12 @@ import { AuthService } from './auth.service';
 export class ProductsService {
 
   tokenAccess: string | undefined;
+  products: ProductsI[] = [];
+  filteredProducts: ProductsI[] = []; // Arreglo para almacenar los productos filtrados
+  filterType: string = "";
+  
 
-  constructor(private http: HttpClient, userDataFromApi : AuthService) {
+  constructor(private http: HttpClient, userDataFromApi: AuthService) {
 
     this.tokenAccess = userDataFromApi.getCurrentUser()?.accessToken;
 
@@ -22,49 +26,23 @@ export class ProductsService {
   // Declaración de la variable para guardar endpoints de la api(products) 
   private apiUrl: string = 'http://localhost:8080/products';
 
- // Método para realizar la peticón Http ( data de productos)
+  // Método para realizar la peticón Http ( data de productos)
   getProductsFromAPI(): Observable<ProductsI[]> {
-    const headers = new HttpHeaders().set('Authorization', `Bearer ${this.tokenAccess}`)
-    return this.http.get<ProductsI[]>(this.apiUrl, { headers })
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${this.tokenAccess}`);
+    return this.http.get<ProductsI[]>(this.apiUrl, { headers }).pipe(
+      tap((products) => {
+        this.products = products;
+        this.filterByType(); // Filtrar los productos al obtener los datos de la API
+      })
+    );
   }
-
-  //Obtener productos por tipo cuando esta vacio trae todos y si se ingresa un tipo trae los unicos
   
-   
-  
-   
-    //console.log('holaaaa', dataTypes);
-     // const filteredProducts = dataTypes.filter((p)=> types.includes(p.type));
-      //console.log('jjjjj', filteredProducts);
-    //return filteredProduct
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    getProductByType(types:string):Observable<ProductsI[]>{
-      return this.getProductsFromAPI().pipe(map( (dataProducts:ProductsI[]) => {
-       if(types !== ''){
-         return dataProducts.filter(product => types === product.type)
-       } else {
-         return dataProducts;
-       }
-      } ))
-       
-      }
-  
+  filterByType() {
+    if (this.filterType) {
+      this.filteredProducts = this.products.filter((product) => product.type === this.filterType);
+    } else {
+      this.filteredProducts = this.products; // Si no hay tipo de filtro, mostrar todos los productos
+    }
   }
-
-
-
+ 
+}

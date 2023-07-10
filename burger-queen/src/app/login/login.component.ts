@@ -39,7 +39,7 @@ export class LoginComponent implements OnInit {
       // Condicionales para navegar a rutas de acuerdo al rol
       if (data.user.role === 'waiter') {
         console.log('sdsdsd', data.accessToken)
-        this.router.navigate(['../waiter']);
+        this.router.navigate(['../waiter/orders']);
       } else if (data.user.role === 'admin') {
         this.router.navigate(['../manager']);
       } else if (data.user.role === 'cheff') {

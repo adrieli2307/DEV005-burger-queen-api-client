@@ -6,6 +6,7 @@ import { PendingOrdersComponent } from './pending-orders/pending-orders.componen
 import { ProductsService } from '../services/products.service';
 import { AuthService } from '../services/auth.service';
 import { ButtonsComponent } from '../buttons/buttons.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 const routes : Routes = [
   {
@@ -28,7 +29,9 @@ const routes : Routes = [
 
   imports: [
     CommonModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
+    FormsModule,
+    ReactiveFormsModule
   ],
   
   exports: [RouterModule]
