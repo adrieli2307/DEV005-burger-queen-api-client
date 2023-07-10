@@ -17,35 +17,36 @@ export class OrdersComponent {
     nombre: '',
     numeroMesa: 0
   };
+  cart: ProductsI[] = [];
 
   constructor(
     private apiService: ProductsService,
-    private userService: UsersService
-  ) {}
+    private userService: UsersService,
+  ) { }
   ngOnInit() {
     this.getApi();
   }
 
   //Agregar formulario de orders para validación
-  ordersForm = new FormGroup({
-    nameClient: new FormControl('', Validators.required),
-    numberTable: new FormControl('', Validators.required),
-  });
-
-  // Extracción de cada valor del formGroup
-  get nameClient() {
-    return this.ordersForm.get('nameClient') as FormControl;
-  }
-  get numberTable() {
-    return this.ordersForm.get('numberTable') as FormControl;
-  }
-
-  sendOrdersForm(){
-   console.log('ttttt', this.nameClient.value);
-
-  }
-
-
+  /* ordersForm = new FormGroup({
+     nameClient: new FormControl('', Validators.required),
+     numberTable: new FormControl('', Validators.required),
+   });
+ 
+   // Extracción de cada valor del formGroup
+   get nameClient() {
+     return this.ordersForm.get('nameClient') as FormControl;
+   }
+   get numberTable() {
+     return this.ordersForm.get('numberTable') as FormControl;
+   }
+ 
+   sendOrdersForm(){
+    console.log('ttttt', this.nameClient.value);
+ 
+   }
+ 
+ */
 
   getApi() {
     return this.apiService.getProductsFromAPI().subscribe((data) => {
@@ -95,16 +96,27 @@ export class OrdersComponent {
       .subscribe(() => {
         console.log('Cliente establecido correctamente');
       });
-    
+
   }
 
   enviar() {
     this.modalVisible = false;
     this.cliente.nombre = '';
     this.cliente.numeroMesa = 0;
+   
+ 
   }
-  cancelar(){
-    this.modalVisible=false;
-  } 
+  cancelar() {
+    this.modalVisible = false;
+  }
 
+  getTotal(): number {
+    return this.cart.reduce((total, product) => total + (product.price * product.quantity), 0);
+  }
 
+  resetModal(): void {
+    this.cliente.nombre = '';
+    this.cliente.numeroMesa = 0;
+    window.location.reload();
+  }
+}
