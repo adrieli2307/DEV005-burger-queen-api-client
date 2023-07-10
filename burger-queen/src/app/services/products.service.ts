@@ -15,6 +15,7 @@ export class ProductsService {
   products: ProductsI[] = [];
   filteredProducts: ProductsI[] = []; // Arreglo para almacenar los productos filtrados
   filterType: string = "";
+  
 
   constructor(private http: HttpClient, userDataFromApi: AuthService) {
 
@@ -38,13 +39,10 @@ export class ProductsService {
   
   filterByType() {
     if (this.filterType) {
-      this.filteredProducts = this.products.filter(
-        (product) => product.type === this.filterType
-      );
+      this.filteredProducts = this.products.filter((product) => product.type === this.filterType);
     } else {
       this.filteredProducts = this.products; // Si no hay tipo de filtro, mostrar todos los productos
     }
   }
-  
-
+ 
 }

@@ -1,67 +1,92 @@
 <!DOCTYPE html>
 <html>
+  <head>
+    <meta charset="utf-8" />
+    <title>waiter</title>
+  </head>
 
-<head>
-  <meta charset="utf-8">
-  <title> waiter </title>
-</head>
+  <body>
+    <form class="ordersContainer" [formGroup]="ordersForm" (ngSubmit)="sendOrdersForm">
+      <h2 id="client">Cliente</h2>
+      <input class="inclient" type="text" formControlName="nameClient" />
 
-<body>
+      <h2 id="nmesa">N° de mesa</h2>
+      <input class="intable" type="number" formControlName="numberTable" />
 
-  <h2 id="client">Cliente</h2>
-  <input class="inclient" type="text" [(ngModel)]="cliente.nombre">
+      <!--Tabla de menú de desayuno-->
+      <th>
+        <button (click)="filterByType('Desayuno')" class="menu" for="menu">
+          Desayunos
+        </button>
+      </th>
 
-  <h2 id="nmesa">N° de mesa</h2>
-  <input class="intable" type="text" [(ngModel)]="cliente.numeroMesa">
-
-  <!--Tabla de menú de desayuno-->
-  <th>
-    <button (click)="filterByType('Desayuno')" class="menu" for="menu">Desayunos</button>
-  </th>
-
-  <!--Tabla de menú del día-->
-  <th>
-    <button (click)="filterByType('Almuerzo')" class="menu" for="menu"> Del día</button>
-  </th>
-  <table>
-    <tr>
-      <th>ITEM</th>
-      <th>PRECIO</th>
-      <th>CANTIDAD</th>
-    </tr>
-    <ng-container *ngFor="let product of products; index as i;">
-      <tr *ngIf="product.type === filterType">
-        <td>{{ product.name }}</td>
-        <td>{{ product.price }}</td>
-        <td>
-          <app-buttons [quantityProduct]="product.quantity"
-            (clickButtonEvent)="updateQuantity({eventValue: $event, product})"></app-buttons>
-
-        </td>
-      </tr>
-    </ng-container>
-  </table>
-
-  <button id="detallePedido" (click)="openModal()" type="button">DETALLE DE PEDIDO</button>
-
-  <!-- Modal de confirmación del pedido -->
-  <div id="modalinpt" class="modal" *ngIf="modalVisible">
-    <div class="modal-content">
-      <h2 class="acceptorder">Confirmación de Pedido</h2>
-      <label class="nameclient">Nombre cliente:</label>
-      <input type="text" id="nombreCliente" [(ngModel)]="cliente.nombre" readonly>
-      <br>
-      <label class="numtable">N° Mesa:</label>
-      <input type="text" id="numeroMesa" [(ngModel)]="cliente.numeroMesa" readonly>
-      <br>
+      <!--Tabla de menú del día-->
+      <th>
+        <button (click)="filterByType('Almuerzo')" class="menu" for="menu">
+          Del día
+        </button>
+      </th>
       <table>
-        Contenido de la tabla
+        <tr>
+          <th>ITEM</th>
+          <th>PRECIO</th>
+          <th>CANTIDAD</th>
+        </tr>
+        <ng-container *ngFor="let product of products; index as i">
+          <tr *ngIf="product.type === filterType">
+            <td>{{ product.name }}</td>
+            <td>{{ product.price }}</td>
+            <td>
+              <app-buttons
+                [quantityProduct]="product.quantity"
+                (clickButtonEvent)="
+                  updateQuantity({ eventValue: $event, product })
+                "
+              ></app-buttons>
+            </td>
+          </tr>
+        </ng-container>
       </table>
-      <p id="total"></p>
-      <button id="enviarBtn" (click)="enviar()">ENVIAR</button>
-      <button id="cancelarBtn" (click)="cancelar()">CANCELAR</button>
-    </div>
-  </div>
-</body>
 
+      <button id="detallePedido" (click)="openModal()" type="button">
+        DETALLE DE PEDIDO
+      </button>
+
+      <!-- Modal de confirmación del pedido -->
+      <div id="modalinpt" class="modal" *ngIf="modalVisible">
+        <div class="modal-content">
+          <h2 class="acceptorder">Confirmación de Pedido</h2>
+          <label class="nameclient">Nombre cliente</label>
+          <input
+            type="text"
+            id="nombreCliente"
+            [(ngModel)]="cliente.nombre"
+            readonly
+          />
+          <br />
+          <label class="numtable">N° Mesa:</label>
+          <input
+            type="text"
+            id="numeroMesa"
+            [(ngModel)]="cliente.numeroMesa"
+            readonly
+          />
+          <br />
+          <table>
+            <ng-container *ngFor="let product of cart; let i = index">
+              <tr *ngIf="product.quantity >= 1 && i === cart.indexOf(product)">
+                <td>{{ product.price }}</td>
+                <td>{{ product.name }}</td>
+                <td>{{ product.quantity }}</td>
+              </tr>
+            </ng-container>
+          </table>
+          <p id="total"></p>
+          <button id="enviarBtn" (click)="enviar()" type="submit" >ENVIAR</button>
+          <span *ngIf="nameClient.errors?.['required'] && numberTable.errors?.['required']">Los campos deben ser llenados correctamente</span>
+          <button id="cancelarBtn" (click)="cancelar()">CANCELAR</button>
+        </div>
+      </div>
+    </form>
+  </body>
 </html>

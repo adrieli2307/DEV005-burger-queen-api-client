@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { ProductsI } from '../interfaces/products.interface';
 import { Output, EventEmitter } from '@angular/core';
+import { UsersService } from '../services/users.service';
 
 @Component({
   selector: 'app-buttons',
@@ -8,11 +9,13 @@ import { Output, EventEmitter } from '@angular/core';
   styleUrls: ['./buttons.component.css']
 })
 export class ButtonsComponent {
-  @Input()
-  quantityProduct: number;
+  selectedProducts: ProductsI[] = [];
+  @Input() quantityProduct: number;
   @Output() clickButtonEvent = new EventEmitter<number>();
+  
+  
 
-  constructor() {
+  constructor(private userService:UsersService) {
     this.quantityProduct = 0;
 
   }
@@ -47,5 +50,11 @@ export class ButtonsComponent {
   //     product.quantity--;
   //   }
   // }
+ 
 
+  //getproducts(product:ProductsI) {
+   // this.userService.addProductsToModal(product);
+  //}
+
+  
 }

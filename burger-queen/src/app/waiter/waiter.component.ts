@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { AuthService } from '../services/auth.service';
+import { ProductsI } from '../interfaces/products.interface';
 
 @Component({
   selector: 'app-waiter',
@@ -10,7 +11,7 @@ import { AuthService } from '../services/auth.service';
 export class WaiterComponent {
   constructor(private authService: AuthService) {  }
   logout(){
-  this.logout
+  this.authService.logout();
   }
 
   // dataProducts: ProductI[] = [];
