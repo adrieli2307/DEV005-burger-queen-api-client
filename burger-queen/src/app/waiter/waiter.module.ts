@@ -5,6 +5,7 @@ import { OrdersComponent } from './orders/orders.component';
 import { PendingOrdersComponent } from './pending-orders/pending-orders.component';
 import { ProductsService } from '../services/products.service';
 import { ButtonsComponent } from '../buttons/buttons.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 const routes : Routes = [
   {
@@ -22,14 +23,18 @@ const routes : Routes = [
   declarations: [
     OrdersComponent,
     PendingOrdersComponent,
-    ButtonsComponent
+    ButtonsComponent,
+  
  
  
 
   ],
   imports: [
     CommonModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
+    FormsModule,
+    ReactiveFormsModule
+ 
   ],
   exports: [RouterModule]
 })

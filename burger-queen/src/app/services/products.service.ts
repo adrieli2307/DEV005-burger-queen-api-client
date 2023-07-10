@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { ProductsI } from '../interfaces/products.interface';
 import { Observable } from 'rxjs';
 import { AuthService } from './auth.service';
+import { tap, map } from 'rxjs';
 
 
 @Injectable({
@@ -28,13 +29,27 @@ export class ProductsService {
     return this.http.get<ProductsI[]>(this.apiUrl, { headers })
   }
 
-/*
+
+
+  //----------------------Función de filtrado prueba--------------------------
+
+  getProductsByType(types: string ) : Observable<ProductsI[]>{
+    return this.getProductsFromAPI().pipe(
+      map((dataProducts : ProductsI[]) => {
+        if(types !== ''){
+          return dataProducts.filter((product)=> product.type === types )
+      }else{
+        return dataProducts;
+      }}))
+  }
+
+// Funcion de filtrado ejemplo
+/* 
   getProductByType(types:Array<string>){
     conts x = this.getDataFromAPI()
 
     const filñteredProducts = x.filter(x incluya types)
     reutrn filñteredProducts
-  }
-*/
+  }*/
 
 }
