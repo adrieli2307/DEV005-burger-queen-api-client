@@ -4,7 +4,7 @@ import { ProductsService } from 'src/app/services/products.service';
 import { ButtonsComponent } from 'src/app/buttons/buttons.component';
 import { Form, FormControl, FormGroup, Validators } from '@angular/forms';
 import { OnInit } from '@angular/core';
-import { OrderI } from 'src/app/interfaces/order.interface';
+import { OrderI, ProductsOrderI } from 'src/app/interfaces/order.interface';
 
 @Component({
   selector: 'app-orders',
@@ -22,6 +22,7 @@ export class OrdersComponent implements OnInit {
 
   cart: ProductsI[] = [];
   order:OrderI[] = [];
+
 
   constructor(private apiService: ProductsService) { }
 
@@ -138,29 +139,25 @@ export class OrdersComponent implements OnInit {
   }
 
 
-  // Funcion para enviar data a api
+  // Funcion para inyectar data a api
+/*
+  const dataOrder : OrderI = {
 
-  /*posOrder(): OrderI[] {
-
-
-    const orderObj: OrderI = {
       userId: 1,
       client: this.nameClient.value,//product.name
-      products:this.cart, //cart
+      products:{
+        qty:,
+        products:this.cart, 
+      },
       status: 'pending', 
       dateEntry: '2022-03-05 15:00',
 
-
-    }
-
-    this.order =[
-
-    ]
+  }
+*/
 
 
-   
 
-  }*/
+  
 
 
 /*---------------------------Funciones para modal-----------------------------------*/

@@ -1,8 +1,8 @@
 import { ProductsI } from "./products.interface"
 
 
-export interface ProductsOrder{
-  // qty:number;
+export interface ProductsOrderI{
+   qty:number;
    products:ProductsI
 
 }
@@ -10,7 +10,7 @@ export interface ProductsOrder{
 export interface OrderI{
   userId: number;
   client: string;//product.name
-  products:ProductsI[]; //cart
+  products:ProductsOrderI[]; //cart
   status: string; 
   dateEntry: string;
 }
