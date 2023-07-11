@@ -12,5 +12,6 @@ export class ManagerComponent {
  constructor( private user: AuthService) { }
  rutaImgLogo: string = 'https://i.ibb.co/vZtH272/imgLogo.png'
  rutaImgFondo: string = 'https://i.ibb.co/VpkgVyf/img01.jpg'
- userEmail : string | undefined = this.user.getCurrentUser()?.user.email
+ userEmail : string | undefined = this.user.getCurrentUser()?.user.email;
+
 }

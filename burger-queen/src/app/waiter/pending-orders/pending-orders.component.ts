@@ -7,4 +7,7 @@ import { Component } from '@angular/core';
 })
 export class PendingOrdersComponent {
 
+  probandoNotificacion(event :string | number){
+    console.log('holis', event)
+  }
 }
