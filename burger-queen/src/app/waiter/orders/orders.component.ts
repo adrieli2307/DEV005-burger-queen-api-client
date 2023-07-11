@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ProductsI, Cliente } from 'src/app/interfaces/products.interface';
+import { ProductsI } from 'src/app/interfaces/products.interface';
 import { ProductsService } from 'src/app/services/products.service';
 import { ButtonsComponent } from 'src/app/buttons/buttons.component';
 import { Form, FormControl, FormGroup, Validators } from '@angular/forms';
@@ -9,7 +9,7 @@ import { OrderI, ProductsOrderI } from 'src/app/interfaces/order.interface';
 @Component({
   selector: 'app-orders',
   templateUrl: './orders.component.html',
-  styleUrls: ['./orders.component.css'],
+  styleUrls: ['./orders.component.css']
 })
 export class OrdersComponent implements OnInit {
 
@@ -66,12 +66,12 @@ export class OrdersComponent implements OnInit {
   //Función para obetner productos de api
   getApi() {
     return this.apiService.getProductsFromAPI().subscribe((data) => {
-      console.log('mnnnnn', data);
+      console.log(data);
       this.products = data;
       this.products.map((product) => {
         product.quantity = 0; // Inicializar la cantidad en 0
-        this.apiService.filterByType(); // Filtrar los productos al obtener los datos de la API
       });
+      this.filterProductsByType(); // Filtrar los productos al obtener los datos de la API
     });
   }
 
@@ -172,6 +172,9 @@ export class OrdersComponent implements OnInit {
     this.modalVisible = true; // Variable de control para mostrar el modal  
     // this.userService.setCliente(this.cliente.nombre, this.cliente.numeroMesa);
 
+  }
+  closeModal(){
+    this.modalVisible = false;
   }
   // Funcion inyectar informacion en orden de pedido 
 }

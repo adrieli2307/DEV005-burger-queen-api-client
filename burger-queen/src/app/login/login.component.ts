@@ -43,7 +43,7 @@ export class LoginComponent implements OnInit {
       } else if (data.user.role === 'admin') {
         this.router.navigate(['../manager']);
       } else if (data.user.role === 'cheff') {
-        this.router.navigate(['../kitchen']);
+        this.router.navigate(['../kitchen/back-orders']);
       }
     },
       (error: UserResponseErrorI) => {

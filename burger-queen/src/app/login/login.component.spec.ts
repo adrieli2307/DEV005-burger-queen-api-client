@@ -12,6 +12,7 @@ describe('LoginComponent', () => {
     fixture = TestBed.createComponent(LoginComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
+    const compiled = fixture.nativeElement as HTMLElement
   });
 
   it('should create', () => {

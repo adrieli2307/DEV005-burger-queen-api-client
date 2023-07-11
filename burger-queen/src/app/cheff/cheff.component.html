@@ -1,3 +1,18 @@
-<p>cheff works!</p>
+<body>
+    <nav>
+        <img [src]="rutaImgLogo"class="rutaImgLogo">
+        <ul class="optionList">
+            <li> <a class="option" routerLink="/cheff/back'orders" routerLinkActive="active">PEDIDOS PENDIENTES</a></li>
+            <li> <a class="option" routerLink="/cheff/done-orders" routerLinkActive="active">PEDIDOS REALIZADOS</a></li>
+       
+        </ul>
+        <img [src]="rutaImgFondo" class="rutaImgFondo">
+    </nav>
+    <main>
+        <i id="logout" (click)="logout()" class="fa-solid fa-right-from-bracket"></i>
+        <router-outlet></router-outlet>
 
-<router-outlet></router-outlet>
+    </main>
+  
+</body>
+

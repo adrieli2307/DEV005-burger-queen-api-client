@@ -75,6 +75,7 @@
             <td>
               {{product.quantity*product.price}}
             </td>
+            
 
           
           </tr>
@@ -82,9 +83,9 @@
         </table>
 
         <p id="total"></p>
-        <button id="enviarBtn" type="submit"  type="button" [disabled]="ordersForm.invalid || cart.length === 0">ENVIAR</button>
+        <button id="enviarBtn" type="submit"  [disabled]="ordersForm.invalid || cart.length === 0">ENVIAR</button>
        
-        <button id="cancelarBtn">CANCELAR</button>
+        <button id="cancelarBtn" (click)="closeModal()">CANCELAR</button>
       </div>
     </div>
 
@@ -94,6 +95,7 @@
 
   </form>
 </body>
+</html>
 
 
 </html>

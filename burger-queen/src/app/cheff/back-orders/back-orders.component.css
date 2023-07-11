@@ -1,4 +1,23 @@
-.hola{
-    color:blueviolet,
-    
+body{
+    margin: 0%;
+    display: flex;
 }
+
+
+.pendingOrders{
+    display: flex;
+    background-color: red;
+    width: 70%;
+    height: 350px;
+    margin-left: 15%;
+    margin-top: 40px;
+    border-radius: 10px;
+   
+}
+
+/*.one{
+    background-color: blue;
+    width: 50%;
+    height: 90px;
+    margin-top:auto;
+}*/

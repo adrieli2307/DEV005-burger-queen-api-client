@@ -1,4 +1,4 @@
-body{
+/*body{
     background-color: aqua;
 
 }
@@ -17,3 +17,69 @@ body{
     height: ;
     background-color: green;
 } */
+
+body {
+    display: grid;
+    grid-template-columns: 20vw 1fr;
+    min-height: 100vh;
+}
+
+nav {
+    background-color: rgb(0, 0, 0);
+    position: relative;
+    padding: 10%;
+    z-index: 50;
+}
+
+.rutaImgLogo {
+    width: 70%;
+    display: block;
+    margin: auto;
+    margin-top: 15%;
+}
+
+.rutaImgFondo {
+    position: absolute;
+    right: 0px;
+    bottom: 0px;
+    z-index: -1;
+}
+
+.optionList {
+    margin-top: 80%;
+
+}
+
+.optionList li {
+    margin-top: 50%;
+    z-index: 50;
+}
+
+.option {
+    margin: 20%;
+    font-size: 1.3em;
+    font-weight: 500;
+    text-decoration: none;
+    font-family: 'Cabin Condensed', sans-serif;
+    color: rgb(236, 236, 236);
+}
+
+.active {
+    color: rgb(255, 226, 62);
+    border-left: 5px solid rgb(255, 226, 62);
+    padding-left: 5px;
+
+}
+
+#logout{
+    display: flex;
+    width: 150px;
+    height: 30px;
+    background-color: var(--botones);
+    border-radius: 20px;
+    margin-left: 70%;
+    margin-top: 10px;
+    font-size: 18px;
+    align-items: center;
+    justify-content: center;
+   }

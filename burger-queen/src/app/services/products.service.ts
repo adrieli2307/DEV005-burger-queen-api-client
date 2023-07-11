@@ -3,7 +3,6 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { ProductsI } from '../interfaces/products.interface';
 import { Observable, tap } from 'rxjs';
 import { AuthService } from './auth.service';
-import { tap, map } from 'rxjs';
 
 
 @Injectable({

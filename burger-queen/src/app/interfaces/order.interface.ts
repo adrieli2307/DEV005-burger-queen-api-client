@@ -8,9 +8,12 @@ export interface ProductsOrderI{
 }
 
 export interface OrderI{
+  id:number;
   userId: number;
   client: string;//product.name
   products:ProductsOrderI[]; //cart
   status: string; 
   dateEntry: string;
+  dateProcessed:string;
+
 }
