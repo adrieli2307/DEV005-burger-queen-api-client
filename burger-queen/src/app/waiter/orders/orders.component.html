@@ -7,78 +7,93 @@
 </head>
 
 <body>
-  <h2 id="client">Cliente</h2>
-  <input class="inclient" type="text" [(ngModel)]="cliente.nombre" pattern="[a-zA-Z]+" required>
+  <form action="" [formGroup]="ordersForm" (ngSubmit)="loadOrder()">
+    <h2 id="client">Cliente</h2>
+    <input class="inclient" type="text" formControlName="nameClient">
 
-  <h2 id="nmesa">N° de mesa</h2>
-  <input class="intable" type="number" [(ngModel)]="cliente.numeroMesa" min="0" max="20" required>
+    <h2 id="nmesa">N° de mesa</h2>
+    <input class="intable" type="number" formControlName="numberTable">
 
-  <!--Tabla de menú de desayuno-->
-  <th>
-    <button (click)="filterByType('Desayuno')" class="menu" for="menu">
-      Desayunos
-    </button>
-  </th>
+    <!--Tabla de menú de desayuno-->
+    <th>
+      <button (click)="filterByType('Desayuno')" class="menu" for="menu" type="button">Desayunos</button>
+    </th>
 
-  <!--Tabla de menú del día-->
-  <th>
-    <button (click)="filterByType('Almuerzo')" class="menu" for="menu">
-      Del día
-    </button>
-  </th>
-  <table>
-    <tr>
-      <th>ITEM</th>
-      <th>PRECIO</th>
-      <th>CANTIDAD</th>
-    </tr>
-    <ng-container *ngFor="let product of products; index as i">
-      <tr *ngIf="product.type === filterType">
-        <td>{{ product.name }}</td>
-        <td>{{ product.price }}</td>
-        <td>
-          <app-buttons [quantityProduct]="product.quantity" (clickButtonEvent)="
-                  updateQuantity({ eventValue: $event, product })
-                "></app-buttons>
-        </td>
+    <!--Tabla de menú del día-->
+    <th>
+      <button (click)="filterByType('Almuerzo')" class="menu" for="menu" type="button"> Del día</button>
+    </th>
+    <table>
+      <tr>
+        <th>ITEM</th>
+        <th>PRECIO</th>
+        <th>CANTIDAD</th>
       </tr>
-    </ng-container>
-  </table>
+      <ng-container *ngFor="let product of filteredProducts; index as i;">
+        <tr *ngIf="product.type === filterType">
+          <td>{{ product.name }}</td>
+          <td>{{ product.price }}</td>
+          <td>
+            <app-buttons [quantityProduct]="product.quantity"
+              (clickButtonEvent)="updateQuantity({eventValue: $event , product})"></app-buttons>
 
-  <button id="detallePedido" (click)="openModal()" type="button">
-    DETALLE DE PEDIDO
-  </button>
+          </td>
+        </tr>
+      </ng-container>
 
-  <!-- Modal de confirmación del pedido -->
-  <div id="modalinpt" class="modal" *ngIf="modalVisible">
-    <div class="modal-content">
-      <h2 class="acceptorder">Confirmación de Pedido</h2>
-      <input type="text" id="nombreCliente" [(ngModel)]="cliente.nombre" readonly>
-      <br>
-      <label class="numtable">N° Mesa:</label>
-      <input type="text" id="numeroMesa" [(ngModel)]="cliente.numeroMesa" readonly>
-      <br>
-          <table>
-            <tr>
-              <th>ITEM</th>
-              <th>PRECIO</th>
-              <th>CANTIDAD</th>
-              <th>TOTAL</th>
-            </tr>
-        <ng-container *ngFor="let product of cart; let i = index">
-          <tr *ngIf="product.quantity >= 1 && i === cart.indexOf(product)">
-            <td>{{ product.name }}</td>
-            <td>{{ product.price }}</td>
-            <td>{{ product.quantity }}</td>
-            <td>{{ product.quantity * product.price}}</td>
+    </table>
+
+    <button id="detallePedido" type="button" [disabled]="ordersForm.invalid || cart.length === 0" (click)="openModal()">DETALLE DE PEDIDO</button>
+    <span [hidden]="nameClient.valid || nameClient.pristine && numberTable.valid || numberTable.pristine" *ngIf="nameClient.errors?.['required'] && numberTable.errors?.['required']" class="error">Los campos deben ser llenados
+      correctamente</span>
+    <!-- Modal de confirmación del pedido -->
+    <div id="modalinpt" class="modal" *ngIf="modalVisible">
+      <div class="modal-content">
+        <h2 class="acceptorder">Confirmación de Pedido</h2>
+        <label class="nameclient">Nombre cliente:</label>
+        <input type="text" id="nombreCliente" [value]="this.nameClient.value">
+        <br>
+        <label class="numtable">N° Mesa:</label>
+        <input type="text" id="numeroMesa" [value]="this.numberTable.value">
+        <br>
+        <!-- <table>
+        Contenido de la tabla
+      </table> -->
+        <table>
+          <tr *ngFor="let product of cart">
+            <td>
+              {{product.name}}
+            </td>
+
+            <td>
+              {{product.price}}
+            </td>
+
+            <td>
+              {{product.quantity}}
+            </td>
+            <td>
+              {{product.quantity*product.price}}
+            </td>
+
+          
           </tr>
-        </ng-container>
-      </table>
-      <th>Total: {{ getTotal() }}</th>
-      <button id="enviarBtn" (click)="enviar(); resetModal()" type="submit">ENVIAR</button>
-      <button id="cancelarBtn" (click)="cancelar()">CANCELAR</button>
+          <span>TOTAL {{quantityOrder()}}</span>
+        </table>
+
+        <p id="total"></p>
+        <button id="enviarBtn" type="submit"  type="button" [disabled]="ordersForm.invalid || cart.length === 0">ENVIAR</button>
+       
+        <button id="cancelarBtn">CANCELAR</button>
+      </div>
     </div>
-  </div>
+
+    <!-- <h1>{{probandoType | json}}</h1> -->
+    <h3>{{ordersForm.value | json}}</h3>
+    <h3>{{nameClient.value | json}}</h3>
+
+  </form>
 </body>
+
 
 </html>

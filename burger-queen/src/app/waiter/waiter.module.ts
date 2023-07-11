@@ -24,14 +24,17 @@ const routes : Routes = [
   declarations: [
     OrdersComponent,
     PendingOrdersComponent,
-    ButtonsComponent
-  ],
+    ButtonsComponent,
+  
+ 
+ 
 
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
     FormsModule,
     ReactiveFormsModule
+ 
   ],
   
   exports: [RouterModule]

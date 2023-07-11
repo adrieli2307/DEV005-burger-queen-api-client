@@ -1,19 +1,20 @@
 .buttons{
-   display: flex;
-   justify-content:space-evenly;
-   text-align: center;
-   font-size: 18px;
-}
-.sumRes{
-    width: 15%;
-    height: 55%;
+    display: flex;
+    justify-content:space-evenly;
+    text-align: center;
     font-size: 18px;
-    align-items: center;
-    justify-content: center;
-    border-radius: 100% ;
-    background-color: var(--botones);
-   }
-.number{
-    margin-top: 6px;
-   }
-   
+    margin:15px;
+ }
+ .sumRes{
+     width: 18%;
+     height: 55%;
+     font-size: 18px;
+     align-items: center;
+     justify-content: center;
+     border-radius: 100% ;
+     background-color: var(--botones);
+     margin:3%;
+    }
+ .number{
+     margin-top: 6px;
+    }
