@@ -4,7 +4,7 @@ import { ProductsService } from 'src/app/services/products.service';
 import { ButtonsComponent } from 'src/app/buttons/buttons.component';
 import { Form, FormControl, FormGroup, Validators } from '@angular/forms';
 import { OnInit } from '@angular/core';
-import { OrderI, ProductsOrderI } from 'src/app/interfaces/order.interface';
+import { OrderI} from 'src/app/interfaces/order.interface';
 
 @Component({
   selector: 'app-orders',
@@ -15,10 +15,10 @@ export class OrdersComponent implements OnInit {
 
   // Invocación de datos API en pantalla 
   products: ProductsI[] = [];
+  filteredProducts: ProductsI[] = []; // Arreglo para almacenar los productos filtrados
   filterType: string = "";
   //Probando otro metodo de filtrado
   probandoType: ProductsI[] = [];
-
   cart: ProductsI[] = [];
   order:OrderI[] = [];
 
@@ -75,25 +75,23 @@ export class OrdersComponent implements OnInit {
     });
   }
 
-  //Función para obtener productos filtrados
+ //Función para obtener productos filtrados
 
-  filterProductsByType() {
-    if (this.filterType) {
-      this.filteredProducts = this.products.filter(
-        (product) => product.type === this.filterType
-      );
-    } else {
-      const index = this.cart.findIndex((p) => p.id === product.id);
-      if (index !== -1) {
-        this.cart.splice(index, 1);
-      }
-    }
+ filterProductsByType() {
+  if (this.filterType) {
+    this.filteredProducts = this.products.filter(
+      (product) => product.type === this.filterType
+    );
+  } else {
+    this.filteredProducts = this.products; // Si no hay tipo de filtro, mostrar todos los productos
   }
+}
 
-  filterByType(type: string) {
-    this.filterType = type;
-    this.filterProductsByType();
-  }
+filterByType(type: string) {
+  this.filterType = type;
+  this.filterProductsByType();
+}
+
 
 
 

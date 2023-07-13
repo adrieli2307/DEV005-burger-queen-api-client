@@ -4,26 +4,21 @@ import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
 import { InfoLoginI } from '../interfaces/InfoLogin';
 import { UserResponseErrorI, UserResponseI, } from '../interfaces/UserResponse';
-
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  // Variable para guardar mensaje de error de la api al momento de logearse con datos incorrectos 
+  // Variable para guardar mensaje de error de la api al momento de logearse con datos incorrectos
   errorApi:string | null = null;
-
   constructor(private router: Router, private userFromApi: AuthService) {
    }
-
-
   // Creacion de FormGroup para el formulario de login
   loginForm = new FormGroup({
     'email': new FormControl('', [Validators.required, Validators.email]),
     'password': new FormControl('', Validators.required),
   })
-
   // Extracción de cada valor del formGroup
   get email() {
     return this.loginForm.get('email') as FormControl;
@@ -31,9 +26,7 @@ export class LoginComponent implements OnInit {
   get password() {
     return this.loginForm.get('password') as FormControl;
   }
- 
   // Evento click para hacer petición Http
-
   sendForm() {
     this.userFromApi.responseUserFromApi(this.loginForm.value as InfoLoginI).subscribe((data: UserResponseI) => {
       // Condicionales para navegar a rutas de acuerdo al rol
@@ -48,23 +41,15 @@ export class LoginComponent implements OnInit {
     },
       (error: UserResponseErrorI) => {
         this.errorApi = error.error;
-
         console.error(error)
-
       });
-
   }
-
-
   ngOnInit(): void {
-
   }
-
   // Links para insertar en html
   rutaImgLogo: string = 'https://i.ibb.co/vZtH272/imgLogo.png'
   rutaImgFondo: string = 'https://i.ibb.co/VpkgVyf/img01.jpg'
 }
-
 
 
 

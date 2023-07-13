@@ -9,16 +9,37 @@ import { OrderI } from '../interfaces/order.interface';
 })
 export class OrdersService {
   tokenAccess: string | undefined;
+   private  apiurl = 'http://localhost:8080/orders';
+
   constructor(private http: HttpClient, userDataFromApi: AuthService) {
     this.tokenAccess = userDataFromApi.getCurrentUser()?.accessToken;
   }
+
+
+  // Lista ordenes 
+
   getOrders(): Observable<OrderI[]> {
     const headers = new HttpHeaders().set('Authorization', `Bearer ${this.tokenAccess}`);
-    return this.http.get<OrderI[]>('http://localhost:8080/orders', {headers}).pipe(
+    return this.http.get<OrderI[]>(this.apiurl, {headers}).pipe(
       tap((data: OrderI[]) => {
         console.log('dataOrders', data);
         // Conversión de data a objeto string
       })
     );
   }
+
+  // Crear una orden 
+
+  postOrder(order: OrderI): Observable<any> {
+    return this.http.post(this.apiurl, order);
+  }
+
+  // Modificar una orden 
+  patchOrder(id: string, status: string): Observable<OrderI> {
+    return this.http.patch<OrderI>(
+      `${this.apiurl}/${id}`,
+      { status: status },
+    );
+  }
+
 }

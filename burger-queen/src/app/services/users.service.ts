@@ -6,13 +6,6 @@ import { Observable,of } from 'rxjs';
   providedIn: 'root'
 })
 export class UsersService {
-  cliente: Cliente[] = [];
 
-  constructor() { }
-
-  setCliente(nombre: string, numeroMesa: number): Observable<Cliente[]> {
-    this.cliente = [{ nombre, numeroMesa }];
-    return of(this.cliente);
-  }
 
 }
