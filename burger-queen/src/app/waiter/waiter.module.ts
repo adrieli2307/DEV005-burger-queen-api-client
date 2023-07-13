@@ -9,8 +9,14 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 const routes : Routes = [
   {
+    path: '',
+    redirectTo: 'orders',
+    pathMatch: 'full'
+
+  },
+  {
     path:'orders',
-    component: OrdersComponent
+    component: OrdersComponent,
   },
   {
     path:'pending-orders',

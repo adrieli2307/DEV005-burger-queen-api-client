@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductsService } from '../services/products.service';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-waiter',
@@ -8,54 +9,20 @@ import { ProductsService } from '../services/products.service';
 })
 
 export class WaiterComponent implements OnInit {
-
-  // dataProducts: ProductI[] = [];
-  // filterBreakFast: ProductI[] = [];
-  // filterLunch: ProductI[] = [];
-
-
-
-  // constructor(private api: ProductsService) {
-  //   //this.dataProducts = 
-
-  // }
+  constructor(private authService:AuthService){}
+  nameUser:string | undefined = this.authService.getCurrentUser()?.user.email;
+  
 
 
   ngOnInit() {
-  //   //this.hola();
-  //   this.api.getProductsFromApi().subscribe((data) => {
-  //     this.dataProducts = data;
-   
-  //     this.filterProduct(data)
-
-
-  //     console.log('probanding', this.dataProducts)
     }
-  //)
-  //   // console.log('miraaa', this.dataProducts)
-  //   //  this.loadData();
-  // };
 
-  //  filterProduct(allProducts : ProductI[]) : void{
-  //   this.filterBreakFast =  allProducts.filter((index) => index.type ==='Desayuno' );
-  //   console.log('desayuno', this.filterBreakFast)
-  //   this.filterLunch =  allProducts.filter((index) => index.type ==='Almuerzo' )
-  //   console.log('almuerzo', this.filterLunch)
-  //     }
+  logout(){
+    this.authService.logout();
+  }
 
 
-  // //  console.log(this.dataProducts)
 
-  //  loadData(){
-  //   this.api.loadProductsFromApi().subscribe((data: ProductI[]) => {
-
-  //     this.data = data;
-
-  //   console.log('dataaa', this.data ) 
-
-  //   })
-   
-  // }
 
 
 

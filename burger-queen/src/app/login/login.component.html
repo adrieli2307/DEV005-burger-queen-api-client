@@ -1,34 +1,35 @@
 <body>
-    <section class = 'container'>
-        <img  class = 'imgLogo' [src]='rutaImgLogo' alt="imgLogo">
-       
-        <img class ="imgbackground" [src]="rutaImgFondo" alt="img-background">
+    <div class='container containerImg'>
+        <img class='imgLogo' [src]='rutaImgLogo' alt="imgLogo">
+    </div>
+    <div class='container'>
+        <img class="imgbackground" [src]="rutaImgFondo" alt="img-background">
+        <form class='formContainer' [formGroup]="loginForm" (ngSubmit)="sendForm()">
+            <h1>!Bienvenid@¡</h1>
+            <div class='divContainer'>
+                <input type="email" formControlName="email" placeholder="ejemplo@gmail.com" class="email">
+                <span [hidden]="email.valid || email.pristine" *ngIf="email.errors?.['required']" class="error">Ingresa
+                    un correo</span>
+                <span [hidden]="email.valid || email.pristine" *ngIf="email.errors?.['email']" class="error">El correo
+                    no es válido</span>
+            </div>
 
-    <form  class = 'formContainer' [formGroup]="loginForm" (ngSubmit)="sendForm()">
+            <div class='divContainer'>
+                <input type="password" formControlName="password" placeholder="Ingresar Contraseña" class="password">
+                <span [hidden]="password.valid || password.pristine" *ngIf="password.errors?.['required']"
+                    class="error">Ingresar Contraseña</span>
+            </div>
+            <div class="errorApi divContainer" *ngIf="errorApi">
+                <span>{{errorApi}}</span>
+            </div>
 
-        <div class = 'divContainer'>
-            <input type="email" formControlName="email" placeholder="ejemplo@gmail.com" class="email" >
-            <span [hidden]="email.valid || email.pristine" *ngIf="email.errors?.['required']"  class="error">Ingresa un correo</span>
-            <span [hidden]="email.valid || email.pristine" *ngIf="email.errors?.['email']"  class="error">El correo no es válido</span>
-        </div>
-        
-        <div class = 'divContainer'>
-            <input type="password" formControlName="password" placeholder="Ingresar Contraseña" class="password" >
-            <span [hidden]="password.valid || password.pristine" *ngIf="password.errors?.['required']"  class="error">Ingresar Contraseña</span>
-        </div> 
-        <div class="errorApi divContainer" *ngIf="errorApi">
-            <span>{{errorApi}}</span>
-        </div>
-     
 
-        <button type="submit" class="btn btn-star" [disabled]="loginForm.invalid">Iniciar Sesión</button>
+            <button type="submit" class="btn btn-star" [disabled]="loginForm.invalid">Iniciar Sesión</button>
 
-    </form>    
+        </form>
+ 
+    </div>
 
-        
-    </section>
-  
-    
+
+
 </body>
-
-

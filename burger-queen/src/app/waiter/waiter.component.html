@@ -1,20 +1,28 @@
 <body>
     <nav>
-        <img [src]="rutaImgLogo"class="rutaImgLogo">
+        <img [src]="rutaImgLogo" class="rutaImgLogo">
         <ul class="optionList">
             <li> <a class="option" routerLink="/waiter/orders" routerLinkActive="active">MENU</a></li>
-            <li> <a class="option" routerLink="/waiter/pending-orders" routerLinkActive="active">ORDENES PENDIENTES</a></li>
-       
+            <li> <a class="option" routerLink="/waiter/pending-orders" routerLinkActive="active">ORDENES PENDIENTES</a>
+            </li>
+
         </ul>
         <img [src]="rutaImgFondo" class="rutaImgFondo">
     </nav>
     <main>
-        <!-- <tr *ngFor="let dataProducts of dataProducts">
-            <td>{{ dataProducts.name }}</td>
-            <td>{{ dataProducts.price }}</td>
-          </tr> -->
+        <section class="headerMain">
+            <div class="userName">
+                <h1>¡Hola!</h1>
+                <h2> {{nameUser}}</h2>
+            </div>
+            <i id="logout" (click)="logout()" class="fa-solid fa-right-from-bracket"></i>
+
+        </section>
+
+
+        <hr>
         <router-outlet></router-outlet>
 
     </main>
-  
+
 </body>

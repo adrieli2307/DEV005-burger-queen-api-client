@@ -1,14 +1,18 @@
 body {
     display: grid;
-    grid-template-columns: 20vw 1fr;
+    grid-template-columns: 12vw 1fr;
     min-height: 100vh;
 }
 
 nav {
     background-color: rgb(0, 0, 0);
     position: relative;
-    padding: 10%;
+    padding-left:20px;
     z-index: 50;
+    text-align: start;
+}
+main{
+    position: relative;
 }
 
 .rutaImgLogo {
@@ -17,13 +21,14 @@ nav {
     margin: auto;
     margin-top: 15%;
 }
-
+ 
 .rutaImgFondo {
     position: absolute;
     right: 0px;
     bottom: 0px;
     z-index: -1;
-}
+    opacity: .5;
+} 
 
 .optionList {
     margin-top: 80%;
@@ -36,17 +41,70 @@ nav {
 }
 
 .option {
-    margin: 20%;
+  
     font-size: 1.3em;
     font-weight: 500;
     text-decoration: none;
     font-family: 'Cabin Condensed', sans-serif;
     color: rgb(236, 236, 236);
+  
 }
 
 .active {
-    color: rgb(255, 226, 62);
-    border-left: 5px solid rgb(255, 226, 62);
+    color: var(--botones);
+    border-left: 5px solid var(--botones);
     padding-left: 5px;
 
+}
+ 
+
+
+.headerMain{
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 6vw;
+    align-items: center;
+    padding: 1%;
+}
+.userName{
+    width: 30%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items:center;
+    text-align: center;
+   
+    font-family: 'Cabin Condensed', sans-serif;
+    
+}
+ #logout {
+    
+    width: 60px;
+    height: 60px;
+    font-size: 35px;
+
+} 
+.userName h1{
+    font-size: 1.8em;
+    color: rgb(65, 65, 65);
+}
+.userName h2 {
+    font-weight: 100;
+    color: rgb(65, 65, 65);
+}
+hr{
+    height: 10px;
+    background-color: black;
+    position: absolute;
+    top:40px;
+}
+@media (max-width:800px) {
+    body {
+        grid-template-columns: 20vw 1fr;
+    }
+    .headerMain{    
+        padding: 3%;
+        padding-left:10%;
+        padding-right: 10%;
+     
+    }
 }

@@ -3,13 +3,13 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { InfoLoginI } from '../interfaces/InfoLogin';
 import { UserResponseI, UserResponseErrorI,  } from '../interfaces/UserResponse';
 import { Observable, tap } from 'rxjs';
-
+import { Router } from '@angular/router';
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-    constructor(private http: HttpClient) { }
+    constructor(private http: HttpClient,  private router:Router) { }
 
      responseUserFromApi(body: InfoLoginI) : Observable<UserResponseI> {
      return this.http.post<UserResponseI>('http://localhost:8080/login', body).pipe(
@@ -31,4 +31,9 @@ export class AuthService {
       console.log('obj', dataUserObj);
       return dataUserObj;
     }
+    logout(): void {
+      localStorage.removeItem('token')
+      localStorage.removeItem('LoginUserI')
+      this.router.navigate(['/login/'])
+     }
   }
