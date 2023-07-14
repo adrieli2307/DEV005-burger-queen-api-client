@@ -18,10 +18,17 @@ export class OrdersService {
     };
   }
 
-  // Lista de órdenes
+  // Obtener todas las órdenes
   getOrders(): Observable<OrderI[]> {
     return this.http.get<OrderI[]>(this.apiurl, this.httpOptions);
   }
+
+  // Obtener órdenes por estado
+  getOrdersByStatus(status: string): Observable<OrderI[]> {
+    const url = `${this.apiurl}?status=${status}`;
+    return this.http.get<OrderI[]>(url, this.httpOptions);
+  }
+
 
   // Crear una orden
   postOrder(order: OrderI): Observable<any> {
