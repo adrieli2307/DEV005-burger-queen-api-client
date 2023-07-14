@@ -12,3 +12,5 @@ export interface Cliente {
     nombre: string;
     numeroMesa: number;
   }
+
+  

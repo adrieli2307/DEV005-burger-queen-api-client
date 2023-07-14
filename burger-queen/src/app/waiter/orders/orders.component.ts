@@ -9,21 +9,20 @@ import { OrderI } from 'src/app/interfaces/order.interface';
 @Component({
   selector: 'app-orders',
   templateUrl: './orders.component.html',
-  styleUrls: ['./orders.component.css']
+  styleUrls: ['./orders.component.css'],
 })
 export class OrdersComponent implements OnInit {
-
-  // Invocación de datos API en pantalla 
+  // Invocación de datos API en pantalla
   products: ProductsI[] = [];
   filteredProducts: ProductsI[] = []; // Arreglo para almacenar los productos filtrados
-  filterType: string = "";
+  filterType: string = '';
   //Probando otro metodo de filtrado
   probandoType: ProductsI[] = [];
 
   cart: ProductsI[] = [];
-  order:OrderI[] = [];
+  order: OrderI[] = [];
 
-  constructor(private apiService: ProductsService) { }
+  constructor(private apiService: ProductsService) {}
 
   ngOnInit() {
     this.getApi();
@@ -37,10 +36,9 @@ export class OrdersComponent implements OnInit {
   /*-----------------------------Creacion de formulario de orden-----------------------------*/
 
   ordersForm = new FormGroup({
-    'nameClient': new FormControl('', Validators.required),
-    'numberTable': new FormControl('', Validators.required)
-  })
-
+    nameClient: new FormControl('', Validators.required),
+    numberTable: new FormControl('', Validators.required),
+  });
 
   // Obtención de datos de input
   get nameClient() {
@@ -53,17 +51,15 @@ export class OrdersComponent implements OnInit {
   // Función para enviar a pedido
 
   loadOrder() {
-  
     this.ordersForm.reset();
     this.cart = [];
-    this.filteredProducts.forEach((products) => products.quantity = 0)
-    console.log('funcionaaa')
-
+    this.filteredProducts.forEach((products) => (products.quantity = 0));
+    console.log('funcionaaa');
   }
 
   /*------------------------------ Funciones manipular productos de api-------------------------*/
 
-  //Función para obetner productos de api
+  //Función para obtener productos de api
   getApi() {
     return this.apiService.getProductsFromAPI().subscribe((data) => {
       console.log(data);
@@ -92,25 +88,24 @@ export class OrdersComponent implements OnInit {
     this.filterProductsByType();
   }
 
-
-
-
   /*---------------------Función para modificar cantidad de productos de carrito-----------------------*/
-  
+
   // Función para agregar y quitar productos del carrito de compras
-  updateQuantity(data: { eventValue: number, product: ProductsI }) {//{}
+  updateQuantity(data: { eventValue: number; product: ProductsI }) {
+    //{}
     const { eventValue, product } = data;
 
-    if (eventValue > 0) { // 1
-     
+    if (eventValue > 0) {
+      // 1
+
       // Agregar producto al carrito
       if (!this.cart.includes(product)) {
         this.cart.push(product);
       }
-       product.quantity += eventValue;
-      // Eliminar producto del carrito y disminuir 
-    } 
-    else if (eventValue < 0) { // -1
+      product.quantity += eventValue;
+      // Eliminar producto del carrito y disminuir
+    } else if (eventValue < 0) {
+      // -1
 
       product.quantity += eventValue;
       if (product.quantity <= 1) {
@@ -118,25 +113,22 @@ export class OrdersComponent implements OnInit {
         if (index !== -1) {
           this.cart.splice(index, 1);
         }
- 
-       }
-      } 
-    console.log('cart', this.cart)
+      }
+    }
+    console.log('cart', this.cart);
   }
-
 
   // Función para mostrar totales de pedidos
 
-  quantityOrder(){
+  quantityOrder() {
+    let sumaTotal = 0;
+    this.cart.forEach((product) => {
+      sumaTotal += product.price * product.quantity;
+    });
+    // const sumaTotal = priceQuantity
 
-   let sumaTotal = 0
-   this.cart.forEach((product)=>{
-   sumaTotal +=product.price*product.quantity})
-  // const sumaTotal = priceQuantity
-
-   return sumaTotal;
+    return sumaTotal;
   }
-
 
   // Funcion para enviar data a api
 
@@ -162,31 +154,25 @@ export class OrdersComponent implements OnInit {
 
   }*/
 
-
-/*---------------------------Funciones para modal-----------------------------------*/
+  /*---------------------------Funciones para modal-----------------------------------*/
   modalVisible: boolean = false;
 
   openModal() {
-    this.modalVisible = true; // Variable de control para mostrar el modal  
+    this.modalVisible = true; // Variable de control para mostrar el modal
     // this.userService.setCliente(this.cliente.nombre, this.cliente.numeroMesa);
-
   }
-  closeModal(){
+  closeModal() {
     this.modalVisible = false;
   }
-  // Funcion inyectar informacion en orden de pedido 
+  // Funcion inyectar informacion en orden de pedido
 }
 
+// updateQuantity(data:{eventValue:number, product:ProductsI}){
+// //   const product = {...this.filteredProducts.find(p => p.id = productId)} as ProductsI
+//   const {eventValue, product} = data;
+//   if (product.quantity=== 0 && eventValue < 1) {
+//     return;
+//   }
+//   product.quantity = product.quantity + eventValue;
 
-
-
-
- // updateQuantity(data:{eventValue:number, product:ProductsI}){
-  // //   const product = {...this.filteredProducts.find(p => p.id = productId)} as ProductsI
-  //   const {eventValue, product} = data;
-  //   if (product.quantity=== 0 && eventValue < 1) {
-  //     return;
-  //   }
-  //   product.quantity = product.quantity + eventValue;
-
-  // } 
+// }

@@ -1,7 +1,31 @@
 <body>
-    <div class="pendingOrders">
-        
+  <div class="containerOrders" *ngFor="let order of orders">
+    <ul>
+      <li class="currentTime"> Hora: {{ currentDataTime | date: 'hh:mm:ss'}}</li>
+      <p class ="orderId">Orden Id:{{ order.id }}</p>
+      <p class ="orderClient">Cliente: {{ order.client }}</p>
+      <p class ="statusOrder">Status: {{order.status}}</p>
+      <p>data:{{order.dataEntry}}</p>
+      <p>data finalizada:{{order.dateProcessed}}</p>
+    </ul>
+    <div class="containerTable">
+      
+        <table class="detailOrder">
+          <tr>
+            <th>Item</th>
+            <th>Cantidad</th>
+          </tr>
+          <ng-container *ngFor="let productsOrder of order.products">
+          <tr>
+            <td>{{ productsOrder.product.name }} </td>
+            <td > {{ productsOrder.qty }}</td>
+          </tr>
+        </ng-container>
+         
+        </table>   
     </div>
-
-   
+    <div>
+      <button class="orderPending" (click)="sendOrder(order.id.toString())">PEDIDO LISTO</button>
+    </div>
+  </div>
 </body>
