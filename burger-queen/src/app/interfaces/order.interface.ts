@@ -1,19 +1,17 @@
 import { ProductsI } from "./products.interface"
 
 
-export interface ProductsOrderI{
-   qty:number;
-   products:ProductsI
-
+export interface ProductsToOrderI{
+  qty:number;
+  product:ProductsI
 }
-
 export interface OrderI{
-  id:number;
-  userId: number;
-  client: string;//product.name
-  products:ProductsOrderI[]; //cart
-  status: string; 
-  dateEntry: string;
-  dateProcessed:string;
-
+ id:number;
+ userId: number;
+ client: string;//product.name
+ products:ProductsToOrderI[]; //cart
+ status: string;
+ dateEntry: Date;
+ dateProcessed:Date;
+ priceTotal:number;
 }

@@ -1,45 +1,37 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, tap } from 'rxjs';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable } from 'rxjs';
 import { AuthService } from './auth.service';
 import { OrderI } from '../interfaces/order.interface';
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
 export class OrdersService {
-  tokenAccess: string | undefined;
-   private  apiurl = 'http://localhost:8080/orders';
+  private apiurl = 'http://localhost:8080/orders';
+  private httpOptions: { headers: HttpHeaders };
 
   constructor(private http: HttpClient, userDataFromApi: AuthService) {
-    this.tokenAccess = userDataFromApi.getCurrentUser()?.accessToken;
+    const tokenAccess = userDataFromApi.getCurrentUser()?.accessToken;
+    this.httpOptions = {
+      headers: new HttpHeaders().set('Authorization', `Bearer ${tokenAccess}`)
+    };
   }
 
-
-  // Lista ordenes 
-
+  // Lista de órdenes
   getOrders(): Observable<OrderI[]> {
-    const headers = new HttpHeaders().set('Authorization', `Bearer ${this.tokenAccess}`);
-    return this.http.get<OrderI[]>(this.apiurl, {headers}).pipe(
-      tap((data: OrderI[]) => {
-        console.log('dataOrders', data);
-        // Conversión de data a objeto string
-      })
-    );
+    return this.http.get<OrderI[]>(this.apiurl, this.httpOptions);
   }
 
-  // Crear una orden 
-
+  // Crear una orden
   postOrder(order: OrderI): Observable<any> {
-    return this.http.post(this.apiurl, order);
+    return this.http.post(this.apiurl, order, this.httpOptions);
   }
 
-  // Modificar una orden 
+  // Modificar una orden
   patchOrder(id: string, status: string): Observable<OrderI> {
-    return this.http.patch<OrderI>(
-      `${this.apiurl}/${id}`,
-      { status: status },
-    );
+    const url = `${this.apiurl}/${id}`;
+    const body = { status: status };
+    return this.http.patch<OrderI>(url, body, this.httpOptions);
   }
-
 }
