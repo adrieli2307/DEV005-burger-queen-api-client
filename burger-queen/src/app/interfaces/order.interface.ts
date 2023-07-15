@@ -13,7 +13,7 @@ export interface OrderI{
   client: string;//product.name
   products:ProductsToOrderI[]; //cart
   status: string; 
-  dateEntry: Date;
+  dataEntry: Date;
   dateProcessed:Date;
   priceTotal:number;
 }

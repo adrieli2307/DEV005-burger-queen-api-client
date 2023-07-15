@@ -6,8 +6,8 @@ import { Form, FormControl, FormGroup, Validators } from '@angular/forms';
 import { OnInit } from '@angular/core';
 import { OrderI, ProductsToOrderI } from 'src/app/interfaces/order.interface';
 import { AuthService } from 'src/app/services/auth.service';
-import { ConstantPool } from '@angular/compiler';
-
+import { ToastrService, } from 'ngx-toastr';
+ 
 @Component({
   selector: 'app-orders',
   templateUrl: './orders.component.html',
@@ -38,14 +38,14 @@ export class OrdersComponent implements OnInit {
   // variable para extraer cantidad de productos
   totalProductSelected: number = 0;
 
-  constructor(private apiService: ProductsService, private authService: AuthService) {
+  constructor(private apiService: ProductsService, private authService: AuthService, private toast:ToastrService) {
     this.order = {
       id: 0,
       userId: 0,
       client: '',
       products: [],
       status: '',
-      dateEntry: new Date(''),
+      dataEntry: new Date(''),
       dateProcessed: new Date(''),
       priceTotal: 0,
     };
@@ -80,8 +80,13 @@ export class OrdersComponent implements OnInit {
 
   loadOrder() {
     this.orderDone();
-    console.log('hola', this.order)
-    this.sendOrderApi()
+    this.sendOrderApi();
+    this.toast.success('El pedido ha sido enviado exitosamente','',{
+      toastClass: 'success-toastSend', 
+      closeButton: true,
+      enableHtml: true,
+      tapToDismiss: true,
+    });
     this.resetOrder();
   }
 
@@ -122,13 +127,11 @@ export class OrdersComponent implements OnInit {
         this.cart.push(product);
       }
       product.qty += eventValue;
-      //this.message = '+1';
-
+ 
     }
     // Eliminar producto del carrito y disminuir 
     else if (eventValue < 0) { // -1
       product.qty += eventValue;
-      this.message = '-1';
       if (product.qty <= 0) {
         const index = this.cart.indexOf(product);
         if (index !== -1) {
@@ -136,10 +139,6 @@ export class OrdersComponent implements OnInit {
         }
       }
     }
-    // setTimeout(() => {
-    //   this.message = '';
-    // }, 2000);
-
     this.orderDone();
     // console.log('cart', this.cart)
   }
@@ -171,7 +170,7 @@ export class OrdersComponent implements OnInit {
         client: this.nameClient.value,//product.name
         products: this.cart,
         status: 'pending',
-        dateEntry: new Date(''),
+        dataEntry: new Date(''),
         dateProcessed: new Date(''),
         priceTotal: sumTotal,
       }
@@ -190,7 +189,7 @@ export class OrdersComponent implements OnInit {
 
   sendOrderApi() {
     console.log('te envio .... ', this.order)
-    this.order.dateEntry = new Date()
+    this.order.dataEntry = new Date()
 
   }
 
@@ -206,7 +205,7 @@ export class OrdersComponent implements OnInit {
       client: '',
       products: [],
       status: '',
-      dateEntry: new Date(''),
+      dataEntry: new Date(''),
       dateProcessed: new Date(''),
       priceTotal: 0,
     };

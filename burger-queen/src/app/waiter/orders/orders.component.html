@@ -8,17 +8,12 @@
 
 <body>
   <header>
-
+   
   </header>
-
+ 
   <form [formGroup]="ordersForm" (ngSubmit)="loadOrder()">
     <div class="divContainer takeOrder ">
-      <!-- <div class="message">
-        <div *ngIf="message">{{ message }}</div>
-        <div *ngIf="totalProductSelected">{{totalProductSelected}}</div>
-      </div> -->
-
-
+    
       <div class="inputContain">
 
         <section>
@@ -108,13 +103,13 @@
 
         </section>
         <section class="total">
-          <h4>Total</h4>
-          <span>${{order.priceTotal}}</span>
+          <h3>Total</h3>
+          <h3>${{order.priceTotal}}</h3>
         </section>
         <section class="buttonModal">
           <button class="buttonOrder" type="submit" [disabled]="ordersForm.invalid || cart.length === 0">ENVIAR</button>
 
-          <button class="buttonOrder buttonCancel" type="button" (click)="resetOrder()" >CANCELAR</button>
+          <button class="buttonOrder buttonCancel" type="button" (click)="resetOrder()">CANCELAR</button>
         </section>
 
       </div>
@@ -123,6 +118,6 @@
 
   </form>
 </body>
-
+ 
 
 </html>
