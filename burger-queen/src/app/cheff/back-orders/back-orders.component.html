@@ -16,7 +16,7 @@
             <th>Cantidad</th>
           </tr>
           <ng-container *ngFor="let productsOrder of order.products">
-          <tr>
+          <tr *ngIf="order.status==='pending'">
             <td>{{ productsOrder.product.name }} </td>
             <td > {{ productsOrder.qty }}</td>
           </tr>

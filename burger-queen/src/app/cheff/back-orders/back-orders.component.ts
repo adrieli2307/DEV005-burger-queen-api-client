@@ -64,17 +64,17 @@ export class BackOrdersComponent implements OnInit {
       this.currentDataTime = new Date();
     }, 1000);
   }
+  
   getOrdersPending(): void {
-    this.orderService
-      .getOrdersByStatus('pending')
-      .subscribe((result: OrderI[]) => {
-        console.log('prueba', (this.orders = result));
+    this.orderService.getOrdersByStatus('pending').subscribe((result: OrderI[]) => {
+        this.orders = result;
+        console.log('holaaa',result);
       });
   }
-  sendOrder(id: string) {
+  sendOrder(id:string) {
     this.orderService.patchOrder(id, 'delivered').subscribe(
       (order: OrderI) => {
-        console.log('orden eviada', order);
+        console.log('orden enviada', order);
       },
       (error) => {
         console.log('orden NEGADA', error);

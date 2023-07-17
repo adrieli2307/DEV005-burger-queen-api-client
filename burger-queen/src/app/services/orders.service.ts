@@ -13,6 +13,7 @@ export class OrdersService {
 
   constructor(private http: HttpClient, userDataFromApi: AuthService) {
     const tokenAccess = userDataFromApi.getCurrentUser()?.accessToken;
+    console.log('esto es una prueba', tokenAccess)
     this.httpOptions = {
       headers: new HttpHeaders().set('Authorization', `Bearer ${tokenAccess}`)
     };
@@ -21,12 +22,15 @@ export class OrdersService {
   // Obtener todas las órdenes
   getOrders(): Observable<OrderI[]> {
     return this.http.get<OrderI[]>(this.apiurl, this.httpOptions);
+    
   }
 
   // Obtener órdenes por estado
   getOrdersByStatus(status: string): Observable<OrderI[]> {
-    const url = `${this.apiurl}?status=${status}`;
+    let url = `${this.apiurl}?status=${status}`;
+    console.log('este es coorecto', url);
     return this.http.get<OrderI[]>(url, this.httpOptions);
+    
   }
 
 

@@ -16,9 +16,9 @@
     height: 30px;
     background-color: var(--botones);
     border-radius: 20px;
-    margin-top: 50px;
+    margin-top: 20px;
     margin-left: 170px;
-    font-size: 15px;
+    font-size: 12px;
     justify-content:center ;
 }
 
