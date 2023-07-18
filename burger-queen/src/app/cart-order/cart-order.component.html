@@ -1,24 +1,8 @@
-<div>
-  <h2> Ordenes pendientes</h2>
-  <app-cart-order [statusFilter]="'pending'"></app-cart-order>
 
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- <body>
-    <div class="containerOrders" *ngFor="let order of orders">
+<body>
+    <div class="containerOrders" *ngFor="let order of getFilteredOrders()">
       <ul>
-        <li class="currentTime"> Hora: {{ currentDataTime | date: 'hh:mm:ss'}}</li>
+        <!-- <li class="currentTime"> Hora: {{ currentDataTime | date: 'hh:mm:ss'}}</li> -->
         <p class ="orderId">Orden Id:{{ order.id }}</p>
         <p class ="orderClient">Cliente: {{ order.client }}</p>
         <p class ="statusOrder">Status: {{order.status}}</p>
@@ -41,8 +25,9 @@
            
           </table>   
       </div>
-      <div>
+      <div *ngIf="order.status !== 'delivered'">
+
         <button class="orderPending" (click)="sendOrder(order.id)">PEDIDO LISTO</button>
       </div>
     </div>
-  </body> -->
+  </body>

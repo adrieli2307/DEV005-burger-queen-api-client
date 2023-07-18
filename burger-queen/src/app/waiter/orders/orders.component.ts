@@ -1,13 +1,14 @@
 import { Component } from '@angular/core';
-import { ProductsI } from 'src/app/interfaces/products.interface';
-import { ProductsService } from 'src/app/services/products.service';
+import { ProductsI } from '../../interfaces/products.interface';
+import { ProductsService } from '../../services/products.service';
 import { ButtonsComponent } from 'src/app/buttons/buttons.component';
 import { Form, FormControl, FormGroup, Validators } from '@angular/forms';
 import { OnInit } from '@angular/core';
-import { OrderI, ProductsToOrderI } from 'src/app/interfaces/order.interface';
-import { AuthService } from 'src/app/services/auth.service';
+import { OrderI, ProductsToOrderI } from '../../interfaces/order.interface';
+import { AuthService } from '../../services/auth.service';
 import { ToastrService, } from 'ngx-toastr';
- 
+import { OrdersService } from 'src/app/services/orders.service';
+
 @Component({
   selector: 'app-orders',
   templateUrl: './orders.component.html',
@@ -22,10 +23,7 @@ export class OrdersComponent implements OnInit {
   filteredProducts: ProductsToOrderI[] = [];
   // Arreglo para guardar productos seleccionados 
   cart: ProductsToOrderI[] = [];
-  // 
-  //order?: OrderI;
-  // Productos que guarda qty y producto-
-  productsQ: ProductsToOrderI[] = []
+
   // variable para guardar orden
   order: OrderI;
   // variable para iniciar en desayuno
@@ -38,7 +36,7 @@ export class OrdersComponent implements OnInit {
   // variable para extraer cantidad de productos
   totalProductSelected: number = 0;
 
-  constructor(private apiService: ProductsService, private authService: AuthService, private toast:ToastrService) {
+  constructor(private apiService: ProductsService, private authService: AuthService, private toast: ToastrService, private orderService: OrdersService) {
     this.order = {
       id: 0,
       userId: 0,
@@ -81,8 +79,8 @@ export class OrdersComponent implements OnInit {
   loadOrder() {
     this.orderDone();
     this.sendOrderApi();
-    this.toast.success('El pedido ha sido enviado exitosamente','',{
-      toastClass: 'success-toastSend', 
+    this.toast.success('El pedido ha sido enviado exitosamente', '', {
+      toastClass: 'success-toastSend',
       closeButton: true,
       enableHtml: true,
       tapToDismiss: true,
@@ -102,7 +100,7 @@ export class OrdersComponent implements OnInit {
 
   // Función para filtrar productos
   filterProducts(type: string) {
-    this.filteredProducts=[];
+    this.filteredProducts = [];
     const productFiltered = this.apiService.getProductsByType(type, this.products)
     productFiltered.forEach(product => {
       const productObj = {
@@ -112,7 +110,7 @@ export class OrdersComponent implements OnInit {
       this.filteredProducts.push(productObj)
       // console.log('probandoooo',this.filteredProducts)
     })
-  //  console.log('ahorasii', this.filteredProducts)
+    //  console.log('ahorasii', this.filteredProducts)
   }
 
   /*---------------------Función para modificar cantidad de productos de carrito-----------------------*/
@@ -127,7 +125,7 @@ export class OrdersComponent implements OnInit {
         this.cart.push(product);
       }
       product.qty += eventValue;
- 
+
     }
     // Eliminar producto del carrito y disminuir 
     else if (eventValue < 0) { // -1
@@ -188,9 +186,14 @@ export class OrdersComponent implements OnInit {
   }
 
   sendOrderApi() {
-    console.log('te envio .... ', this.order)
-    this.order.dataEntry = new Date()
+   
 
+    this.order.dataEntry = new Date();
+    this.order.id =  new Date().getTime();
+    this.orderService.postOrder(this.order).subscribe(()=>{
+      console.log('te envio .... ', this.order)
+    }) 
+    
   }
 
 
@@ -225,13 +228,7 @@ export class OrdersComponent implements OnInit {
   }
 
 
-  /*---------------------------Funciones para modal-----------------------------------*/
-  modalVisible: boolean = false;
 
-  openModal() {
-    this.modalVisible = false; // Variable de control para mostrar el modal  
-    // this.userService.setCliente(this.cliente.nombre, this.cliente.numeroMesa);
 
-  }
 
 }

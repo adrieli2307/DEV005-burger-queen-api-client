@@ -35,15 +35,6 @@ export class ProductsService {
 
   //----------------------Función de filtrado prueba--------------------------
 
-  // getProductsByType(types: string , ) : Observable<ProductsI[]>{
-  //   return this.getProductsFromAPI().pipe(
-  //     map((dataProducts : ProductsI[]) => {
-  //       if(types !== ''){
-  //         return dataProducts.filter((product)=> product.type === types )
-  //     }else{
-  //       return dataProducts;
-  //     }}))
-  // }
 
   getProductsByType(types: string, data: ProductsI[]) {
       if (types !== ''){
@@ -53,22 +44,5 @@ export class ProductsService {
       }
      }
 
-  //   data.map((dataProducts: ProductsI[]) => {
-  //     if (types !== '') {
-  //       return dataProducts.filter((product) => product.type === types)
-  //     } else {
-  //       return dataProducts;
-  //     }
-  //   })
-  // }
-
-  // Funcion de filtrado ejemplo
-  /* 
-    getProductByType(types:Array<string>){
-      conts x = this.getDataFromAPI()
-  
-      const filñteredProducts = x.filter(x incluya types)
-      reutrn filñteredProducts
-    }*/
 
 }

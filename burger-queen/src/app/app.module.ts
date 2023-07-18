@@ -14,6 +14,7 @@ import { ToastrModule, ToastrConfig} from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
  
  
+ 
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     WaiterComponent,
     CheffComponent,
     PageNotFoundComponent,
+    
  
 
   ],
