@@ -7,7 +7,7 @@ import { Observable, of, throwError } from 'rxjs';
 import { Router } from '@angular/router';
 import {AuthService} from '../services/auth.service'
 
-describe.only('LoginComponent', () => {
+describe('LoginComponent', () => {
   let component: LoginComponent;
   let fixture: ComponentFixture<LoginComponent>;
   let mockUserResponse: UserResponseI;
