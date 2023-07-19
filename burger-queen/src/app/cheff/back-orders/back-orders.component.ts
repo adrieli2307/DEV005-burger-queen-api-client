@@ -4,6 +4,7 @@ import { OrdersService } from 'src/app/services/orders.service';
 import { OrderI } from 'src/app/interfaces/order.interface';
 import { ProductsToOrderI } from 'src/app/interfaces/order.interface';
 import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-back-orders',
   templateUrl: './back-orders.component.html',
@@ -11,10 +12,10 @@ import { Router } from '@angular/router';
 })
 export class BackOrdersComponent implements OnInit {
   orders: OrderI[] = [];
-
-  currentDataTime: Date = new Date();
+ 
   rutaImgLogo: string = 'https://i.ibb.co/vZtH272/imgLogo.png';
   rutaImgFondo: string = 'https://i.ibb.co/VpkgVyf/img01.jpg';
+  status = 'pending'
 
   constructor(
     private authService: AuthService,
@@ -23,6 +24,7 @@ export class BackOrdersComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+     
     /*this.orders = [
       {
         "id": 1,
@@ -59,22 +61,23 @@ export class BackOrdersComponent implements OnInit {
         "dateProcessed":"2022-03-05 15:00"
       },
     ]*/
+    
     this.getOrdersPending();
-    setInterval(() => {
-      this.currentDataTime = new Date();
-    }, 1000);
   }
   
   getOrdersPending(): void {
-    this.orderService.getOrdersByStatus('pending').subscribe((result: OrderI[]) => {
+    this.orderService.getOrdersByStatus(this.status).subscribe((result: OrderI[]) => {
         this.orders = result;
         console.log('holaaa',result);
       });
   }
-  sendOrder(id:string) {
-    this.orderService.patchOrder(id, 'delivered').subscribe(
-      (order: OrderI) => {
-        console.log('orden enviada', order);
+  sendOrder(id:number) {
+    this.orderService.patchOrder(id, 'pending').subscribe(
+      (order) => {
+        const index = this.orders.findIndex((order) => order.id === id);
+        console.log('probando', index)
+        this.orders.splice(index,1)
+        console.log('orden enviada', order)
       },
       (error) => {
         console.log('orden NEGADA', error);

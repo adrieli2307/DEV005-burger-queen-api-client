@@ -1,7 +1,7 @@
 <body>
   <div class="containerOrders" *ngFor="let order of orders">
     <ul>
-      <li class="currentTime"> Hora: {{ currentDataTime | date: 'hh:mm:ss'}}</li>
+      
       <p class ="orderId">Orden Id:{{ order.id }}</p>
       <p class ="orderClient">Cliente: {{ order.client }}</p>
       <p class ="statusOrder">Status: {{order.status}}</p>
@@ -25,7 +25,7 @@
         </table>   
     </div>
     <div>
-      <button class="orderPending" (click)="sendOrder(order.id.toString())">PEDIDO LISTO</button>
+      <button class="orderPending" (click)="sendOrder(order.id)">PEDIDO LISTO</button>
     </div>
   </div>
 </body>

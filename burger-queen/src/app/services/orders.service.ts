@@ -30,7 +30,6 @@ export class OrdersService {
     let url = `${this.apiurl}?status=${status}`;
     console.log('este es coorecto', url);
     return this.http.get<OrderI[]>(url, this.httpOptions);
-    
   }
 
 
@@ -40,9 +39,20 @@ export class OrdersService {
   }
 
   // Modificar una orden
-  patchOrder(id: string, status: string): Observable<OrderI> {
+  patchOrder(id: number, status: string): Observable<OrderI> {
     const url = `${this.apiurl}/${id}`;
     const body = { status: status };
     return this.http.patch<OrderI>(url, body, this.httpOptions);
   }
+
+  calculateDuration (dataEntry:string, dateProcessed:string){
+    const timeEntry = new Date(dataEntry).getTime();
+    const timeProcessed = new Date(dateProcessed).getTime();
+    const duration = timeProcessed - timeEntry;
+    const hours = Math.floor(duration / (1000 * 60 * 60));
+    const minutes = Math.floor((duration % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((duration % (1000 * 60)) / 1000);
+    return `${hours}h ${minutes}m ${seconds}s`;
+}
+
 }
