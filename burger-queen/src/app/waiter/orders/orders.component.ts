@@ -7,7 +7,7 @@ import { OnInit } from '@angular/core';
 import { OrderI, ProductsToOrderI } from '../../interfaces/order.interface';
 import { AuthService } from '../../services/auth.service';
 import { ToastrService, } from 'ngx-toastr';
-import { OrdersService } from 'src/app/services/orders.service';
+import { OrdersService } from '../../services/orders.service';
 
 @Component({
   selector: 'app-orders',
