@@ -11,6 +11,7 @@ export class AuthService {
 
     constructor(private http: HttpClient,  private router:Router) { }
 
+    // Método para enviar data (email, password) y guardar respuesta en localStorage 
      responseUserFromApi(body: InfoLoginI) : Observable<UserResponseI> {
      return this.http.post<UserResponseI>('http://localhost:8080/login', body).pipe(
       tap ((data: UserResponseI) => {
@@ -21,6 +22,7 @@ export class AuthService {
         localStorage.setItem('dataUser', dataToLocalS)
     }))}
 
+   // Método para obtener data de localStorage
     getCurrentUser(): UserResponseI | null {
       const dataLocalS = localStorage.getItem('dataUser');
       console.log('dataLocalS', dataLocalS);
@@ -31,6 +33,7 @@ export class AuthService {
       console.log('obj', dataUserObj);
       return dataUserObj;
     }
+    // Método para cerrar cesión
     logout(): void {
       localStorage.removeItem('token')
       localStorage.removeItem('LoginUserI')

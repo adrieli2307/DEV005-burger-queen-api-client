@@ -13,7 +13,7 @@ export class CartOrderComponent implements OnInit {
 
 
   orders: OrderI[] = [];
-
+  timeResult: string = '';
 
   constructor(
     private authService: AuthService,
@@ -22,36 +22,34 @@ export class CartOrderComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-
-    this.orderService.getOrdersSubject().subscribe(result=>{
-      this.orders = result;
-    })
-
     this.getOrders();
 
   }
 
   getOrders(): void {
-   
     this.orderService.getOrdersByStatus(this.statusFilter).subscribe((result: OrderI[]) => {
-      this.orders = result;
-      console.log('holaaa', result);
+      this.orders = result.map(o => ( 
+        {
+        ...o,
+        totalTime: this.orderService.calculateDuration(o.dataEntry, o.dateProcessed)
+      }
+      ));
     });
   }
-  sendOrder(id: number) {
-    this.orderService.patchOrder(id, 'delivered').subscribe(
+ // Método para cambiar status de orden e ingresar valor a dataProcessed
+  sendOrder(id: number, order:OrderI) {
+    order.dataEntry = new Date ()
+    this.orderService.patchOrder(id, 'delivered', order.dataEntry ).subscribe(
       (order) => {
         const index = this.orders.findIndex((order) => order.id === id);
-        console.log('probando', index)
         this.orders.splice(index, 1)
-        console.log('orden enviada', order);
       },
       (error) => {
         console.log('orden NEGADA', error);
       }
     );
   }
-
+ // Método para filtrar productos de acuerdo a estatus
   getFilteredOrders(): OrderI[] {
     if (this.statusFilter) {
       return this.orders.filter(order => order.status === this.statusFilter)
@@ -59,15 +57,7 @@ export class CartOrderComponent implements OnInit {
       return this.orders;
     }
   }
+  
 }
 
-/*getPending(): void {
-  this.orderHttpSvc.getOrder('pending').subscribe({
-    next: (res) => {
-      this.orders = res;
-    },
-    error: () => {
-      this.toastr.error('Loading error orders.');
-    },
-  });
-}*/
+ 

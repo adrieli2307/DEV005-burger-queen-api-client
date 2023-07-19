@@ -137,7 +137,7 @@ table {
 
 }
 
-/*--------------------------------------modal---------------------------------*/
+/*--------------------------------------Resumen de pedido---------------------------------*/
 .modal-content {
   height: 100%;
   border-radius: 0px 40px 40px 0px;
@@ -215,7 +215,6 @@ table {
   padding: 3%;
   background-color: rgba(253, 253, 253, 0.187);
   overflow: scroll;
-  outline: 2px solid green;
 }
 
 .tableModal th,
@@ -248,7 +247,7 @@ table {
   
 }
 
-.activo {
+.active {
   background-color: var(--botones);
 }
 

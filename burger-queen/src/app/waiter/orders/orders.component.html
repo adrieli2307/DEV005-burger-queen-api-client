@@ -25,10 +25,10 @@
 
       <!--Tabla de menú de desayuno-->
       <section class="buttonContainer">
-        <button [ngClass]="{ 'activo': breakFastActivo }" (click)="filterProducts('Desayuno'); activarDesayuno()"
+        <button [ngClass]="{ 'active': breakFastActive }" (click)="filterProducts('Desayuno'); activeBreakFast()"
           class="buttonMenu" type="button">Desayunos</button>
         <!--Tabla de menú del día-->
-        <button [ngClass]="{ 'activo': lunchActivo }" (click)="filterProducts('Almuerzo'); activarAlmuerzo()"
+        <button [ngClass]="{ 'active': lunchActive }" (click)="filterProducts('Almuerzo'); activeLunch()"
           class="buttonMenu" for="menu" type="button"> Del día</button>
 
       </section>
@@ -57,7 +57,7 @@
 
 
     </div>
-    <!-- Modal de confirmación del pedido -->
+    <!-- div de resumen del pedido -->
     <div id="modalinpt" class=" divContainer modalContainer">
       <div class="modal-content">
         <h1 class="acceptOrder">Confirmación de Pedido</h1>

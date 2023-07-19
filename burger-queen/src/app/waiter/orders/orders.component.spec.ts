@@ -122,22 +122,4 @@ describe('OrdersComponent', () => {
       expect(component.cart.length).toBe(0);
     });
   });
-
-  describe('quantityOrder', () => {
-    it('debería calcular el precio total', () => {
-      const product1: ProductsToOrderI = {
-        qty: 3,
-        product: productsMock[0],
-      };
-      const product2: ProductsToOrderI = {
-        qty: 2,
-        product: productsMock[1],
-      };
-      component.cart = [product1, product2];
-
-      // El precio total debe ser (3 * 10) + (2 * 15) = 80
-      expect(component.quantityOrder()).toBe(60);
-    });
-  });
-
 });

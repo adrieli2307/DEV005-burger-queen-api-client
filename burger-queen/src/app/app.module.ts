@@ -12,7 +12,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { ButtonsComponent } from './buttons/buttons.component';
 import { ToastrModule, ToastrConfig} from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
- 
+import { OrdersService } from './services/orders.service';
+  
  
  
 
@@ -25,7 +26,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     WaiterComponent,
     CheffComponent,
     PageNotFoundComponent,
-    
+ 
  
 
   ],
@@ -36,9 +37,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ReactiveFormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),
+
   ],
-  providers: [],
+ 
+  providers: [OrdersService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

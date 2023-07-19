@@ -6,6 +6,12 @@ import { RouterModule, Routes } from '@angular/router';
 import { CartOrderComponent } from '../cart-order/cart-order.component';
 const routes : Routes = [
   {
+    path: '',
+    redirectTo: 'back-orders',
+    pathMatch: 'full'
+
+  },
+  {
     path:'back-orders',
     component: BackOrdersComponent
   },

@@ -1,13 +1,12 @@
 
 <body>
-    <div class="containerOrders" *ngFor="let order of getFilteredOrders()">
+    <div class="containerOrders" *ngFor="let order of getFilteredOrders().reverse()">
       <ul>
-        <!-- <li class="currentTime"> Hora: {{ currentDataTime | date: 'hh:mm:ss'}}</li> -->
-        <p class ="orderId">Orden Id:{{ order.id }}</p>
-        <p class ="orderClient">Cliente: {{ order.client }}</p>
-        <p class ="statusOrder">Status: {{order.status}}</p>
-        <p>data:{{order.dataEntry}}</p>
-        <p>data finalizada:{{order.dateProcessed}}</p>
+
+        <p class ="orderClient"> <b> Cliente:  </b>{{ order.client }}</p>
+        <p class ="statusOrder"><b> Estado:  </b> {{order.status}}</p>
+        <p> <b>Ingreso de pedido:  </b>{{order.dataEntry }}</p>
+        <p *ngIf="order.status === 'delivered'"><b>Tiempo total</b>:  {{order.totalTime}}</p>
       </ul>
       <div class="containerTable">
         
@@ -25,9 +24,8 @@
            
           </table>   
       </div>
-      <div *ngIf="order.status !== 'delivered'">
-
-        <button class="orderPending" (click)="sendOrder(order.id)">PEDIDO LISTO</button>
-      </div>
+       
+        <button class="orderPending" *ngIf="order.status !== 'delivered'"class="orderPending" (click)="sendOrder(order.id, order)">PEDIDO LISTO</button>
+       
     </div>
   </body>

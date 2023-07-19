@@ -8,7 +8,7 @@ import { AuthService} from '../services/auth.service'
 })
 export class CheffComponent {
   constructor(private authService : AuthService){}
-
+  nameUser: string | undefined = this.authService.getCurrentUser()?.user.email
   logout(){
     this.authService.logout();
   }

@@ -16,4 +16,5 @@ export interface OrderI{
   dataEntry: Date;
   dateProcessed:Date;
   priceTotal:number;
+  totalTime?:string;
 }

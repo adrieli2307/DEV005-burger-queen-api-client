@@ -29,14 +29,15 @@ export class OrdersComponent implements OnInit {
   // variable para iniciar en desayuno
   filterType: string = '';
   // variable para activar boton 
-  breakFastActivo: boolean = true;
-  lunchActivo: boolean = false;
+  breakFastActive: boolean = true;
+  lunchActive: boolean = false;
   // variable para mostrar mensaje;
   message: string = '';
   // variable para extraer cantidad de productos
   totalProductSelected: number = 0;
 
   constructor(private apiService: ProductsService, private authService: AuthService, private toast: ToastrService, private orderService: OrdersService) {
+   
     this.order = {
       id: 0,
       userId: 0,
@@ -53,10 +54,6 @@ export class OrdersComponent implements OnInit {
     this.getProductsApi();
     this.orderDone();
   }
-
-
-
-
 
   /*-----------------------------Creacion de formulario de orden-----------------------------*/
 
@@ -79,26 +76,27 @@ export class OrdersComponent implements OnInit {
   loadOrder() {
     this.orderDone();
     this.sendOrderApi();
+    // Método para enviar notificaciones al enviar pedido
     this.toast.success('El pedido ha sido enviado exitosamente', '', {
       toastClass: 'success-toastSend',
       closeButton: true,
       enableHtml: true,
       tapToDismiss: true,
     });
+    // Método para resetear el formulario
     this.resetOrder();
   }
 
   /*------------------------------ Funciones manipular productos de api-------------------------*/
 
-  //Función para obetner productos de api e insertarlos dentro de otra variable para insertarlos dentro de orden
+  // Método para obetner productos de api e insertarlos dentro de otra variable para insertarlos dentro de orden
   getProductsApi() {
     return this.apiService.getProductsFromAPI().subscribe((data) => {
       this.products = data
-
     });
   }
 
-  // Función para filtrar productos
+  // Método para filtrar productos y agregar nueva propiedad 
   filterProducts(type: string) {
     this.filteredProducts = [];
     const productFiltered = this.apiService.getProductsByType(type, this.products)
@@ -108,17 +106,16 @@ export class OrdersComponent implements OnInit {
         product: product,
       }
       this.filteredProducts.push(productObj)
-      // console.log('probandoooo',this.filteredProducts)
     })
-    //  console.log('ahorasii', this.filteredProducts)
+
   }
 
   /*---------------------Función para modificar cantidad de productos de carrito-----------------------*/
 
-  // Función para agregar y quitar productos del carrito de compras
+  // Método para agregar y quitar productos del carrito de compras
   updateQuantity(data: { eventValue: number, product: ProductsToOrderI }) {
     const { eventValue, product } = data;
-    if (eventValue > 0) { // 1
+    if (eventValue > 0) { 
       // Agregar producto al carrito
       const idProduct = this.cart.map(product => product.product.id);
       if (!idProduct.includes(product.product.id)) {
@@ -138,34 +135,19 @@ export class OrdersComponent implements OnInit {
       }
     }
     this.orderDone();
-    // console.log('cart', this.cart)
   }
 
 
-  // Función para mostrar totales de pedidos
-
-  quantityOrder() {
-
-    let sumaTotal = 0
-    this.cart.forEach((product) => {
-      sumaTotal += product.product.price * product.qty
-    })
-    // const sumaTotal = priceQuantity
-
-    return sumaTotal;
-  }
-
-
+ // Método para armar el resumen de pedido
   orderDone(): void {
     const userId = this.authService.getCurrentUser()?.user.id;
     let sumTotal = 0;
     this.cart.forEach((product) => sumTotal += product.qty * product.product.price)
-    //console.log('suma', sumaTotal) 
     if (userId !== undefined) {
       const order = {
         id: 0,
         userId: userId,
-        client: this.nameClient.value,//product.name
+        client: this.nameClient.value,
         products: this.cart,
         status: 'pending',
         dataEntry: new Date(''),
@@ -175,30 +157,18 @@ export class OrdersComponent implements OnInit {
       // Inyección de orden a variable
       this.order = order;
 
-      // Funciones para saber cantidad de productos
-      let sumaProduct = 0
-      this.order.products.forEach(index => sumaProduct += index.qty)
-      this.totalProductSelected = sumaProduct
-      //console.log('holassasas', this.totalProductSelected)
     }
-
-    console.log('cliente', sumTotal)
   }
-
+ // Método para enviar pedido a api
   sendOrderApi() {
-   
-
     this.order.dataEntry = new Date();
     this.order.id =  new Date().getTime();
-    this.orderService.postOrder(this.order).subscribe(()=>{
-      console.log('te envio .... ', this.order)
-    }) 
-    
+    this.orderService.postOrder(this.order).subscribe((result)=>console.log('te he enviado..', result))
+
   }
 
 
-
-  // Función para resetear formulario y limpiar variable de order
+  // Método para resetear formulario y limpiar variable de order
   resetOrder() {
     this.ordersForm.reset();
     this.cart = [];
@@ -216,19 +186,15 @@ export class OrdersComponent implements OnInit {
       product.qty = 0;
     });
   }
-  // Funciones para activar botones de filtrado
-  activarDesayuno() {
-    this.breakFastActivo = true;
-    this.lunchActivo = false;
+  // Método para activar botones de filtrado
+  activeBreakFast() {
+    this.breakFastActive = true;
+    this.lunchActive = false;
   }
 
-  activarAlmuerzo() {
-    this.breakFastActivo = false;
-    this.lunchActivo = true;
+  activeLunch() {
+    this.breakFastActive = false;
+    this.lunchActive = true;
   }
-
-
-
-
 
 }

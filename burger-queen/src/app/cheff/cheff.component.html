@@ -1,4 +1,8 @@
 <body>
+
+
+
+
     <nav>
       <img [src]="rutaImgLogo" class="rutaImgLogo" />
       <ul class="optionList">
@@ -17,13 +21,18 @@
       <img [src]="rutaImgFondo" class="rutaImgFondo" />
     </nav>
     <main>
-      <i
-        id="logout"
-        (click)="logout()"
-        class="fa-solid fa-right-from-bracket"
-      ></i>
+      <section class="headerMain">
+          <div class="userName">
+              <h1>¡Hola!</h1>
+              <h2> {{nameUser}}</h2>
+          </div>
+          <i id="logout" (click)="logout()" class="fa-solid fa-right-from-bracket"></i>
   
+      </section>
+   
+      <hr>
       <router-outlet></router-outlet>
-    </main>
+  
+  </main>
   </body>
-
+ 
