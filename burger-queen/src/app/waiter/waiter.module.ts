@@ -6,6 +6,7 @@ import { PendingOrdersComponent } from './pending-orders/pending-orders.componen
 import { ProductsService } from '../services/products.service';
 import { ButtonsComponent } from '../buttons/buttons.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CheffModule } from '../cheff/cheff.module';
 
 const routes : Routes = [
   {
@@ -30,6 +31,7 @@ const routes : Routes = [
     OrdersComponent,
     PendingOrdersComponent,
     ButtonsComponent,
+    
   
  
  
@@ -39,7 +41,8 @@ const routes : Routes = [
     CommonModule,
     RouterModule.forChild(routes),
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    CheffModule,
  
   ],
   exports: [RouterModule]
