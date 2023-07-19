@@ -1,31 +1,5 @@
-<body>
-  <div class="containerOrders" *ngFor="let order of orders">
-    <ul>
-      
-      <p class ="orderId">Orden Id:{{ order.id }}</p>
-      <p class ="orderClient">Cliente: {{ order.client }}</p>
-      <p class ="statusOrder">Status: {{order.status}}</p>
-      <p>data:{{order.dataEntry}}</p>
-      <p>data finalizada:{{order.dateProcessed}}</p>
-    </ul>
-    <div class="containerTable">
-      
-        <table class="detailOrder">
-          <tr>
-            <th>Item</th>
-            <th>Cantidad</th>
-          </tr>
-          <ng-container *ngFor="let productsOrder of order.products">
-          <tr *ngIf="order.status==='pending'">
-            <td>{{ productsOrder.product.name }} </td>
-            <td > {{ productsOrder.qty }}</td>
-          </tr>
-        </ng-container>
-         
-        </table>   
-    </div>
-    <div>
-      <button class="orderPending" (click)="sendOrder(order.id)">PEDIDO LISTO</button>
-    </div>
-  </div>
-</body>
+<div>
+ 
+  <app-cart-order [statusFilter]="'pending'"></app-cart-order>
+
+</div>

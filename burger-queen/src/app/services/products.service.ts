@@ -3,6 +3,12 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { ProductsI } from '../interfaces/products.interface';
 import { Observable, tap } from 'rxjs';
 import { AuthService } from './auth.service';
+<<<<<<< HEAD
+=======
+import { tap, map } from 'rxjs';
+import { ProductsToOrderI } from '../interfaces/order.interface';
+
+>>>>>>> origin/caro
 
 
 @Injectable({
@@ -18,7 +24,7 @@ export class ProductsService {
   
 
   constructor(private http: HttpClient, userDataFromApi: AuthService) {
-
+   // Obtención de token de acceso
     this.tokenAccess = userDataFromApi.getCurrentUser()?.accessToken;
 
   }
@@ -36,13 +42,14 @@ export class ProductsService {
       })
     );
   }
-  
-  filterByType() {
-    if (this.filterType) {
-      this.filteredProducts = this.products.filter((product) => product.type === this.filterType);
-    } else {
-      this.filteredProducts = this.products; // Si no hay tipo de filtro, mostrar todos los productos
-    }
-  }
- 
+  // Método para filtrar productos por tipo 
+  getProductsByType(types: string, data: ProductsI[]) {
+      if (types !== ''){
+        return data.filter((item: ProductsI) => item.type === types)
+      } else {
+        return data;
+      }
+     }
+
+
 }

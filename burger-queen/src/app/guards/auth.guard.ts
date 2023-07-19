@@ -1,9 +1,7 @@
 import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router, UrlTree } from '@angular/router';
 import { Injectable } from '@angular/core';
 import { AuthService } from '../services/auth.service';
-//export const authGuard: CanActivateFn = (route:ActivatedRouteSnapshot, state:RouterStateSnapshot) => {
-//   return true;
-// };
+
 @Injectable({
   providedIn: 'root'
 })
@@ -36,8 +34,7 @@ export class AuthGuard implements CanActivate {
         return true;
       } 
       else {
-        // Redirigir a una página de acceso denegado o mostrar un mensaje de error
-        console.log('router',this.router.parseUrl('/login') )
+        
         return this.router.parseUrl('/login');
       }
     } else {

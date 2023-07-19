@@ -7,11 +7,18 @@ import { ProductsService } from '../services/products.service';
 import { AuthService } from '../services/auth.service';
 import { ButtonsComponent } from '../buttons/buttons.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CheffModule } from '../cheff/cheff.module';
 
 const routes : Routes = [
   {
+    path: '',
+    redirectTo: 'orders',
+    pathMatch: 'full'
+
+  },
+  {
     path:'orders',
-    component: OrdersComponent
+    component: OrdersComponent,
   },
   {
     path:'pending-orders',
@@ -25,6 +32,7 @@ const routes : Routes = [
     OrdersComponent,
     PendingOrdersComponent,
     ButtonsComponent,
+    
   
  
  
@@ -35,7 +43,8 @@ const routes : Routes = [
     CommonModule,
     RouterModule.forChild(routes),
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    CheffModule,
  
   ],
   

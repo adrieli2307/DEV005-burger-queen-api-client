@@ -9,3 +9,38 @@
     --cantidad:#FFE3B9;
     --fondo:#5f5b5b07;
 }
+.warning-toast {
+    font-family:Arial, Helvetica, sans-serif !important; /* Modifica el tipo de letra para el error */
+    background-color: #333333 !important; 
+    color: rgb(225, 225, 225);
+    border-radius: 15px;
+    padding:8%;
+    box-shadow: 0 0 10px 0 rgb(190, 190, 190);
+    margin:3%;
+    font-size:1.1em ;
+ 
+}
+.success-toast {
+    font-family:Arial, Helvetica, sans-serif !important; /* Modifica el tipo de letra para el error */
+    background-color:#FFC85E  !important; 
+    color: rgb(69, 69, 69);
+    border-radius: 15px;
+    padding:8%;
+    box-shadow: 0 0 10px 0 rgb(190, 190, 190);
+    margin:3%;
+    font-size:1.1em ;
+
+ 
+}
+.success-toastSend{
+    font-family:Arial, Helvetica, sans-serif !important; /* Modifica el tipo de letra para el error */
+    background-color:#FFC85E !important; 
+    color:rgb(69, 69, 69);
+    border-radius: 15px;
+    padding:8%;
+    box-shadow: 0 0 20px 0 #f8d285 ;
+    margin:3%;
+    font-size:1.1em ;
+ 
+ 
+}

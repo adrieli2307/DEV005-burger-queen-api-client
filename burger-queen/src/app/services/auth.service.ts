@@ -4,14 +4,22 @@ import { InfoLoginI } from '../interfaces/InfoLogin';
 import { UserResponseI  } from '../interfaces/UserResponse';
 import { Observable, tap } from 'rxjs';
 import { Router } from '@angular/router';
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/caro
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
+<<<<<<< HEAD
     constructor(private http: HttpClient, private router:Router) { }
+=======
+    constructor(private http: HttpClient,  private router:Router) { }
+>>>>>>> origin/caro
 
+    // Método para enviar data (email, password) y guardar respuesta en localStorage 
      responseUserFromApi(body: InfoLoginI) : Observable<UserResponseI> {
      return this.http.post<UserResponseI>('http://localhost:8080/login', body).pipe(
       tap ((data: UserResponseI) => {
@@ -22,6 +30,7 @@ export class AuthService {
         localStorage.setItem('dataUser', dataToLocalS)
     }))}
 
+   // Método para obtener data de localStorage
     getCurrentUser(): UserResponseI | null {
       const dataLocalS = localStorage.getItem('dataUser');
       console.log('dataLocalS', dataLocalS);
@@ -32,9 +41,17 @@ export class AuthService {
       console.log('obj', dataUserObj);
       return dataUserObj;
     }
+<<<<<<< HEAD
+=======
+    // Método para cerrar cesión
+>>>>>>> origin/caro
     logout(): void {
       localStorage.removeItem('token')
       localStorage.removeItem('LoginUserI')
       this.router.navigate(['/login/'])
      }
+<<<<<<< HEAD
   }
+=======
+  }
+>>>>>>> origin/caro

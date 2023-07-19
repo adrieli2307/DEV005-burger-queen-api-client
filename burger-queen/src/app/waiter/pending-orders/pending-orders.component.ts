@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { CartOrderComponent } from 'src/app/cart-order/cart-order.component';
 
 @Component({
   selector: 'app-pending-orders',

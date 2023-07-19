@@ -1,0 +1,97 @@
+
+.containerOrders{
+    background-color: rgb(227, 223, 223);
+    width: 70%;
+    min-height: 300px;
+    height:100%;
+    margin: auto;
+    margin-top: 8%;
+    border-radius: 20px;
+    background-repeat: repeat;
+    font-family:'Roboto Flex', sans-serif;
+    font-size: 1.2em;
+    padding: 10%;
+    display: grid;
+    grid-template-columns: 100%;
+    gap: 15px;
+    box-shadow: 0 0 20px 0 #e7e7e7;
+    color: rgb(44, 44, 44);
+   
+}
+.containerOrders ul p{
+    
+    border-bottom: 1px solid rgb(242, 242, 242);
+    margin-top: 3%;
+    font-size: 1.2em;
+}
+.orderPending{
+    display: inline-block;
+    width: 100%;
+    min-height: 40px;
+    height: 10%;
+    background-color:  #fee79b;
+    border-radius: 15px;
+    margin: auto;
+    font-size: 1.1em;
+    font-weight: 600;
+    color: #2f2e2e;
+    border:none;
+    box-shadow: 0 0 15px 0 #b5b5b5;
+    margin-top:5%;
+    color: rgb(93, 93, 93);
+ 
+
+}
+
+ 
+.containerTable{
+ 
+    border-radius: 15px;
+    width:100%;
+    padding:5%;
+    margin:auto;
+    background-color: #f3f2f1d7;
+    color: rgb(8, 8, 8);
+    box-shadow: 0 0 15px 0  #c3c2c1;
+ 
+}
+
+table{
+    
+  width: 100%;
+  border-collapse: collapse;
+ 
+  text-align: center;
+
+}
+.detailOrder  td {
+    padding: 2%; 
+    border-bottom: 1px solid rgba(139, 138, 138, 0.947);
+    text-align: center;
+}
+.detailOrder th{
+    font-size: 1.2em;
+}
+
+@media (min-width:900px){
+    
+body{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap:20px;
+    padding: 5%;
+    justify-content: space-between;
+
+}
+
+.containerOrders{
+    width: 95%;
+   
+  
+}
+
+
+
+}
+
+
