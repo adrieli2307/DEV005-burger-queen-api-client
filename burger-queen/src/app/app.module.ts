@@ -11,9 +11,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AuthService } from './services/auth.service';
 import { ButtonsComponent } from './buttons/buttons.component';
-
-
-
+import { ToastrModule, ToastrConfig} from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { OrdersService } from './services/orders.service';
+import { CartOrderComponent } from './cart-order/cart-order.component';
 
 
 @NgModule({
@@ -26,6 +27,7 @@ import { ButtonsComponent } from './buttons/buttons.component';
     CheffComponent,
     PageNotFoundComponent,
  
+ 
 
   ],
   imports: [
@@ -33,9 +35,13 @@ import { ButtonsComponent } from './buttons/buttons.component';
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot(),
+   
   ],
-  //providers: [AuthService],
+ 
+  providers: [OrdersService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

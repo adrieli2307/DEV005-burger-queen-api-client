@@ -1,147 +1,289 @@
-#client,
-#nmesa{
-    font-size: 15px;
-    border: none;
-    margin-left: 30px;
-   
+* {
+  font-family: 'Roboto Flex', sans-serif;
 }
-.inclient,
-.intable,
-#nombreCliente,
-#numeroMesa{
-    border: none;
-    border-bottom: 1px solid black;
-    margin-left: 30px;
+
+form {
+  width: 95%;
+  height: 100%;
+  margin: auto;
+  display: grid;
+  grid-template-columns: 1fr .8fr;
+  align-items: center;
+  justify-content:center ;
+}
+
+.divContainer {
+
+  min-height: 600px;
+  height: 100%;
+  margin: 1%;
+  margin-top: 2%;
+  padding: 4%;
+
+
+}
+
+.takeOrder {
+  box-shadow: 0px 0px 25px 0px rgb(144, 144, 143);
+  border-radius: 40px 0px 0px 40px;
+  padding: 7%;
+  position: relative;
+}
+
+.message {
+  position: absolute;
+  top: 3%;
+  right: 3%;
+  width: 50px;
+  height: 50px;
+  background-color: var(--botones);
+  box-shadow: 0px 0px 10px 0px rgb(156, 137, 70);
+  border-radius: 25px;
+  display: flex;
+  flex-flow: row wrap;
+  margin: auto;
+  padding: 8px;
+}
+
+.message div {
+  display: inline-block;
+  text-align: center;
+}
+
+
+.inputContain {
+  height: 10%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2%;
+}
+
+.inputContain section {
+  display: grid;
+
+
+}
+
+.inputContain section input {
+  height: 100%;
+  padding: 1%;
+  padding-left: 2%;
+  border: none;
+  font-size: 1em;
+  border-bottom: 2px solid var(--botones);
+
+  &:focus {
+    outline: none;
+
+  }
+}
+
+.inputContain section label {
+  font-weight: 700;
+  font-size: 1.2em;
+}
+
+.buttonContainer {
+  margin-top: 5%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+
+}
+
+.buttonMenu {
+  width: 100%;
+  padding: 4%;
+  font-size: 1.2em;
+  font-weight: 800;
+  border: 2px solid var(--botones);
+  border-bottom: none;
+  border-radius: 15px 15px 0px 0px;
+  background-color: rgb(255, 255, 255);
+
+}
+
+
+.tableOrder th,
+.tableOrder td {
+  padding: 8px;
+  text-align: center;
+  border-bottom: 1px solid rgba(83, 83, 83, 0.936);
+
+}
+
+.orderContain {
+  width: 100%;
+  padding: 10px;
+  border-radius: 0px 0px 10px 10px;
+  border: 3px solid var(--botones);
+  background-color: #ffc95e17;
+
+
+}
+
+.tableOrder th {
+  background-color: #ffc95e5d;
+  border-bottom: 1px solid var(--botones);
+  border-left: 1px solid white;
+  border-right: 1px solid white;
 }
 
 table {
-    width: 80%;
-    border-collapse: collapse;
-    margin-left: auto;
-    margin-right: auto;
-    background-color: var(--fondo);
-    margin-top: 14px;
-    
-  }
-  .menu,
-  #detallePedido  {
-    background-color:var(--botones);
-    padding: 10px 20px; /* Ajusta los valores de padding según el tamaño deseado */
-    font-size: 18px; /* Ajusta el tamaño de la fuente según el tamaño deseado */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 50px; /* Ajusta el valor del border-radius según el grado de redondez deseado */
-    margin: 0 auto; /* Agrega esta línea para centrar horizontalmente */
-    margin-top: 20px; /* Agrega un margen superior si es necesario */
-    margin-left: 15px;
-  }
-  /* Número de cantidad */
-  .quantity{
-    width: 30px; /* Establece el ancho deseado */
-    height: 20px; /* Establece la altura deseada */
-    /* Otros estilos opcionales */
-    padding: 1px;
-    font-size: 14px;
-    text-align: center;
-    border:none;
-  }
 
-  /* Botón de cantidad */
-  .buttonquantity{
-    width: 20px;
-    height: 20px;
-    border-radius: 10%; /* Hace que el botón sea circular */
-    /* Otros estilos opcionales */
-    background-color: var(--cantidad);
-    color: rgb(0, 0, 0);
-    font-size: 16px;
-  }
-  table th, table td {
-    border: none;
-    padding: 8px;
-    text-align: center;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.936);
-    background-color: var(--fondo);
-    
-  }
+  width: 100%;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+
+}
+
+/*--------------------------------------Resumen de pedido---------------------------------*/
+.modal-content {
+  height: 100%;
+  border-radius: 0px 40px 40px 0px;
+  box-shadow: 0px 0px 20px 0px rgb(207, 206, 204);
+  background-color: rgb(19, 13, 7);
+  padding: 8% 8% 0 8%;
+  color: rgb(255, 255, 255);
+}
+
+.modal-content h1 {
+  text-align: center;
+  margin-bottom: 5%;
+  color: var(--botones);
+  font-size: 1.8em;
+  color: rgb(248, 247, 239);
+  text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+.clientData {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border-bottom: 1px solid rgb(111, 110, 110);
+  padding: 1%;
+  font-size: 1em;
+  margin: auto;
+
+}
+
+.modal-content section h2 {
+  font-size: 1em;
+  font-weight: 600;
+  color: rgb(142, 142, 142);
+  font-weight: 1000;
+
+}
+
+.modal-content section span {
+  font-size: 1.1em;
+  font-weight: 500;
+  color: rgb(205, 205, 205);
+}
+
+.buttonModal {
+  width: 100%;
+  margin: auto;
+  margin-top: 5%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5%;
+
+}
+
+.buttonOrder {
+  width: 100%;
+  height: 40px;
+  font-size: 1em;
+  font-weight: 800;
+  background-color: var(--botones);
+  border-radius: 10px;
+  box-shadow: 0px 0px 15px 0px rgb(118, 117, 117);
+}
+
+.buttonCancel {
+  background-color: rgba(92, 91, 91, 0.279);
+  border: 1px solid rgb(106, 106, 106);
+  color: white;
+
+}
+
+.modalTable {
+  width: 100%;
+  max-height:250px;
+  border-radius: 15px;
+  padding: 3%;
+  background-color: rgba(253, 253, 253, 0.187);
+  overflow: scroll;
+}
+
+.tableModal th,
+.tableModal td {
+
+  border: none;
+  padding: 8px;
+  text-align: center;
+  border-bottom: 1px solid rgba(137, 134, 134, 0.947);
+  color: rgb(201, 201, 201);
+
+}
+
+.tableModal th {
+  background-color: #e8d4ae00;
+  color: rgb(231, 220, 184);
+
+}
+.total{
+
+  width:93%;
+  height: 35px;
+  margin-top: 2%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  font-weight: 800;
+  text-align: end;
+  padding: 6px;
+  font-size: 1em;
   
-  #detallePedido {
-    margin-left: 40%;
- }
-  /*----------------MODAL-------------------*/
+}
 
- #enviarBtn,
- #cancelarBtn{
-   padding: 10px 20px; /* Ajusta los valores de padding según el tamaño deseado */
-   font-size: 18px; /* Ajusta el tamaño de la fuente según el tamaño deseado */
-   border-radius: 50px; /* Ajusta el valor del border-radius según el grado de redondez deseado */
-   margin: 0 auto; /* Agrega esta línea para centrar horizontalmente */
-   margin-top: 20px; /* Agrega un margen superior si es necesario */
-   margin-left: 55px;
-   
- }
-
- #enviarBtn{
-   background-color:var(--botones); 
- }
+.active {
+  background-color: var(--botones);
+}
 
  #cancelarBtn{
    border: 1px solid red;
    background-color: white;
    }
 
- #modalinpt{
-    position: fixed;
-  z-index: 9999;
-  top: 0;
-  left: 0;
+.modalTable {
   width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5); /* Fondo semitransparente */
- }
- .modal-content{
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-color: #fff;
-  padding: 20px;
- }
- .acceptorder{
-    font-size: 30px;
-    text-align: center;
-    padding: 10px;
-    background-color: var(--botones);
-    border-radius: 20px;
- }
+  max-height:250px;
+  border-radius: 15px;
+  padding: 3%;
+  background-color: rgba(253, 253, 253, 0.187);
+  overflow: scroll;
+}
 
- #nombreCliente,
- #numeroMesa{
-    background-color: var(--fondo);
+.tableModal th,
+.tableModal td {
 
- }
+  border: none;
+  padding: 8px;
+  text-align: center;
+  border-bottom: 1px solid rgba(137, 134, 134, 0.947);
+  color: rgb(201, 201, 201);
 
- .nameclient,
- .numtable{
-   font-size: 15px;
-   display: inline-block;
-   vertical-align: middle;
-   padding: 5px;
-   margin-left: 30px;
- 
- }
+}
 
- .logout{
-  display: flex;
-  width: 150px;
-  height: 30px;
-  background-color: var(--botones);
-  border-radius: 20px;
-  margin-left: 70%;
-  margin-top: 10px;
-  font-size: 18px;
-  align-items: center;
-  justify-content: center;
- }
+  .modal-content {
+    border-radius: 0px 0px 40px 40px;
+    padding-bottom: 3%;
+  }
+  
 
+  
+}
+
+  
+}

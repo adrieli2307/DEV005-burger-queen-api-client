@@ -1,19 +1,77 @@
-body{
-    margin: 0%;
-    display: flex;
-}
-
-
-.pendingOrders{
-    display: flex;
-    background-color: red;
-    width: 70%;
-    height: 350px;
-    margin-left: 15%;
-    margin-top: 40px;
+.containerOrders{
+    background-color: #F0F0F0;
+    width: 60%;
+    height: 300px;
+    margin-left: 20%;
+    margin-top: 10px;
     border-radius: 10px;
+    background-repeat: repeat;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 20px;
    
 }
+.orderPending{
+    display: flex;
+    width: 120px;
+    height: 30px;
+    background-color: var(--botones);
+    border-radius: 20px;
+    margin-top: 20px;
+    margin-left: 170px;
+    font-size: 12px;
+    justify-content:center ;
+}
+
+.currentTime{
+    font-weight: bolder;
+    margin-left: 70%;
+    font-size: 20px;
+    
+}
+.orderId{
+    
+    margin-left: 20px;
+    width: 100px;
+    background-color: #FAD576;
+}
+.statusOrder{
+    margin-left: 20px;
+    margin-top: 10px;
+    width: 200px;
+    border-style:outset;
+}
+.orderClient{
+    margin-left: 20px;
+    margin-top: 10px;
+    width: 200px;
+    border-style:outset;
+}
+.containerTable{
+    background-color: #D9D9D9;
+    border-radius: 10px;
+    width: 70%;
+    margin-left: 50px;
+    margin-top: 25px;
+}
+
+table{
+    
+  width: 100%;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+
+}
+.detailOrder td th {
+    border: none;
+    padding: 8px;
+    
+    border-bottom: 1px solid rgba(137, 134, 134, 0.947);
+    
+    
+}
+
 
 /*.one{
     background-color: blue;
