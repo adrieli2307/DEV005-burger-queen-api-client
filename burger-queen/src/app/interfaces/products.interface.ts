@@ -5,5 +5,4 @@ export interface ProductsI {
     image: string;
     type: string;
     dateEntry?: Date;
- 
 }

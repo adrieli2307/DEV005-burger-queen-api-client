@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html>
+  <head>
+    <meta charset="utf-8" />
+    <title>waiter</title>
+  </head>
 
-<head>
-  <meta charset="utf-8" />
-  <title>waiter</title>
-</head>
-
+  
 <body>
   
   <form [formGroup]="ordersForm" (ngSubmit)="loadOrder()">
@@ -109,23 +109,14 @@
           <button class="buttonOrder buttonCancel" type="button" (click)="resetOrder()">CANCELAR</button>
         </section>
 
-<<<<<<< HEAD
-        <p id="total"></p>
-        <button id="enviarBtn" type="submit"  [disabled]="ordersForm.invalid || cart.length === 0">ENVIAR</button>
-       
-        <button id="cancelarBtn" (click)="closeModal()">CANCELAR</button>
-=======
->>>>>>> origin/caro
       </div>
     </div>
 
 
   </form>
 </body>
-<<<<<<< HEAD
+
 </html>
 
-=======
- 
->>>>>>> origin/caro
 
+ 

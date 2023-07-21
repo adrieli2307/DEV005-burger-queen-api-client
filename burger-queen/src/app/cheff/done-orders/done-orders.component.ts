@@ -19,7 +19,6 @@ export class DoneOrdersComponent implements OnInit{
   ) {}
 
   ngOnInit(): void {
-    this.durationResult = this.orderService.calculateDuration('2023-07-17 09:00:', '2023-07-17 10:30:00')
     this.getOrdersDelivered();
     
   }
@@ -38,16 +37,4 @@ export class DoneOrdersComponent implements OnInit{
     const timeDelivery = timeEntry - timeProcessed;
     return timeDelivery;
   }
-  /*sendOrder(id:string) {
-    this.orderService.patchOrder(id, 'delivered').subscribe(
-      (order: OrderI) => {
-        console.log('orden enviada', order);
-      },
-      (error) => {
-        console.log('orden NEGADA', error);
-      }
-    );
-  }*/
-
-  
 }

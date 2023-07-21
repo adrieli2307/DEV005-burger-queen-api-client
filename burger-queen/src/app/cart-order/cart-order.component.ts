@@ -39,7 +39,7 @@ export class CartOrderComponent implements OnInit {
  // Método para cambiar status de orden e ingresar valor a dataProcessed
   sendOrder(id: number, order:OrderI) {
     order.dateProcessed = new Date ();
-    this.orderService.patchOrder(id, 'delivered', order.dateProcessed ).subscribe(
+    this.orderService.patchOrder(id, 'delivered', order.dateProcessed).subscribe(
       (order) => {
         const index = this.orders.findIndex((order) => order.id === id);
         this.orders.splice(index, 1)
@@ -59,5 +59,3 @@ export class CartOrderComponent implements OnInit {
   }
   
 }
-
- 

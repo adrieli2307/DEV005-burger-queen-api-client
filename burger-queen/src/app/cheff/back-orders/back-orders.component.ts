@@ -29,35 +29,4 @@ export class BackOrdersComponent implements OnInit {
     // this.getOrdersPending();
   
   }
-  
-  // getOrdersPending(): void {
-  //   this.orderService.getOrdersByStatus('pending').subscribe((result: OrderI[]) => {
-  //       this.orders = result;
-  //       console.log('holaaa',result);
-  //     });
-  // }
-  // sendOrder(id:number) {
-  //   this.orderService.patchOrder(id, 'delivered').subscribe(
-  //     (order) => {
-  //       const index = this.orders.findIndex((order) => order.id === id);
-  //       console.log('probando', index)
-  //       this.orders.splice(index,1)
-  //       console.log('orden enviada', order);
-  //     },
-  //     (error) => {
-  //       console.log('orden NEGADA', error);
-  //     }
-  //   );
-  // }
 }
-
-/*getPending(): void {
-  this.orderHttpSvc.getOrder('pending').subscribe({
-    next: (res) => {
-      this.orders = res;
-    },
-    error: () => {
-      this.toastr.error('Loading error orders.');
-    },
-  });
-}*/

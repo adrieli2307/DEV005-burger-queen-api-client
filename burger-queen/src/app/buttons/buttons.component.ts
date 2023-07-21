@@ -1,11 +1,6 @@
 import { Component, Input } from '@angular/core';
-import { ProductsI } from '../interfaces/products.interface';
 import { Output, EventEmitter } from '@angular/core';
-<<<<<<< HEAD
-import { UsersService } from '../services/users.service';
-=======
 import { ToastrService } from 'ngx-toastr'
->>>>>>> origin/caro
 
 @Component({
   selector: 'app-buttons',
@@ -16,13 +11,7 @@ export class ButtonsComponent {
   @Input() quantityProduct: number;
   @Output() clickButtonEvent = new EventEmitter<number>();
   
-  
-
-<<<<<<< HEAD
-  constructor(private userService:UsersService) {
-=======
-  constructor(private toast:ToastrService) {
->>>>>>> origin/caro
+    constructor(private toast:ToastrService) {
     this.quantityProduct = 0;
 
     }

@@ -3,12 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { ProductsI } from '../interfaces/products.interface';
 import { Observable, tap } from 'rxjs';
 import { AuthService } from './auth.service';
-<<<<<<< HEAD
-=======
-import { tap, map } from 'rxjs';
-import { ProductsToOrderI } from '../interfaces/order.interface';
 
->>>>>>> origin/caro
 
 
 @Injectable({
@@ -38,7 +33,7 @@ export class ProductsService {
     return this.http.get<ProductsI[]>(this.apiUrl, { headers }).pipe(
       tap((products) => {
         this.products = products;
-        this.filterByType(); // Filtrar los productos al obtener los datos de la API
+
       })
     );
   }

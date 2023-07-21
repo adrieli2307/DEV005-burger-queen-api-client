@@ -32,11 +32,6 @@ const routes : Routes = [
     OrdersComponent,
     PendingOrdersComponent,
     ButtonsComponent,
-    
-  
- 
- 
-
   ],
 
   imports: [
@@ -45,8 +40,7 @@ const routes : Routes = [
     FormsModule,
     ReactiveFormsModule,
     CheffModule,
- 
-  ],
+   ],
   
   exports: [RouterModule]
 })

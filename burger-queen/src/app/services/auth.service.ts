@@ -4,20 +4,12 @@ import { InfoLoginI } from '../interfaces/InfoLogin';
 import { UserResponseI  } from '../interfaces/UserResponse';
 import { Observable, tap } from 'rxjs';
 import { Router } from '@angular/router';
-<<<<<<< HEAD
-
-=======
->>>>>>> origin/caro
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-<<<<<<< HEAD
-    constructor(private http: HttpClient, private router:Router) { }
-=======
     constructor(private http: HttpClient,  private router:Router) { }
->>>>>>> origin/caro
 
     // Método para enviar data (email, password) y guardar respuesta en localStorage 
      responseUserFromApi(body: InfoLoginI) : Observable<UserResponseI> {
@@ -41,17 +33,10 @@ export class AuthService {
       console.log('obj', dataUserObj);
       return dataUserObj;
     }
-<<<<<<< HEAD
-=======
     // Método para cerrar cesión
->>>>>>> origin/caro
     logout(): void {
       localStorage.removeItem('token')
       localStorage.removeItem('LoginUserI')
       this.router.navigate(['/login/'])
      }
-<<<<<<< HEAD
   }
-=======
-  }
->>>>>>> origin/caro

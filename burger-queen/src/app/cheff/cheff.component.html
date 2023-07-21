@@ -1,46 +1,37 @@
-<!DOCTYPE html>
-<html>
-
-<head>
-  <meta charset="utf-8" />
-  <title>cheff</title>
-</head>
-
 <body>
 
 
 
 
-    <nav>
-      <img [src]="rutaImgLogo" class="rutaImgLogo" />
-      <ul class="optionList">
-        <li>
-          <a class="option" routerLink="/kitchen/back-orders" routerLinkActive="active"
-            >PEDIDOS PENDIENTES</a>
-        </li>
-        <li>
-          <a
-            class="option"
-            routerLink="/kitchen/done-orders"
-            routerLinkActive="active"
-            >PEDIDOS REALIZADOS</a>
-        </li>
-      </ul>
-      <img [src]="rutaImgFondo" class="rutaImgFondo" />
-    </nav>
-    <main>
-      <section class="headerMain">
-          <div class="userName">
-              <h1>¡Hola!</h1>
-              <h2> {{nameUser}}</h2>
-          </div>
-          <i id="logout" (click)="logout()" class="fa-solid fa-right-from-bracket"></i>
-  
-      </section>
-   
-      <hr>
-      <router-outlet></router-outlet>
-  
-  </main>
-  </body>
+  <nav>
+    <img [src]="rutaImgLogo" class="rutaImgLogo" />
+    <ul class="optionList">
+      <li>
+        <a class="option" routerLink="/kitchen/back-orders" routerLinkActive="active"
+          >PEDIDOS PENDIENTES</a>
+      </li>
+      <li>
+        <a
+          class="option"
+          routerLink="/kitchen/done-orders"
+          routerLinkActive="active"
+          >PEDIDOS REALIZADOS</a>
+      </li>
+    </ul>
+    <img [src]="rutaImgFondo" class="rutaImgFondo" />
+  </nav>
+  <main>
+    <section class="headerMain">
+        <div class="userName">
+            <h1>¡Hola!</h1>
+            <h2> {{nameUser}}</h2>
+        </div>
+        <i id="logout" (click)="logout()" class="fa-solid fa-right-from-bracket"></i>
+
+    </section>
  
+    <hr>
+    <router-outlet></router-outlet>
+
+</main>
+</body>

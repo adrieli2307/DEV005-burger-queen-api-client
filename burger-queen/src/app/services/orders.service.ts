@@ -1,4 +1,3 @@
-import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { AuthService } from './auth.service';
@@ -46,9 +45,7 @@ export class OrdersService {
     return this.http.patch<OrderI>(url, body, this.httpOptions);
   }
 
-  // Calcular tiempo de realización de pedido
-  calculateDuration(dataEntry: Date, dateProcessed: Date) {
-
+  calculateDuration (dataEntry:Date, dateProcessed:Date){
     const timeEntry = new Date(dataEntry).getTime();
     const timeProcessed = new Date(dateProcessed).getTime();
     const duration = timeProcessed - timeEntry;
@@ -56,7 +53,7 @@ export class OrdersService {
     const minutes = Math.floor((duration % (1000 * 60 * 60)) / (1000 * 60));
     const seconds = Math.floor((duration % (1000 * 60)) / 1000);
     return `${hours}h ${minutes}m ${seconds}s`;
-  }
+}
  
 
 }

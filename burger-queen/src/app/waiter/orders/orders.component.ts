@@ -108,7 +108,6 @@ export class OrdersComponent implements OnInit {
     })
 
   }
-}
 
   /*---------------------Función para modificar cantidad de productos de carrito-----------------------*/
 
