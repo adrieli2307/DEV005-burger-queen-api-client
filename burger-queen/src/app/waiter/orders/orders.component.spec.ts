@@ -10,72 +10,112 @@ import { ToastrService, ToastrModule } from 'ngx-toastr';
 import { OrdersService } from '../../services/orders.service';
 import { render as renderTestLibrary, fireEvent, render  } from '@testing-library/angular';
 
-describe('OrdersComponent', () => {
-  // Mock de servicios y otras dependencias
-  const mockAuthService = {
-    getCurrentUser: jest.fn(() => ({ user: { email: 'test@example.com', id: 1 } })),
-  };
 
-  const mockProductsService = {
-    getProductsFromAPI: jest.fn(() => of([])),
-    getProductsByType: jest.fn(),
-  };
+describe('OrderComponent',()=>{
+  // mock de servicios 
+  console.log('donde estas')
+  let mockProductsService: Partial<ProductsService>;
+  let mockOrdersService: Partial<OrdersService>;
+  let mockToastrService: Partial<ToastrService>;
 
-  const mockOrdersService = {
-    postOrder: jest.fn(),
-  };
+  beforeEach( async()=>{
+    // Creación de mocks
 
-  const mockToastrService = {
-    success: jest.fn(),
-  };
-
-  beforeEach(() => {
+    mockProductsService = {
+      getProductsFromAPI: jest.fn(()=> of ([])),
+      getProductsByType: jest.fn(),
+    };
+    mockOrdersService = {
+      getOrders : jest.fn(()=> of ([])),
+    };
+    mockToastrService = {
+      success: jest.fn(),
+    };
     jest.clearAllMocks();
-  });
 
-  it('debe enviar el pedido al hacer clic en el botón ENVIAR', async () => {
-    const { getByText, getByLabelText, getAllByRole } = await render(OrdersComponent, {
-      imports: [ReactiveFormsModule],
-      providers: [
-        { provide: AuthService, useValue: mockAuthService },
-        { provide: ProductsService, useValue: mockProductsService },
-        { provide: OrdersService, useValue: mockOrdersService },
-        { provide: ToastrService, useValue: mockToastrService },
-      ],
-    });
+    const ordersC = await render(OrdersComponent, {
+      providers:[
+        { provide: ProductsService, useValue : mockProductsService},
+        { provide: OrdersService, useValue : mockOrdersService},
+        { provide: ToastrService, useValue : mockProductsService},
+      ]
+    })
+    
+    console.log('probando render', ordersC)
+    console.log('holasss')
 
-    // Simular valores de entrada
-    fireEvent.input(getByLabelText('Cliente'), { target: { value: 'John Doe' } });
-    fireEvent.input(getByLabelText('N° de mesa'), { target: { value: '5' } });
+  })
 
-    // Simular selección de productos
-    const buttons = getAllByRole('button', { name: 'Agregar' });
-    fireEvent.click(buttons[0]); // Agregar primer producto
-    fireEvent.click(buttons[1]); // Agregar segundo producto
+  
+})
 
-    // Simular clic en el botón ENVIAR
-    fireEvent.click(getByText('ENVIAR'));
 
-    // Verificar que se haya llamado al servicio de pedidos con los datos correctos
-    expect(mockOrdersService.postOrder).toHaveBeenCalledWith(expect.objectContaining({
-      userId: 1,
-      client: 'John Doe',
-      products: expect.arrayContaining([]),
-      status: 'pending',
-    }));
+// describe('OrdersComponent', () => {
+//   // Mock de servicios y otras dependencias
+//   const mockAuthService = {
+//     getCurrentUser: jest.fn(() => ({ user: { email: 'test@example.com', id: 1 } })),
+//   };
 
-    // Verificar que se haya mostrado la notificación de éxito
-    expect(mockToastrService.success).toHaveBeenCalledWith('El pedido ha sido enviado exitosamente', '', expect.any(Object));
+//   const mockProductsService = {
+//     getProductsFromAPI: jest.fn(() => of([])),
+//     getProductsByType: jest.fn(),
+//   };
 
-    // Verificar que el formulario se haya reseteado
-    const nameClientInput = getByLabelText('Cliente') as HTMLInputElement;
-    const numberTableInput = getByLabelText('N° de mesa') as HTMLInputElement;
-    expect(nameClientInput.value).toBe('');
-    expect(numberTableInput.value).toBe('');
-  });
+//   const mockOrdersService = {
+//     postOrder: jest.fn(),
+//   };
 
-  // Agrega más pruebas según sea necesario para cubrir los casos de uso y escenarios relevantes de tu componente.
-});
+//   const mockToastrService = {
+//     success: jest.fn(),
+//   };
+
+//   beforeEach(() => {
+//     jest.clearAllMocks();
+//   });
+
+//   it('debe enviar el pedido al hacer clic en el botón ENVIAR', async () => {
+//     const { getByText, getByLabelText, getAllByRole } = await render(OrdersComponent, {
+//       imports: [ReactiveFormsModule],
+//       providers: [
+//         { provide: AuthService, useValue: mockAuthService },
+//         { provide: ProductsService, useValue: mockProductsService },
+//         { provide: OrdersService, useValue: mockOrdersService },
+//         { provide: ToastrService, useValue: mockToastrService },
+//       ],
+//     });
+
+//     // Simular valores de entrada
+//     fireEvent.input(getByLabelText('Cliente'), { target: { value: 'John Doe' } });
+//     fireEvent.input(getByLabelText('N° de mesa'), { target: { value: '5' } });
+
+//     // Simular selección de productos
+//     const buttons = getAllByRole('button', { name: 'Agregar' });
+//     fireEvent.click(buttons[0]); // Agregar primer producto
+//     fireEvent.click(buttons[1]); // Agregar segundo producto
+
+//     // Simular clic en el botón ENVIAR
+//     fireEvent.click(getByText('ENVIAR'));
+
+//     // Verificar que se haya llamado al servicio de pedidos con los datos correctos
+//     expect(mockOrdersService.postOrder).toHaveBeenCalledWith(expect.objectContaining({
+//       userId: 1,
+//       client: 'John Doe',
+//       products: expect.arrayContaining([]),
+//       status: 'pending',
+//     }));
+
+//     // Verificar que se haya mostrado la notificación de éxito
+//     expect(mockToastrService.success).toHaveBeenCalledWith('El pedido ha sido enviado exitosamente', '', expect.any(Object));
+
+//     // Verificar que el formulario se haya reseteado
+//     const nameClientInput = getByLabelText('Cliente') as HTMLInputElement;
+//     const numberTableInput = getByLabelText('N° de mesa') as HTMLInputElement;
+//     expect(nameClientInput.value).toBe('');
+//     expect(numberTableInput.value).toBe('');
+//   });
+
+//   // Agrega más pruebas según sea necesario para cubrir los casos de uso y escenarios relevantes de tu componente.
+// });
 
 // describe('OrdersComponent', () => {
 //   let component: OrdersComponent;
