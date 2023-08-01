@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { InfoLoginI } from '../interfaces/InfoLogin';
-import { UserResponseI, UserResponseErrorI,  } from '../interfaces/UserResponse';
+import { UserResponseI } from '../interfaces/UserResponse';
 import { Observable, tap } from 'rxjs';
 import { Router } from '@angular/router';
 @Injectable({
@@ -9,34 +9,36 @@ import { Router } from '@angular/router';
 })
 export class AuthService {
 
-    constructor(private http: HttpClient,  private router:Router) { }
+  constructor(private http: HttpClient, private router: Router) { }
 
-    // Método para enviar data (email, password) y guardar respuesta en localStorage 
-     responseUserFromApi(body: InfoLoginI) : Observable<UserResponseI> {
-     return this.http.post<UserResponseI>('http://localhost:8080/login', body).pipe(
-      tap ((data: UserResponseI) => {
+  // Método para enviar data (email, password) y guardar respuesta en localStorage 
+  responseUserFromApi(body: InfoLoginI): Observable<UserResponseI> {
+    return this.http.post<UserResponseI>('http://localhost:8080/login', body).pipe(
+      tap((data: UserResponseI) => {
         // Conversión de data a objeto string
         const dataToLocalS: string = JSON.stringify(data)
         console.log('datas', dataToLocalS)
         // Almacenamiento de dataToLocalS a localStorage
         localStorage.setItem('dataUser', dataToLocalS)
-    }))}
-
-   // Método para obtener data de localStorage
-    getCurrentUser(): UserResponseI | null {
-      const dataLocalS = localStorage.getItem('dataUser');
-      console.log('dataLocalS', dataLocalS);
-      if (dataLocalS === null) {
-        return null
-      }
-      const dataUserObj = JSON.parse(dataLocalS);
-      console.log('obj', dataUserObj);
-      return dataUserObj;
-    }
-    // Método para cerrar cesión
-    logout(): void {
-      localStorage.removeItem('token')
-      localStorage.removeItem('LoginUserI')
-      this.router.navigate(['/login/'])
-     }
+      }))
   }
+
+  // Método para obtener data de localStorage
+  getCurrentUser(): UserResponseI | null {
+    const dataLocalS = localStorage.getItem('dataUser');
+    console.log('dataLocalS', dataLocalS);
+    if (dataLocalS === null) {
+      return null
+    }
+    const dataUserObj = JSON.parse(dataLocalS);
+    console.log('obj', dataUserObj);
+    return dataUserObj;
+  }
+
+  // Método para cerrar cesión
+  logout(): void {
+    localStorage.removeItem('token')
+    localStorage.removeItem('LoginUserI')
+    this.router.navigate(['/login/'])
+  }
+}

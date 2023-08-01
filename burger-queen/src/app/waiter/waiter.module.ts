@@ -4,6 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { OrdersComponent } from './orders/orders.component';
 import { PendingOrdersComponent } from './pending-orders/pending-orders.component';
 import { ProductsService } from '../services/products.service';
+import { AuthService } from '../services/auth.service';
 import { ButtonsComponent } from '../buttons/buttons.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CheffModule } from '../cheff/cheff.module';
@@ -37,14 +38,18 @@ const routes : Routes = [
  
 
   ],
+
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
     FormsModule,
     ReactiveFormsModule,
     CheffModule,
+    
+    
  
   ],
+  
   exports: [RouterModule]
 })
 export class WaiterModule { }
